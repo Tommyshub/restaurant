@@ -3,23 +3,49 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {% block corejs %}
     <script type="text/javascript" src="js/materialize.min.js"></script>
-    <!--Import Google Icon Font-->
+    {% endlbock %}
+    <!-- Extra CSS -->
+    {% block extra_js %} {% endblock %}
+    <!-- CSS -->
+    {% block corecss %}
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <!--Import materialize.css-->
     <link
       type="text/css"
       rel="stylesheet"
       href="css/materialize.min.css"
       media="screen,projection"
     />
-    <!--Let browser know website is optimized for mobile-->
+    {% endblock %}
+    <!-- Extra CSS -->
+    {% block extra_css %} {% endblock %}
+    <!-- Meta -->
+    {% block meta %}
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>>Future Restaurant Name</title>
+    {% endblock %}
+    <!-- Extra Meta -->
+    {% block extra_meta %} {% endblock %}
+    <title>>Future Restaurant Name {% block extra_title %}{% endblock %}</title>
   </head>
-  <body></body>
+  <body>
+    <!-- Header -->
+    <header class="container">
+      <h1>Menu</h1>
+    </header>
+    <!-- Messages from django -->
+    {% if messages %}
+    <div class="message-container"></div>
+    {% endif %}
+    <!-- Page header -->
+    {% block page_header %} {% endblock %}
+    <!-- Main content -->
+    {% block content %} {% endblock %}
+    <!-- Post load Javascript files-->
+    {% block postloadjs %} {% endblock}
+  </body>
 </html>
