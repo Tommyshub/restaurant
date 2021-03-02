@@ -1,0 +1,146 @@
+/* Reset default styles */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* Navbar styles */
+
+.navbar-wrapper {
+  font-family: "Architects Daughter", cursive;
+  font-weight: 600;
+  box-shadow: 0 3px 2px -2px hsla(0, 3%, 80%, 0.161);
+  display: block;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 12vh;
+  background-color: #eaeaea;
+}
+
+.nav-ul {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  color: black;
+}
+
+.nav-links a:hover {
+  color: gray;
+}
+
+.logo p {
+  font-size: 2rem;
+  letter-spacing: 4px;
+}
+
+.burger-menu {
+  display: none;
+}
+
+.burger-menu button {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+@media screen and (max-width: 1700px) {
+  .nav-links a {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .nav-links a {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 1275px) {
+  .nav-ul {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 955px) {
+  .nav-ul {
+    width: 70%;
+  }
+  .logo p {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  .nav-ul {
+    background-color: #eaeaea;
+    position: fixed;
+    right: 0px;
+    height: 45vh;
+    top: 12vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+  }
+
+  .nav-links {
+    opacity: 0;
+  }
+
+  .burger-menu {
+    display: block;
+    cursor: pointer;
+  }
+
+  .logo p {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  .logo small {
+    font-size: 70%;
+    letter-spacing: 1px;
+  }
+}
+
+.nav-active {
+  transform: translateX(0);
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.toggle .burger-menu {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
