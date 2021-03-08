@@ -4,59 +4,44 @@
 {% load static %}
 <!-- Add block for content -->
 {% block content %}
-<div id="grid">
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/9.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/10.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/11.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/12.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/13.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/14.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/15.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/16.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/17.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/18.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/19.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/20.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/21.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/22.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/23.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/24.jpeg' %}" alt="appetizer image" />
-  </div>
-  <div id="grid-item">
-    <img src="{% static 'images/masonry/25.jpeg' %}" alt="appetizer image" />
+
+<div class="container">
+  <div class="row empty"></div>
+</div>
+<div class="container index-container">
+  <div class="row">
+    <div class="col xl4 l4 m4 s12 offset-xl1 offset-l1 offset-m1">
+      <p class="index-heading center-align">Welcome to the greenhouse</p>
+      <div class="index-text">
+        <p>
+          Founded back in 2035 by Sarah Bratt,
+          <br />
+          the greenhouse serves fresh vegan food with all produce sources from
+          local farms and all our energy needs are met by renewable energy.
+        </p>
+        <br />
+        <p>
+          We welcome you to book a table at our imaginary restaurant located by
+          Porto Roma Beach in Zakynthos, or you can order a meal for delivery.
+        </p>
+        <br />
+        <p>
+          Our own staff deliver all our meals to ensure that your food is warm
+          when you get it and that the working conditions for the delivery staff
+          is good.
+        </p>
+        <br />
+        <p></p>
+      </div>
+    </div>
+    <div class="col xl6 l6 m6 s12">
+      <img
+        class="welcome"
+        src="{% static 'images/welcome.jpeg' %}"
+        alt="Image of the restaurant"
+      />
+    </div>
   </div>
 </div>
-{% endblock %}
-<!-- Javascript for this file -->
-{% block extra_js %} {% endblock %}
+
+{% endblock %} {% block extra_js %} {% endblock %}

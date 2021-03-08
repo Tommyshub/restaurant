@@ -1,8 +1,12 @@
 /* Reset default styles */
 * {
+  line-height: 1.6;
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+}
+
+body {
 }
 
 /* Navbar styles */
@@ -43,10 +47,12 @@
 }
 
 .nav-links a:hover {
+  background-color: #eaeaea;
   color: gray;
 }
 
 .logo p {
+  line-height: 1.1;
   font-size: 2rem;
   letter-spacing: 4px;
 }
@@ -56,8 +62,9 @@
 }
 
 .burger-menu button {
-  width: 2.4rem;
-  height: 2.4rem;
+  background-color: #eaeaea;
+  width: 3rem;
+  height: 2.6rem;
 }
 
 @media screen and (max-width: 1700px) {
@@ -143,4 +150,27 @@
 
 .toggle .burger-menu {
   transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+/* Home styles */
+.empty {
+  padding-top: 225px;
+}
+
+.welcome {
+  width: 100%;
+}
+
+.index-heading {
+  font-size: 1.8rem;
+  font-weight: 500;
+  font-family: "Architects Daughter", cursive;
+}
+
+.index-text {
+  padding-top: 25px;
+  padding-left: 18px;
+  margin: 20px;
+  letter-spacing: 1px;
+  line-height: 1.9;
 }
