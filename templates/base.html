@@ -50,10 +50,10 @@
           <small>VEGAN RESTAURANT</small>
         </div>
         <ul class="nav-ul">
-          <li class="nav-links"><a href="#">HOME</a></li>
-          <li class="nav-links"><a href="#">MENU/ORDER</a></li>
-          <li class="nav-links"><a href="#">ACCOUNT</a></li>
-          <li class="nav-links"><a href="#">CONTACT</a></li>
+          <li class="nav-links"><a href="{% url 'index' %}">HOME</a></li>
+          <li class="nav-links"><a href="{% url 'menu' %}">MENU/ORDER</a></li>
+          <li class="nav-links"><a href="{% url 'profile' %}">ACCOUNT</a></li>
+          <li class="nav-links"><a href="{% url 'contact' %}">CONTACT</a></li>
         </ul>
         <div id="burger-menu" class="burger-menu">
           <button>
