@@ -23,6 +23,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('index.urls')),
     path('menu/', include('menu.urls')),
-    path('profile/', include('profile.urls')),
+    path('account/', include('profile.urls')),
     path('contact/', include('contact.urls')),
 ]
