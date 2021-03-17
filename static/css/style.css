@@ -174,3 +174,9 @@ body {
   letter-spacing: 1px;
   line-height: 1.9;
 }
+
+/* Menu styles */
+
+.menu-title {
+  font-family: "Architects Daughter", cursive;
+}
