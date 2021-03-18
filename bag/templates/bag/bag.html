@@ -1,0 +1,35 @@
+<!-- Extend the base template -->
+{% extends "base.html" %}
+<!-- Load the static files -->
+{% load static %}
+<!-- Block for main content -->
+{% block content %}
+<div class="container">
+  <div class="row empty"></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col xl12 center-align">
+      <h2>Shopping Bag</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col center-align">
+      {% if bag_items %}
+      <div class="table-responsive rounded"></div>
+      {% else %}
+      <p class="lead">Your bag is empty.</p>
+      <a href="{% url 'menu' %}" class="waves-effect waves-light btn-small">
+        <span class="icon">
+          <i class="fas fa-chevron-left"></i>
+        </span>
+        <span class="text-uppercase">Keep Shopping</span>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+<!-- Block for extra javascript -->
+{% block extra_js %} {% endblock %}

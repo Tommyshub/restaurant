@@ -15,45 +15,63 @@
       <h3 class="menu-title">Veggie Burgers</h3>
       {% for burger in burgers %}
       <div class="burgers">
-        <div class="name">{{ burger.name }}</div>
-        <div class="ingredients">{{ burger.ingredients }}</div>
-        <div class="price">{{ burger.price }}</div>
+        <p class="name">{{ burger.name }}</p>
+        <p class="ingredients">{{ burger.ingredients }}</p>
+        <p class="price">
+          {{ burger.price }} € <button class="fas fa-cart-plus"></button>
+        </p>
+        <br />
       </div>
       {% endfor %}
       <!-- Pizzas -->
       <h3 class="menu-title">Pizzas</h3>
       {% for pizza in pizzas %}
       <div class="pizzas">
-        <div class="name">{{ pizza.name }}</div>
-        <div class="ingredients">{{ pizza.ingredients }}</div>
-        <div class="price">{{ pizza.price }} Eur</div>
+        <p class="name">{{ pizza.name }}</p>
+        <p class="ingredients">{{ pizza.ingredients }}</p>
+        <p class="price">
+          {{ pizza.price }} € <button class="fas fa-cart-plus"></button>
+        </p>
+        <br />
       </div>
       {% endfor %}
       <!-- Buddha Bowls -->
       <h3 class="menu-title">Buddha Bowls</h3>
       {% for bowl in bowls %}
       <div class="bowls">
-        <div class="name">{{ bowl.name }}</div>
-        <div class="ingredients">{{ bowl.ingredients }}</div>
-        <div class="price">{{ bowl.price }}</div>
+        <p class="name">{{ bowl.name }}</p>
+        <p class="ingredients">{{ bowl.ingredients }}</p>
+        <p class="price">
+          {{ bowl.price }} € <button class="fas fa-cart-plus"></button>
+        </p>
+
+        <br />
       </div>
       {% endfor %}
       <!-- Drinks -->
       <h3 class="menu-title">Drinks</h3>
       {% for drink in drinks %}
       <div class="drinks">
-        <div class="name">{{ drink.name }}</div>
-        <div class="ingredients">{{ drink.ingredients }}</div>
-        <div class="price">{{ drink.price }}</div>
+        <p class="name">{{ drink.name }}</p>
+        <p class="ingredients">{{ drink.ingredients }}</p>
+        <p class="price">
+          {{ drink.price }} € <button class="fas fa-cart-plus"></button>
+        </p>
+
+        <br />
       </div>
       {% endfor %}
       <!-- Desserts -->
       <h3 class="menu-title">Desserts</h3>
       {% for dessert in desserts %}
       <div class="desserts">
-        <div class="name">{{ dessert.name }}</div>
-        <div class="ingredients">{{ dessert.ingredients }}</div>
-        <div class="price">{{ dessert.price }}</div>
+        <p class="name">{{ dessert.name }}</p>
+        <p class="ingredients">{{ dessert.ingredients }}</p>
+        <p class="price">
+          {{ dessert.price }} € <button class="fas fa-cart-plus"></button>
+        </p>
+
+        <br />
       </div>
       {% endfor %}
     </div>

@@ -152,6 +152,11 @@ body {
   transform: rotate(-45deg) translate(-5px, 6px);
 }
 
+.bag {
+  padding-top: 6px;
+  color: green;
+}
+
 /* Home styles */
 .empty {
   padding-top: 225px;
