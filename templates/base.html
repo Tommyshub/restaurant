@@ -49,15 +49,41 @@
           <p>the greenhouse</p>
           <small>VEGAN RESTAURANT</small>
         </div>
-        <ul class="nav-ul">
+        <ul class="nav-ul navbar-links">
           <li class="nav-links"><a href="{% url 'index' %}">HOME</a></li>
           <li class="nav-links"><a href="{% url 'menu' %}">MENU/ORDER</a></li>
-          <li class="nav-links"><a href="{% url 'profile' %}">ACCOUNT</a></li>
           <li class="nav-links"><a href="{% url 'contact' %}">CONTACT</a></li>
-          <li class="nav-links bag">
-            <a class="fas fa-shopping-bag" href="{% url 'view_bag' %}"></a>
+          <!-- If the user is logged in -->
+          {% if request.user.is_authenticated %}
+          <li class="nav-links"><a href="{% url 'profile' %}">ACCOUNT</a></li>
+          <li class="nav-links">
+            <a href="{% url 'account_logout' %}">Logout</a>
           </li>
+          {% else %}
+          <li>
+            <a href="{% url 'account_signup' %}" class="dropdown-item"
+              >Register</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+          </li>
+          {% endif %}
         </ul>
+        <div class="bag">
+          <a
+            class="fas fa-shopping-bag {% if total %} teal-text {% else %} black-text {% endif %}"
+            href="{% url 'view_bag' %}"
+          ></a>
+          <p>
+            <!-- If there is something in the bag -->
+            {% if total %} €
+            <!-- display grand_total with two decimal points -->
+            {{ total|floatformat:2 }}
+            <!-- Else show  €0.00  -->
+            {% else %} 0.00 € {% endif %}
+          </p>
+        </div>
         <div id="burger-menu" class="burger-menu">
           <button>
             <i class="fas fa-leaf fa-2x"></i>

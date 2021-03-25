@@ -17,65 +17,126 @@
       <div class="burgers">
         <p class="name">{{ burger.name }}</p>
         <p class="ingredients">{{ burger.ingredients }}</p>
-        <p class="price">
-          {{ burger.price }} € <button class="fas fa-cart-plus"></button>
-        </p>
+        <div class="row">
+          <form class="col s12" action="{% url 'add_to_bag' burger.id %}" method="POST">
+            {% csrf_token %}
+              <div class="row">
+                <input
+                type="hidden"
+                name="redirect_url"
+                value="{{ request.path }}"
+                />
+                <div class="input-field col s2">
+                  <p class="price">{{ burger.price }} €</p>
+                 <button type="submit" class="fas fa-cart-plus fa-lg"></button>
+                </div>
+          </form>
+        </div>
         <br />
       </div>
-      {% endfor %}
-      <!-- Pizzas -->
-      <h3 class="menu-title">Pizzas</h3>
-      {% for pizza in pizzas %}
-      <div class="pizzas">
-        <p class="name">{{ pizza.name }}</p>
-        <p class="ingredients">{{ pizza.ingredients }}</p>
-        <p class="price">
-          {{ pizza.price }} € <button class="fas fa-cart-plus"></button>
-        </p>
-        <br />
+        {% endfor %}
+        <!-- Pizzas -->
+        <h3 class="menu-title">Pizzas</h3>
+        {% for pizza in pizzas %}
+        <div class="pizzas">
+          <p class="name">{{ pizza.name }}</p>
+          <p class="ingredients">{{ pizza.ingredients }}</p>
+          <div class="row">
+            <form class="col s12" action="{% url 'add_to_bag' pizza.id %}" method="POST">
+              {% csrf_token %}
+                <div class="row">
+                  <input
+                  type="hidden"
+                  name="redirect_url"
+                  value="{{ request.path }}"
+                  />
+                  <div class="input-field col s2">
+                    <p class="price">{{ pizza.price }} €</p>
+                    <button type="submit" class="fas fa-cart-plus fa-lg"></button>
+                  </div>
+            </form>
+          </div>
+          <br />
+        </div>
+        
+        {% endfor %}
+        <!-- Buddha Bowls -->
+        <h3 class="menu-title">Buddha Bowls</h3>
+        {% for bowl in bowls %}
+        <div class="bowls">
+          <p class="name">{{ bowl.name }}</p>
+          <p class="ingredients">{{ bowl.ingredients }}</p>
+          <p class="price">
+            {{ bowl.price }} €
+          </p>
+          <div class="row">
+            <form class="col s12" action="{% url 'add_to_bag' bowl.id %}" method="POST">
+              {% csrf_token %}
+                <div class="row">
+                  <input
+                  type="hidden"
+                  name="redirect_url"
+                  value="{{ request.path }}"
+                  />
+                  <div class="input-field col s2">
+                   <button type="submit" class="fas fa-cart-plus fa-lg"></button>
+                  </div>
+            </form>
+          </div>
+          <br />
+        </div>
+        {% endfor %}
+        <!-- Drinks -->
+        <h3 class="menu-title">Drinks</h3>
+        {% for drink in drinks %}
+        <div class="drinks">
+          <p class="name">{{ drink.name }}</p>
+          <p class="ingredients">{{ drink.ingredients }}</p>
+          <p class="price">
+            {{ drink.price }} €
+          </p>
+          <form class="col s12" action="{% url 'add_to_bag' drink.id %}" method="POST">
+            {% csrf_token %}
+              <div class="row">
+                <input
+                type="hidden"
+                name="redirect_url"
+                value="{{ request.path }}"
+                />
+                <div class="input-field col s2">
+                 <button type="submit" class="fas fa-cart-plus fa-lg"></button>
+                </div>
+          </form>
+          <br />
+        </div>
+        {% endfor %}
+        <!-- Desserts -->
+        <h3 class="menu-title">Desserts</h3>
+        {% for dessert in desserts %}
+        <div class="desserts">
+          <p class="name">{{ dessert.name }}</p>
+          <p class="ingredients">{{ dessert.ingredients }}</p>
+          <p class="price">
+            {{ dessert.price }} €
+          </p>
+          <form class="col s12" action="{% url 'add_to_bag' dessert.id %}" method="POST">
+            {% csrf_token %}
+              <div class="row">
+                <input
+                type="hidden"
+                name="redirect_url"
+                value="{{ request.path }}"
+                />
+                <div class="input-field col s2">
+                 <button type="submit" class="fas fa-cart-plus fa-lg"></button>
+                </div>
+          </form>
+          <br />
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
-      <!-- Buddha Bowls -->
-      <h3 class="menu-title">Buddha Bowls</h3>
-      {% for bowl in bowls %}
-      <div class="bowls">
-        <p class="name">{{ bowl.name }}</p>
-        <p class="ingredients">{{ bowl.ingredients }}</p>
-        <p class="price">
-          {{ bowl.price }} € <button class="fas fa-cart-plus"></button>
-        </p>
-
-        <br />
-      </div>
-      {% endfor %}
-      <!-- Drinks -->
-      <h3 class="menu-title">Drinks</h3>
-      {% for drink in drinks %}
-      <div class="drinks">
-        <p class="name">{{ drink.name }}</p>
-        <p class="ingredients">{{ drink.ingredients }}</p>
-        <p class="price">
-          {{ drink.price }} € <button class="fas fa-cart-plus"></button>
-        </p>
-
-        <br />
-      </div>
-      {% endfor %}
-      <!-- Desserts -->
-      <h3 class="menu-title">Desserts</h3>
-      {% for dessert in desserts %}
-      <div class="desserts">
-        <p class="name">{{ dessert.name }}</p>
-        <p class="ingredients">{{ dessert.ingredients }}</p>
-        <p class="price">
-          {{ dessert.price }} € <button class="fas fa-cart-plus"></button>
-        </p>
-
-        <br />
-      </div>
-      {% endfor %}
     </div>
   </div>
-</div>
 
-{% endblock %} {% block extra_js %} {% endblock %}
+  {% endblock %} {% block extra_js %} {% endblock %}
+</div>

@@ -39,7 +39,7 @@ body {
 }
 
 .nav-links a {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 2px;
@@ -152,11 +152,6 @@ body {
   transform: rotate(-45deg) translate(-5px, 6px);
 }
 
-.bag {
-  padding-top: 6px;
-  color: green;
-}
-
 /* Home styles */
 .empty {
   padding-top: 225px;
@@ -180,8 +175,24 @@ body {
   line-height: 1.9;
 }
 
+.bag {
+  font-size: 0.95rem;
+  color: black;
+}
+
+.bag a {
+  padding-left: 18px;
+  font-size: 1.8rem;
+}
+
 /* Menu styles */
 
 .menu-title {
   font-family: "Architects Daughter", cursive;
+}
+
+/* Shopping bag styles */
+
+.bag-table {
+  padding-top: 75px;
 }

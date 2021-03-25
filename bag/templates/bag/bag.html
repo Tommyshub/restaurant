@@ -10,17 +10,59 @@
 <div class="container">
   <div class="row">
     <div class="col xl12 center-align">
-      <h2>Shopping Bag</h2>
+      <h2 class="menu-title">Shopping Bag</h2>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col center-align">
+    <div class="col xl12 center-align">
       {% if bag_items %}
-      <div class="table-responsive rounded"></div>
+      <div class="bag-table">
+        <table class="centered">
+          <thead>
+            <tr>
+              <th>Product Info</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in bag_items %}
+            <tr>
+              <td>
+                <p>{{ item.product.name }}</p>
+              </td>
+              <td>
+                <p>{{ item.quantity }}</p>
+              </td>
+              <td>
+                <p>€ {{ item.product.price }}</p>
+              </td>
+              <td>
+                <p>€ {{ item.product.price }}</p>
+              </td>
+            </tr>
+            {% endfor %}
+            <tr>
+              <td colspan="5" class="text-right">
+                <a href="{% url 'menu' %}" class="btn btn-lg">
+                  <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                  </span>
+                  <span class="text-uppercase">Keep Shopping</span>
+                </a>
+                <a href="" class="btn btn-lg">
+                  <span class="text-uppercase">Secure Checkout</span>
+                  <span class="icon">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       {% else %}
       <p class="lead">Your bag is empty.</p>
-      <a href="{% url 'menu' %}" class="waves-effect waves-light btn-small">
+      <a href="{% url 'menu' %}" class="btn-small">
         <span class="icon">
           <i class="fas fa-chevron-left"></i>
         </span>
@@ -29,7 +71,8 @@
       {% endif %}
     </div>
   </div>
+
+  {% endblock %}
+  <!-- Block for extra javascript -->
+  {% block extra_js %} {% endblock %}
 </div>
-{% endblock %}
-<!-- Block for extra javascript -->
-{% block extra_js %} {% endblock %}
