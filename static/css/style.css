@@ -181,7 +181,7 @@ body {
 }
 
 .bag a {
-  padding-left: 18px;
+  padding-left: 9px;
   font-size: 1.8rem;
 }
 
@@ -195,4 +195,12 @@ body {
 
 .bag-table {
   padding-top: 75px;
+}
+
+.remove-item {
+  cursor: pointer;
+}
+
+.update-link {
+  cursor: pointer;
 }
