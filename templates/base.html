@@ -91,21 +91,55 @@
         </div>
       </nav>
     </div>
-
-    <!-- Messages from django -->
-    {% if messages %}
-    <div class="message-container"></div>
-    {% endif %}
     <!-- Page header -->
     {% block page_header %} {% endblock %}
+    <div class="empty">
+      <!-- Messages from django -->
+      {% if messages %}
+      <div class="message-container">
+        <!-- If there's a message -->
+        {% if messages %}
+        <!-- For every message in messages -->
+        {% for message in messages %}
+        <!-- Django message levels -->
+        {% with message.level as level %}
+        <!-- Error -->
+        {% if level == 40 %}
+        <p class="toast red darken-1 black-text">{{ message }}</p>
+        <!-- Warning -->
+        {% elif level == 30 %}
+        <p class="toast yellow lighten-2 black-text">{{ message }}</p>
+        <!-- Success -->
+        {% elif level == 25 %}
+        <p class="toast green black-text">{{ message }}</p>
+        <!-- Info -->
+        {% else %}
+        <p class="toast blue lighten-3 black-text">{{ message }}</p>
+        <!-- . -->
+        {% endif %}
+        <!-- . -->
+        {% endwith %}
+        <!-- . -->
+        {% endfor %}
+        <!-- . -->
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
     <!-- Main content -->
     {% block content %} {% endblock %}
     <!-- Footer -->
     <div id="footer" class="footer-wrapper"></div>
     <!-- Post load Javascript files-->
     {% block postloadjs %}
-    <script src="https://unpkg.com/vue@next"></script>
     <script src="{% static 'js/navbar.js' %}"></script>
+    <script>
+      setTimeout(function () {
+        if ($(".toast").length > 0) {
+          $(".toast").remove();
+        }
+      }, 4000);
+    </script>
     {% endblock %}
   </body>
 </html>

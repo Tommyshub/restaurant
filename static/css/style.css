@@ -154,7 +154,7 @@ body {
 
 /* Home styles */
 .empty {
-  padding-top: 225px;
+  padding-top: 125px;
 }
 
 .welcome {
@@ -187,8 +187,24 @@ body {
 
 /* Menu styles */
 
+.menu {
+  background-color: #eaeaea;
+  padding: 40px;
+  border-radius: 30px;
+}
+
 .menu-title {
   font-family: "Architects Daughter", cursive;
+}
+
+.menu-name {
+  font-family: "Architects Daughter", cursive;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.menu-btn {
+  margin-top: 20px;
 }
 
 /* Shopping bag styles */
@@ -203,4 +219,12 @@ body {
 
 .update-link {
   cursor: pointer;
+}
+
+.message-container {
+  position: fixed;
+  bottom: 45px;
+  right: 10px;
+  z-index: 99999999999;
+  opacity: 0.96;
 }
