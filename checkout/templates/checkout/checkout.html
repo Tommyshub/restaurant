@@ -1,0 +1,147 @@
+<!-- Extend the base template -->
+{% extends "base.html" %}
+<!-- Load the static files -->
+{% load static %}
+<!-- Load bag tools -->
+{% load bag_tools %}
+<!-- Load extra css -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
+{% endblock %}
+<!-- Block for main content -->
+{% block content %}
+<div class="container">
+  <div class="row empty"></div>
+</div>
+<div class="container">
+  <div class="row xl12 center-align">
+    <h2>Checkout</h2>
+  </div>
+    <div class="row">
+      <div class="col xl6">
+        <p>Please fill out the form below to complete your order:</p>
+        <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+          {% csrf_token %}
+          <fieldset>
+            <legend class="fieldset-label black-text">Deatails</legend>
+            <!-- Full Name -->
+            {{ order_form.full_name | as_crispy_field }}
+            <!-- Email -->
+            {{ order_form.email | as_crispy_field }}
+          </fieldset>
+          <fieldset>
+            <legend class="fieldset-label black-text">Delivery</legend>
+            <!-- Phone number -->
+            {{ order_form.phone_number | as_crispy_field }}
+            <!-- Country -->
+            {{ order_form.country | as_crispy_field }}
+            <!-- Post number -->
+            {{ order_form.postcode | as_crispy_field }}
+            <!-- Town or City -->
+            {{ order_form.town_or_city | as_crispy_field }}
+            <!-- Street address 1 -->
+            {{ order_form.street_address1 | as_crispy_field }}
+            <!-- Street address 2 -->
+            {{ order_form.street_address2 | as_crispy_field }}
+            <!-- County -->
+            {{ order_form.county | as_crispy_field }}
+            <div class="form-check form-check-inline">
+              {% if user.is_authenticated %}
+              <label class="form-check-label" for="id-save-info">
+                <input
+                  type="checkbox"
+                  class="filled-in"
+                  checked="checked"
+                  id="id-save-info"
+                  name="save-info"
+                />
+                <span>Save this delivery information to my profile</span>
+              </label>
+              {% else %}
+              <label class="form-check-label" for="id-save-info">
+                <a class="text-info" href="{% url 'account_signup' %}"
+                  >Create an account</a
+                >
+                or
+                <a class="text-info" href="{% url 'account_login' %}">login</a>
+                to save this information
+              </label>
+              {% endif %}
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend class="fieldset-label small text-black">Payment</legend>
+            <!-- A Stripe card element will go here -->
+            <div id="card-element"></div>
+
+            <!-- Used to display form errors -->
+            <div class="red-text" id="card-errors" role="alert"></div>
+
+            <!-- Pass the client secret to the view so we can get the payment intent id -->
+            <input
+              type="hidden"
+              value="{{ client_secret }}"
+              name="client_secret"
+            />
+          </fieldset>
+          <p class="small red-text">
+            <span class="icon">
+              <i class="fas fa-exclamation-circle"></i>
+            </span>
+            <span
+              >You will be charged
+              <strong>€ {{ total|floatformat:2 }}</strong></span
+            >
+          </p>
+          <div class="submit-button text-right">
+            <a href="{% url 'view_bag' %}" class="waves-effect waves-light btn">
+              <span class="icon">
+                <i class="fas fa-chevron-left"></i>
+              </span>
+              <span class="font-weight-bold">Adjust Bag</span>
+            </a>
+            <button id="submit-button" class="btn">
+              <span class="font-weight-bold">Complete Order</span>
+              <span class="icon">
+                <i class="fas fa-lock"></i>
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col xl6">
+        <table class="striped">
+            <h5>Order Summary</h5>
+            <thead>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th class="right-align">Subtotal</th>
+            </thead>
+            <tbody>
+              {% for item in bag_items %}
+                <tr>
+                    <td>
+                        <p>{{ item.product.name }}</p>
+                      </td>
+                      <td>
+                        <p>{{ item.quantity }}</p>
+                      </td>
+                      <td>
+                        <p>€ {{ item.product.price }}</p>
+                      </td>
+                      <td class="right-align">
+                        <p>€ {{ item.product.price | calc_subtotal:item.quantity }}</p>
+                      </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="right-align">
+            <p>Total: € {{ total }}</p>
+        </div>
+    </div>
+    </div>
+  </div>
+  {% endblock %}
+</div>

@@ -17,7 +17,7 @@
     <div class="col xl12 center-align">
       {% if bag_items %}
       <div class="bag-table">
-        <table class="striped centered responsive-table">
+        <table class="striped centered">
           <thead>
             <tr>
               <th>Product Info</th>
@@ -70,7 +70,7 @@
                   </span>
                   <span class="text-uppercase">Keep Shopping</span>
                 </a>
-                <a href="" class="btn btn-lg">
+                <a href="{% url 'checkout' %}" class="btn btn-lg">
                   <span class="text-uppercase">Secure Checkout</span>
                   <span class="icon">
                     <i class="fas fa-lock"></i>
