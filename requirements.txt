@@ -1,12 +1,12 @@
 Django==3.1.7
+stripe==2.56.0
 django-crispy-forms==1.11.2
 crispy-forms-materialize==0.2
 django-materialize-css==0.0.1
 requests==2.25.1
 requests-oauthlib == 0.3.0 
 urllib3==1.21.1
-oauthlib==3.0.0
-sqlparse==0.2.2 
+oauthlib==3.0.0 
 django-allauth==0.44.0
 asgiref==3.2.10
 chardet==3.0.2
