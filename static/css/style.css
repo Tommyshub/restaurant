@@ -21,6 +21,7 @@ body {
   position: fixed;
   left: 0;
   right: 0;
+  z-index: 99999;
 }
 
 .navbar {
@@ -227,4 +228,14 @@ body {
   right: 10px;
   z-index: 99999999999;
   opacity: 0.96;
+}
+
+/* Checkout style (for not load font twice) */
+
+.checkout-title {
+  font-family: "Architects Daughter", cursive;
+}
+
+.checkout-success {
+  margin: 10px;
 }
