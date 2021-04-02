@@ -2,6 +2,10 @@
 {% extends "base.html" %}
 <!-- Load the static files -->
 {% load static %}
+<!-- Load extra css -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'profile/css/profile.css' %}" />
+{% endblock %}
 <!-- Add block for content -->
 {% block content %}
 
@@ -12,6 +16,24 @@
   <div class="row">
     <h1>Account</h1>
   </div>
+  <div class="row">
+    <div class="col">
+      <small>Default Delivery Information</small>
+      <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
+        <!-- prettier-ignore -->
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="waves-effect waves-light btn">Update</button>
+      </form>
+    </div>
+    <div class="col">
+      <small>Order History</small>
+      {{ orders }}
+    </div>
+  </div>
 </div>
-
-{% endblock %} {% block extra_js %} {% endblock %}
+<!-- prettier-ignore -->
+{{ profile }}
+ {% endblock %} 
+ {% block extra_js %} 
+ {% endblock %}
