@@ -36,18 +36,18 @@
           <legend class="fieldset-label black-text">Delivery</legend>
           <!-- Phone number -->
           {{ order_form.phone_number | as_crispy_field }}
-          <!-- Country -->
-          {{ order_form.country | as_crispy_field }}
-          <!-- Post number -->
-          {{ order_form.postcode | as_crispy_field }}
-          <!-- Town or City -->
-          {{ order_form.town_or_city | as_crispy_field }}
           <!-- Street address 1 -->
           {{ order_form.street_address1 | as_crispy_field }}
           <!-- Street address 2 -->
           {{ order_form.street_address2 | as_crispy_field }}
+          <!-- Town or City -->
+          {{ order_form.town_or_city | as_crispy_field }}
           <!-- County -->
           {{ order_form.county | as_crispy_field }}
+          <!-- Post number -->
+          {{ order_form.postcode | as_crispy_field }}
+          <!-- Country -->
+          {{ order_form.country | as_crispy_field }}
           <div class="form-check form-check-inline">
             {% if user.is_authenticated %}
             <label class="form-check-label" for="id-save-info">
