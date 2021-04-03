@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col xl16 m3 push-xl4 mb-5">
+    <div class="col xl6 l6 m3 s3">
       <small>Default Delivery Information</small>
       <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
         <!-- prettier-ignore -->
@@ -28,14 +28,44 @@
         <button class="waves-effect waves-light btn">Update</button>
       </form>
     </div>
-    <div class="col">
-      <small>Order History</small>
-      {{ orders }}
+  </div>
+  <div class="row">
+        <div class="col xl6 l6 m3 s3"> 
+      <table class="order-history striped table">
+        <small>Order History</small>
+        <thead>
+          <th>Order Number</th>
+          <th>Date</th>
+          <th>Items</th>
+          <th>Order Total</th>
+        </thead>
+        <tbody>
+          {% for order in orders %}
+            <tr>
+              <td>
+                <a href="{% url 'order_history' order.order_number %}"
+                title="{{ order.order_number }}">
+                    {{ order.order_number|truncatechars:6 }}
+                </a>
+              </td>
+              <td>{{ order.date }}</td>
+              <td>
+                <ul class="list-unstyled">
+                    {% for item in order.lineitems.all %}
+                        <li class="small">
+                          {{ item.quantity }} x {{ item.product.name }}
+                        </li>
+                    {% endfor %}
+                </ul>
+              </td>
+              <td>${{ order.total }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
     </div>
   </div>
 </div>
 <!-- prettier-ignore -->
-{{ profile }}
- {% endblock %} 
- {% block extra_js %} 
- {% endblock %}
+{% endblock %} 
+{% block extra_js %} 
+{% endblock %}

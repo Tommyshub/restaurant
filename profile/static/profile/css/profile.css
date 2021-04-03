@@ -1,0 +1,6 @@
+/* The dropdown box was set to display none and therefor I needed to change it here */
+
+select,
+select option {
+  display: inline;
+}

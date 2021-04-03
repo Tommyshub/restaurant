@@ -12,8 +12,10 @@
 }
 
 /* Make the dropdown list for countries be grayed out by default if no option is selected*/
+
 select,
 select option {
+  display: inline;
   color: #000000;
 }
 

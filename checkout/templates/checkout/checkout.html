@@ -46,6 +46,8 @@
           {{ order_form.county | as_crispy_field }}
           <!-- Post number -->
           {{ order_form.postcode | as_crispy_field }}
+          <!-- Country -->
+          {{ order_form.country | as_crispy_field }}
           <div class="form-check form-check-inline">
             {% if user.is_authenticated %}
             <label class="form-check-label" for="id-save-info">

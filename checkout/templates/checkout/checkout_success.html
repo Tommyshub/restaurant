@@ -44,7 +44,7 @@
         {% endif %}
         <p class="mb-0">Town or City: {{ order.town_or_city }}</p>
         {% if order.postcode %}
-        <p>Postal Code :{{ order.postcode }}</p>
+        <p>Postal Code: {{ order.postcode }}</p>
         {% endif %}
         <p>Phone Number: {{ order.phone_number }}</p>
       </div>
@@ -53,6 +53,15 @@
         <p>Total: {{ order.total }}</p>
       </div>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col xl12 l7 right-align">
+    {% if from_profile %}
+    <a href="{% url 'profile' %}" class="waves-effect waves-light btn">
+      <span class="text-uppercase">Back to Profile</span>
+    </a>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
