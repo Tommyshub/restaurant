@@ -14,10 +14,12 @@
 </div>
 <div class="container profile-container">
   <div class="row">
-    <h1>Account</h1>
+    <div class="col xl16 m3 push-xl4">
+      <h4 class="center-align">Your Account</h4>
+    </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col xl16 m3 push-xl4 mb-5">
       <small>Default Delivery Information</small>
       <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
         <!-- prettier-ignore -->
