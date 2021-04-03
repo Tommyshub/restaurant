@@ -11,47 +11,9 @@
   transition: box-shadow 150ms ease;
 }
 
-/* Make the dropdown list for countries be grayed out by default if no option is selected*/
+/* The dropdown box was set to display none and therefor I needed to change it here */
 
 select,
 select option {
   display: inline;
-  color: #000000;
-}
-
-select:invalid,
-select option[value=""] {
-  color: #aab7c4 !important;
-}
-
-.StripeElement--focus,
-.stripe-style-input:focus,
-.stripe-style-input:active {
-  box-shadow: 0 1px 3px 0 #cfd7df;
-}
-
-.StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
-}
-
-.stripe-style-input::placeholder {
-  color: #aab7c4;
-}
-
-.order-summary {
-  margin-top: -7px;
-}
-
-.charged {
-  padding: 10px;
-}
-
-.checkout-header {
-  padding-bottom: 20px;
-}
-
-.confirmation-container {
-  background-color: #eaeaea;
-  width: 30%;
-  border-radius: 30px;
 }
