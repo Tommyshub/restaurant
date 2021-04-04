@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
 from menu.models import Product
+from django.contrib.auth.decorators import login_required
 
 # Shopping Bag
 def view_bag(request):
