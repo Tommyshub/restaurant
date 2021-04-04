@@ -25,7 +25,10 @@ SECRET_KEY = '**q_h16t5dts37641#%=l9v$yqbkiul*8mu$)#kt0$fu&nfb=+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'the-greenhouse-1.herokuapp.com', 
+    'localhost',
+    ]
 
 
 # Application definition
