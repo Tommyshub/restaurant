@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from .models import Product, Category
+from .forms import ProductForm
 
 # Menu
 def menu(request, *args, **kwargs):
@@ -45,3 +46,14 @@ def add_to_bag(request, item_id):
     request.session['bag'] = bag
     print(request.session['bag'])
     return redirect(redirect_url)
+
+
+def add_product(request):
+    """ Admin can add products to the store """
+    form = ProductForm()
+    template = 'menu/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
