@@ -176,8 +176,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 if 'USE_AWS' in os.environ:
+    # Controls how long the browser keeps the files cached  
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
     # Configuration for amazon s3 bucket
     AWS_STORAGE_BUCKET_NAME = 'the-greenhouse'
     AWS_S3_REGION_NAME = 'eu-central-1'
