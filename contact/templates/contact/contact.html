@@ -2,16 +2,33 @@
 {% extends "base.html" %}
 <!-- Load the static files -->
 {% load static %}
+<!-- Load extra css -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'profile/css/contact.css' %}" />
+{% endblock %}
 <!-- Add block for content -->
 {% block content %}
-
 <div class="container">
   <div class="row empty"></div>
 </div>
 <div class="container contact-container">
   <div class="row">
-    <h1>Contact</h1>
+    <div class="col">
+      <h2 class="center-align">Contact</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col center-align">
+      <form class="contact-form" action="{% url 'contact' %}" method="POST">
+        <!-- prettier-ignore -->
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="contact-text waves-effect waves-light btn">send</button>
+      </form>
+    </div>
   </div>
 </div>
-
-{% endblock %} {% block extra_js %} {% endblock %}
+<!-- prettier-ignore -->
+{% endblock %} 
+{% block extra_js %} 
+{% endblock %}
