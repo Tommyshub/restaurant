@@ -11,18 +11,18 @@ def contact(request):
 		if form.is_valid():
 			subject = form.cleaned_data['subject']
 			body = {
-			'first_name': form.cleaned_data['first_name'], 
-			'last_name': form.cleaned_data['last_name'], 
+			'name': form.cleaned_data['name'], 
 			'email': form.cleaned_data['email'],
             'message': form.cleaned_data['message'],
 			}
 			message = "\n".join(body.values())
-
+            
 			try:
-				send_mail(subject, message, from_email, ['fluganisoppan@gmail.com'])
+				send_mail(subject, message, 'contact@tommybratt.se', ['contact@tommybratt.se'])
 			except BadHeaderError:
 				return HttpResponse('Invalid header found.')
-			return redirect("home")
+			messages.success(request, 'Message successfully sent')
+			return redirect("index")
 
 	form = ContactForm()
 	return render(request, "contact/contact.html", {'form':form})

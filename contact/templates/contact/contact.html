@@ -4,7 +4,7 @@
 {% load static %}
 <!-- Load extra css -->
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'profile/css/contact.css' %}" />
+<link rel="stylesheet" href="{% static 'contact/css/contact.css' %}" />
 {% endblock %}
 <!-- Add block for content -->
 {% block content %}
@@ -13,17 +13,17 @@
 </div>
 <div class="container contact-container">
   <div class="row">
-    <div class="col">
+    <div class="col xl6 push-xl3">
       <h2 class="center-align">Contact</h2>
     </div>
   </div>
   <div class="row">
-    <div class="col center-align">
+    <div class="col xl6 push-xl3">
       <form class="contact-form" action="{% url 'contact' %}" method="POST">
         <!-- prettier-ignore -->
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="contact-text waves-effect waves-light btn">SEND</button>
+        <button class="col push-xl5 waves-effect waves-light btn">SEND</button>
       </form>
     </div>
   </div>

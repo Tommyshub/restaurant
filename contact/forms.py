@@ -8,8 +8,7 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = (
             'subject',
-            'first_name', 
-            'last_name', 
+            'name',
             'email',
             'message',
         )
