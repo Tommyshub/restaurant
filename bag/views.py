@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
 from menu.models import Product
+from .forms import TipsForm
 from django.contrib.auth.decorators import login_required
+from bag.contexts import bag_contents
 
 # Shopping Bag
 def view_bag(request):
@@ -41,3 +43,27 @@ def remove_from_bag(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
+
+
+def tips(request):
+    """
+    View to give tips to delivery staff
+    """
+    if request.method == 'POST':
+        # Create a form instance and populate it with data from the request:
+        form = TipsForm(request.POST)
+        # Check if the form is valid
+        if form.is_valid():
+            """
+            Get the content of the bag and add the 
+            tips to the total amount. 
+            """
+            current_bag = bag_contents(request)
+            total = current_bag['total']
+            tips = int(request.POST.get('tips'))
+            total += tips
+            print(total)
+            messages.success(request, 
+                f'Thank you for giving {tips} euros to our delivery staff')
+            return render(request, "index/index.html", {"form": form})
+    return render(request, 'bag/bag.html', {'form': form})
