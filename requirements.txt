@@ -14,6 +14,6 @@ Pillow==8.1.0
 idna==2.5
 python3-openid==3.1.0
 sqlparse==0.3.0
-urllib3==1.27
+urllib3==1.26.4
 gunicorn==20.1.0
 whitenoise==5.2.0
