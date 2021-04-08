@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from .models import Product, Category
 
+
 # Menu
 def menu(request, *args, **kwargs):
     """ View for displaying the menu page """
@@ -41,7 +42,6 @@ def add_to_bag(request, item_id):
     else:
         bag[item_id] = add
         messages.success(request, f'Added {product.name} to your bag')
-
     request.session['bag'] = bag
     print(request.session['bag'])
     return redirect(redirect_url)
