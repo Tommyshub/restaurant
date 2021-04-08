@@ -3,7 +3,7 @@ from django.views.decorators.http import require_POST
 from django.conf import settings
 from django.contrib import messages
 from profile.forms import UserProfileForm
-from profile.models import  UserProfile
+from profile.models import UserProfile
 from .forms import OrderForm
 from menu.models import Product
 from .models import Order, OrderLineItem
@@ -63,7 +63,8 @@ def checkout(request):
     else:
         bag = request.session.get('bag', {})
         if not bag:
-            messages.error(request, "There's nothing in your bag at the moment")
+            messages.error(
+                request, "There's nothing in your bag at the moment")
             return redirect(reverse('menu'))
 
         current_bag = bag_contents(request)
@@ -145,7 +146,7 @@ def checkout_success(request, order_number):
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
-    }   
+    }
 
     return render(request, template, context)
 
@@ -156,7 +157,7 @@ def cache_checkout_data(request):
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify('pid', metadata={
-            'username': request.user, 
+            'username': request.user,
             'save_info': request.POST.get('save_info'),
             'bag': json.dumps(request.session.get('bag', {}))
         })
