@@ -25,3 +25,4 @@ jmespath==0.10.0
 python-dateutil==2.8.1 
 s3transfer==0.3.6
 django-storages==1.11.1
+whitenoise==5.2.0
