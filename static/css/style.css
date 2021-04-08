@@ -6,9 +6,6 @@
   box-sizing: border-box;
 }
 
-body {
-}
-
 /* Navbar styles */
 
 .navbar-wrapper {
@@ -271,4 +268,17 @@ body {
 
 .allauth-container h2 {
   font-family: "Architects Daughter", cursive;
+}
+
+.tips-text {
+  margin: 15px;
+}
+
+.tips-input {
+  width: 30%;
+}
+
+.bag-btn {
+  margin-top: 4px;
+  margin-bottom: 4px;
 }

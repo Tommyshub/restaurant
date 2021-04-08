@@ -11,21 +11,10 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col xl12 center-align">
+    <div class="col xl12 l12 m12 s12 center-align">
       <h2 class="menu-title">Shopping Bag</h2>
     </div>
-    <div class="col xl6 push-xl3 center-align">
-      <p class="tips">
-        Delivery is free but we do appriciate tips to our delivery staff.
-      </p>
-      <form class="tips-form" action="{% url 'tips' %}" method="POST">
-        <!-- prettier-ignore -->
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button class="waves-effect waves-light btn">Give Tips</button>
-      </form>
-    </div>
-    <div class="col xl12 center-align">
+    <div class="col xl12 l12 m12 s12 center-align">
       {% if bag_items %}
       <div class="bag-table">
         <table class="striped centered">
@@ -46,7 +35,7 @@
               <td>
                 <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                   {% csrf_token %}
-                  <div class="form-group qty-form">
+                  <div class="col xl4 l4 m4 s14 push-xl4 push-l4 push-m4 form-group qty-form">
                     <div class="input-group">
                       <input
                         class="form-control qty_input"
@@ -59,11 +48,11 @@
                         id="id_qty_{{ item.item_id }}"
                       />
                       </div>
+                    <a class="update-link green-text"><small>Update</small></a>
+                    <a class="remove-item red-text" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                     </div>
                   </div>
                 </form>
-                <a class="update-link green-text"><small>Update</small></a>
-                <a class="remove-item red-text" id="remove_{{ item.item_id }}"><small>Remove</small></a>
               </td>
               <td>
                 <p>€ {{ item.product.price }}</p>
@@ -74,14 +63,29 @@
             </tr>
             {% endfor %}
             <tr>
+              <td colspan="5" class="tipstext-right">
+                  <form class="tips-form" action="{% url 'tips' %}" method="POST">
+                    <p class="tips-text">
+                      Want to give tips to your delivery person?
+                    </p>
+                    <!-- prettier-ignore -->
+                    {% csrf_token %}
+                    <div class="col xl2 l2 m4 s12 push-xl5 push-l5 push-m4">
+                      {{ form|crispy }}
+                      <button class="waves-effect waves-light btn">Give Tips</button>
+                    </div>
+                  </form>
+              </td>
+            </tr>
+            <tr>
               <td colspan="5" class="text-right">
-                <a href="{% url 'menu' %}" class="btn btn-lg">
-                  <span class="icon">
+                <a href="{% url 'menu' %}" class="bag-btn btn btn-lg">
+                  <span class="checkout-icon icon">
                     <i class="fas fa-chevron-left"></i>
                   </span>
                   <span class="text-uppercase">Keep Shopping</span>
                 </a>
-                <a href="{% url 'checkout' %}" class="btn btn-lg">
+                <a href="{% url 'checkout' %}" class="bag-btn btn btn-lg">
                   <span class="text-uppercase">Secure Checkout</span>
                   <span class="icon">
                     <i class="fas fa-lock"></i>
@@ -100,12 +104,10 @@
         </span>
         <span class="text-uppercase">Keep Shopping</span>
       </a>
-      {% endif %}
-    </div>
+    {% endif %}
   </div>
-
+</div>
 {% endblock %}
-
 {% block postloadjs %}
 {{ block.super }}
 <script src="{% static 'js/quantity_input.js' %}"></script>
@@ -115,18 +117,16 @@
       var form = $(this).prev('.update-form');
       form.submit();
   })
-
   // Remove item and reload on click
   $('.remove-item').click(function(e) {
       var csrfToken = "{{ csrf_token }}";
       var itemId = $(this).attr('id').split('remove_')[1];
       var url = `/bag/remove/${itemId}/`;
       var data = {'csrfmiddlewaretoken': csrfToken};
-
       $.post(url, data)
-       .done(function() {
-           location.reload();
-       });
+      .done(function() {
+          location.reload();
+      });
   })
 </script>
 {% endblock %}
