@@ -198,3 +198,11 @@
 .allauth-container h2 {
   font-family: "Architects Daughter", cursive;
 }
+
+.message-container {
+  position: fixed;
+  bottom: 45px;
+  right: 10px;
+  z-index: 99999999999;
+  opacity: 0.96;
+}

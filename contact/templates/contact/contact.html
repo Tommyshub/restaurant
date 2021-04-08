@@ -13,17 +13,25 @@
 </div>
 <div class="container contact-container">
   <div class="row">
-    <div class="col xl6 push-xl3">
-      <h2 class="center-align">Contact</h2>
+    <div class="col xl6 l8 m10 s12 push-xl3 push-l1 push-m1">
+      <h3 class="contact-heading center-align">Contact Us</h3>
+      <p class="contact-text">
+        You can contact us below if you have any questions or feedback.
+      </p>
+      <p class="contact-text">We will usually answer within a few hours.</p>
     </div>
   </div>
   <div class="row">
-    <div class="col xl6 push-xl3">
+    <div class="col xl6 l8 m10 s12 push-xl3 push-l1 push-m1">
       <form class="contact-form" action="{% url 'contact' %}" method="POST">
         <!-- prettier-ignore -->
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="col push-xl5 waves-effect waves-light btn">SEND</button>
+        <button
+          class="col xl2 l2 m4 s4 push-xl5 push-l5 push-m4 push-s4 waves-effect waves-light btn"
+        >
+          SEND
+        </button>
       </form>
     </div>
   </div>
