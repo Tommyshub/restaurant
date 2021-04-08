@@ -1,4 +1,4 @@
-from django import forms 
+from django import forms
 from .models import UserProfile
 
 
@@ -7,14 +7,13 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         exclude = ('user', )
 
-
     def __init__(self, *args, **kwargs):
         """
         Set autofocus on the full name field to true so that field will be selected as default. 
         Add star to required field and adding css class and removing field labels.
         """
         super().__init__(*args, **kwargs)
-        
+
         placeholders = {
             'default_phone_number': 'Phone Number',
             'default_postcode': 'Postal Code',
