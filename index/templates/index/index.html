@@ -2,6 +2,10 @@
 {% extends "base.html" %}
 <!-- Load the static files -->
 {% load static %}
+<!-- Load extra css -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'index/css/index.css' %}" />
+{% endblock %}
 <!-- Add block for content -->
 {% block content %}
 

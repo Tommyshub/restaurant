@@ -1,0 +1,21 @@
+/* Menu styles */
+
+.menu {
+  background-color: #eaeaea;
+  padding: 40px;
+  border-radius: 30px;
+}
+
+.menu-title {
+  font-family: "Architects Daughter", cursive;
+}
+
+.menu-name {
+  font-family: "Architects Daughter", cursive;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.menu-btn {
+  margin-top: 20px;
+}

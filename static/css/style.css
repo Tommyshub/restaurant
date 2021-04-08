@@ -6,6 +6,12 @@
   box-sizing: border-box;
 }
 
+/* Empty div for padding between navbar and content */
+
+.empty {
+  padding-top: 125px;
+}
+
 /* Navbar styles */
 
 .navbar-wrapper {
@@ -150,29 +156,6 @@
   transform: rotate(-45deg) translate(-5px, 6px);
 }
 
-/* Home styles */
-.empty {
-  padding-top: 125px;
-}
-
-.welcome {
-  width: 100%;
-}
-
-.index-heading {
-  font-size: 1.8rem;
-  font-weight: 500;
-  font-family: "Architects Daughter", cursive;
-}
-
-.index-text {
-  padding-top: 25px;
-  padding-left: 18px;
-  margin: 20px;
-  letter-spacing: 1px;
-  line-height: 1.9;
-}
-
 .bag {
   font-size: 0.95rem;
   color: black;
@@ -181,60 +164,6 @@
 .bag a {
   padding-left: 9px;
   font-size: 1.8rem;
-}
-
-/* Menu styles */
-
-.menu {
-  background-color: #eaeaea;
-  padding: 40px;
-  border-radius: 30px;
-}
-
-.menu-title {
-  font-family: "Architects Daughter", cursive;
-}
-
-.menu-name {
-  font-family: "Architects Daughter", cursive;
-  font-weight: 500;
-  font-size: 1.4rem;
-}
-
-.menu-btn {
-  margin-top: 20px;
-}
-
-/* Shopping bag styles */
-
-.bag-table {
-  padding-top: 75px;
-}
-
-.remove-item {
-  cursor: pointer;
-}
-
-.update-link {
-  cursor: pointer;
-}
-
-.message-container {
-  position: fixed;
-  bottom: 45px;
-  right: 10px;
-  z-index: 99999999999;
-  opacity: 0.96;
-}
-
-/* Checkout style (for not load font twice) */
-
-.checkout-title {
-  font-family: "Architects Daughter", cursive;
-}
-
-.checkout-success {
-  margin: 10px;
 }
 
 /* Allauth Styles */
@@ -268,17 +197,4 @@
 
 .allauth-container h2 {
   font-family: "Architects Daughter", cursive;
-}
-
-.tips-text {
-  margin: 15px;
-}
-
-.tips-input {
-  width: 30%;
-}
-
-.bag-btn {
-  margin-top: 4px;
-  margin-bottom: 4px;
 }

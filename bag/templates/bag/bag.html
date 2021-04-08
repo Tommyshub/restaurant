@@ -2,6 +2,10 @@
 {% extends "base.html" %}
 <!-- Load the static files -->
 {% load static %}
+<!-- Load extra css -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'bag/css/bag.css' %}" />
+{% endblock %}
 <!-- Load file for calculating subtotal -->
 {% load bag_tools %}
 <!-- Block for main content -->

@@ -1,0 +1,32 @@
+.bag-table {
+  padding-top: 75px;
+}
+
+.remove-item {
+  cursor: pointer;
+}
+
+.update-link {
+  cursor: pointer;
+}
+
+.message-container {
+  position: fixed;
+  bottom: 45px;
+  right: 10px;
+  z-index: 99999999999;
+  opacity: 0.96;
+}
+
+.tips-text {
+  margin: 15px;
+}
+
+.tips-input {
+  width: 30%;
+}
+
+.bag-btn {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
