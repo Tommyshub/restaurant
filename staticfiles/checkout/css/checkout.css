@@ -1,0 +1,27 @@
+.StripeElement,
+.stripe-style-input {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+/* The dropdown box was set to display none and therefor I needed to change it here */
+
+select,
+select option {
+  display: inline;
+}
+
+.checkout-title {
+  font-family: "Architects Daughter", cursive;
+}
+
+.checkout-success {
+  margin: 10px;
+}

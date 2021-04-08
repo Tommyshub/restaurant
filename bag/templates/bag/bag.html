@@ -75,7 +75,7 @@
                     <!-- prettier-ignore -->
                     {% csrf_token %}
                     <div class="col xl2 l2 m4 s12 push-xl5 push-l5 push-m4">
-                      {{ form|crispy }}
+                      {{ form.as_p }}
                       <button class="waves-effect waves-light btn">Give Tips</button>
                     </div>
                   </form>

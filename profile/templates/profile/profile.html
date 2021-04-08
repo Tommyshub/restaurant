@@ -27,14 +27,12 @@
       <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
         <!-- prettier-ignore -->
         {% csrf_token %}
-        {{ form|crispy }}
+        {{ form.as_p }}
         <button class="col xl2 l3 m2 s4 push-xl4 push-l4 push-m5 push-s4 waves-effect waves-light btn">
           Update
         </button>
       </form>
     </div>
-  </div>
-  <div class="row">
         <div class="col xl6 l6 m12 s12"> 
       <table class="order-history striped responsive-table">
         <small>Order History</small>

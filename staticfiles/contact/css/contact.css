@@ -1,0 +1,12 @@
+.contact-form textarea {
+  min-height: 220px;
+}
+
+.contact-heading {
+  font-family: "Architects Daughter", cursive;
+  margin-bottom: 45px;
+}
+
+.contact-text {
+  text-align: center;
+}

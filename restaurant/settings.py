@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'bag',
     'checkout',
     'materialize',
+    'materializecssform',
     'crispy_forms',
 ]
 
@@ -69,7 +70,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'restaurant.urls'
 
 # Default layout to use with "crispy_forms"
-CRISPY_TEMPLATE_PACK = 'materialize_css_forms'
+CRISPY_TEMPLATE_PACK = 'materialize'
 
 TEMPLATES = [
     {
@@ -164,7 +165,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Configuration for stripe payments
 STRIPE_CURRENCY = 'eur'

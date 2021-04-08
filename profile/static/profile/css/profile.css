@@ -12,3 +12,7 @@ select option {
 .account-text {
   margin: 45px;
 }
+
+#profile-update-form button {
+  margin: 10px;
+}
