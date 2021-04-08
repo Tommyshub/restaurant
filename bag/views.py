@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import (
+    render, redirect, reverse, HttpResponse, get_object_or_404)
 from django.contrib import messages
 from menu.models import Product
 from .forms import TipsForm
-from django.contrib.auth.decorators import login_required
 from bag.contexts import bag_contents
+
 
 # Shopping Bag
 def view_bag(request):
@@ -11,6 +12,7 @@ def view_bag(request):
     return render(request, 'bag/bag.html')
 
 
+# Adjust shopping bag
 def adjust_bag(request, item_id):
     """ Adjust the quantity of the specified product to the specified amount"""
 
@@ -20,7 +22,8 @@ def adjust_bag(request, item_id):
 
     if quantity > 0:
         bag[item_id] = quantity
-        messages.success(request, f'Updated {product.name} quantity to {quantity}')
+        messages.success(
+            request, f'Updated{product.name} quantity to {quantity}')
     else:
         bag.pop(item_id)
         messages.success(request, f'Removed {product.name} from your bag')
@@ -63,7 +66,7 @@ def tips(request):
             tips = int(request.POST.get('tips'))
             total += tips
             print(total)
-            messages.success(request, 
-                f'Thank you for giving {tips} euros to our delivery staff')
+            messages.success(
+                request, f'Thank you for giving {tips} euros to our delivery staff')
             return render(request, "index/index.html", {"form": form})
     return render(request, 'bag/bag.html', {'form': form})
