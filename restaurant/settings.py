@@ -174,7 +174,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 """ if 'USE_AWS' in os.environ:
     # Controls how long the browser keeps the files cached  
