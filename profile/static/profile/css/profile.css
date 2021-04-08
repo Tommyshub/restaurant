@@ -4,3 +4,11 @@ select,
 select option {
   display: inline;
 }
+
+.account-haeding {
+  font-family: "Architects Daughter", cursive;
+}
+
+.account-text {
+  margin: 45px;
+}

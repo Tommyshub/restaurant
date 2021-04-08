@@ -14,24 +14,29 @@
 </div>
 <div class="container profile-container">
   <div class="row">
-    <div class="col xl16 m3 push-xl4">
-      <h4 class="center-align">Your Account</h4>
+    <div class="col xl12 l12 m12 s12">
+      <h3 class="account-haeding center-align">Your Account</h3>
+      <p class="account-text center-align">
+        Here you can update your default delivery information and view your past orders.
+      </p>
     </div>
   </div>
   <div class="row">
-    <div class="col xl6 l6 m3 s3">
+    <div class="col xl6 l6 m12 s12">
       <small>Default Delivery Information</small>
       <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
         <!-- prettier-ignore -->
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="waves-effect waves-light btn">Update</button>
+        <button class="col xl2 l3 m2 s4 push-xl4 push-l4 push-m5 push-s4 waves-effect waves-light btn">
+          Update
+        </button>
       </form>
     </div>
   </div>
   <div class="row">
         <div class="col xl6 l6 m12 s12"> 
-      <table class="order-history striped table">
+      <table class="order-history striped responsive-table">
         <small>Order History</small>
         <thead>
           <th>Order Number</th>
