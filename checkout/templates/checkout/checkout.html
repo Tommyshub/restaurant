@@ -28,26 +28,26 @@
         <fieldset>
           <legend class="fieldset-label black-text">Deatails</legend>
           <!-- Full Name -->
-          {{ order_form.full_name | as_crispy_field }}
+          {{ order_form.full_name }}
           <!-- Email -->
-          {{ order_form.email | as_crispy_field }}
+          {{ order_form.email }}
         </fieldset>
         <fieldset>
           <legend class="fieldset-label black-text">Delivery</legend>
           <!-- Phone number -->
-          {{ order_form.phone_number | as_crispy_field }}
+          {{ order_form.phone_number }}
           <!-- Street address 1 -->
-          {{ order_form.street_address1 | as_crispy_field }}
+          {{ order_form.street_address1 }}
           <!-- Street address 2 -->
-          {{ order_form.street_address2 | as_crispy_field }}
+          {{ order_form.street_address2 }}
           <!-- Town or City -->
-          {{ order_form.town_or_city | as_crispy_field }}
+          {{ order_form.town_or_city }}
           <!-- County -->
-          {{ order_form.county | as_crispy_field }}
+          {{ order_form.county }}
           <!-- Post number -->
-          {{ order_form.postcode | as_crispy_field }}
+          {{ order_form.postcode }}
           <!-- Country -->
-          {{ order_form.country | as_crispy_field }}
+          {{ order_form.country }}
           <div class="form-check form-check-inline">
             {% if user.is_authenticated %}
             <label class="form-check-label" for="id-save-info">
