@@ -76,14 +76,14 @@
                     {% csrf_token %}
                     <div class="col xl2 l2 m4 s12 push-xl5 push-l5 push-m4">
                       {{ form.as_p }}
-                      <button class="waves-effect waves-light btn">Give Tips</button>
+                      <button class="waves-effect waves-light light-green btn">Give Tips</button>
                     </div>
                   </form>
               </td>
             </tr>
             <tr>
               <td colspan="5" class="text-right">
-                <a href="{% url 'menu' %}" class="bag-btn btn btn-lg">
+                <a href="{% url 'menu' %}" class="bag-btn btn btn-lg ">
                   <span class="checkout-icon icon">
                     <i class="fas fa-chevron-left"></i>
                   </span>
@@ -102,9 +102,9 @@
       </div>
       {% else %}
       <p class="lead">Your bag is empty.</p>
-      <a href="{% url 'menu' %}" class="btn-small">
+      <a href="{% url 'menu' %}" class="btn-small light-green">
         <span class="icon">
-          <i class="fas fa-chevron-left"></i>
+          <i class="fas fa-chevron-left "></i>
         </span>
         <span class="text-uppercase">Keep Shopping</span>
       </a>

@@ -26,7 +26,10 @@
         <form action="{% url 'add_to_bag' burger.id %}" method="POST">
           {% csrf_token %}
           <input type="hidden" name="redirect_url" value="{{ request.path }}" />
-          <button type="submit" class="menu-btn btn waves-effect waves-ligh">
+          <button
+            type="submit"
+            class="menu-btn btn waves-effect waves-light light-green"
+          >
             Add To Bag
           </button>
         </form>
@@ -43,7 +46,10 @@
         <form action="{% url 'add_to_bag' pizza.id %}" method="POST">
           {% csrf_token %}
           <input type="hidden" name="redirect_url" value="{{ request.path }}" />
-          <button type="submit" class="menu-btn btn waves-effect waves-ligh">
+          <button
+            type="submit"
+            class="menu-btn btn waves-effect waves-light light-green"
+          >
             Add To Bag
           </button>
         </form>
@@ -60,7 +66,10 @@
         <form action="{% url 'add_to_bag' bowl.id %}" method="POST">
           {% csrf_token %}
           <input type="hidden" name="redirect_url" value="{{ request.path }}" />
-          <button type="submit" class="menu-btn btn waves-effect waves-ligh">
+          <button
+            type="submit"
+            class="menu-btn btn waves-effect waves-light light-green"
+          >
             Add To Bag
           </button>
         </form>
@@ -77,7 +86,10 @@
         <form action="{% url 'add_to_bag' drink.id %}" method="POST">
           {% csrf_token %}
           <input type="hidden" name="redirect_url" value="{{ request.path }}" />
-          <button type="submit" class="menu-btn btn waves-effect waves-ligh">
+          <button
+            type="submit"
+            class="menu-btn btn waves-effect waves-light light-green"
+          >
             Add To Bag
           </button>
         </form>
@@ -94,7 +106,10 @@
         <form action="{% url 'add_to_bag' dessert.id %}" method="POST">
           {% csrf_token %}
           <input type="hidden" name="redirect_url" value="{{ request.path }}" />
-          <button type="submit" class="menu-btn btn waves-effect waves-ligh">
+          <button
+            type="submit"
+            class="menu-btn btn waves-effect waves-light light-green"
+          >
             Add To Bag
           </button>
         </form>
