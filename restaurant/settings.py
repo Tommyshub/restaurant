@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     'bag',
     'checkout',
     'materialize',
-    'storages',
 ]
 
 MIDDLEWARE = [
