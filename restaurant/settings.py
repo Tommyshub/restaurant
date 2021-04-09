@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from pathlib import Path
+import dj_database_url
 if os.path.exists("env.py"):
     import env
 
@@ -54,6 +56,7 @@ INSTALLED_APPS = [
     'bag',
     'checkout',
     'materialize',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -67,8 +70,6 @@ MIDDLEWARE = [
 ]
 ROOT_URLCONF = 'restaurant.urls'
 
-# Default layout to use with "crispy_forms"
-CRISPY_TEMPLATE_PACK = 'materialize'
 
 TEMPLATES = [
     {
