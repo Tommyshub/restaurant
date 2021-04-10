@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
 from pathlib import Path
 import dj_database_url
 if os.path.exists("env.py"):
@@ -109,6 +110,9 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'restaurant.wsgi.application'
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
 
 
 # Database

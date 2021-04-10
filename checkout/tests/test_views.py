@@ -8,10 +8,9 @@ class TestCheckoutViews(TestCase):
 
     def setup(self):
         self.client = Client
-        self.checkout_url = reverse('checkout')
 
     def test_checkout_GET(self):
 
-        response = self.client.get(reverse(self.checkout_url))
+        response = self.client.get(reverse('checkout'))
         # assert that the status code is 302 (found)
         self.assertEqual(response.status_code, 302)
