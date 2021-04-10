@@ -16,9 +16,11 @@
   <div class="container">
     <div class="menu">
       <!-- Veggie Burgers -->
-      <h4 class="menu-title">Veggie Burgers</h4>
+      <hr />
+      <h3 class="menu-title">Veggie Burgers</h3>
       <br />
       {% for burger in burgers %}
+      <br />
       <div class="burgers">
         <p class="menu-name">{{ burger.name }}</p>
         <p class="menu-ingredients">{{ burger.ingredients }}</p>
@@ -37,8 +39,10 @@
       </div>
       {% endfor %}
       <!-- Pizzas -->
-      <h4 class="menu-title">Pizzas</h4>
+      <hr />
+      <h3 class="menu-title">Pizzas</h3>
       {% for pizza in pizzas %}
+      <br />
       <div class="pizzas">
         <p class="menu-name">{{ pizza.name }}</p>
         <p class="menu-ingredients">{{ pizza.ingredients }}</p>
@@ -57,8 +61,10 @@
       </div>
       {% endfor %}
       <!-- Buddha Bowls -->
-      <h4 class="menu-title">Buddha Bowls</h4>
+      <hr />
+      <h3 class="menu-title">Buddha Bowls</h3>
       {% for bowl in bowls %}
+      <br />
       <div class="burgers">
         <p class="menu-name">{{ bowl.name }}</p>
         <p class="menu-ingredients">{{ bowl.ingredients }}</p>
@@ -76,14 +82,16 @@
         <br />
       </div>
       {% endfor %}
-      <!-- Drinks -->
-      <h4 class="menu-title">Drinks</h4>
-      {% for drink in drinks %}
-      <div class="drinks">
-        <p class="menu-name">{{ drink.name }}</p>
-        <p class="menu-ingredients">{{ drink.ingredients }}</p>
-        <p class="menu-price">{{ drink.price }} €</p>
-        <form action="{% url 'add_to_bag' drink.id %}" method="POST">
+      <!-- Desserts -->
+      hr
+      <h3 class="menu-title">Desserts</h3>
+      {% for dessert in desserts %}
+      <br />
+      <div class="desserts">
+        <p class="menu-name">{{ dessert.name }}</p>
+        <p class="menu-ingredients">{{ dessert.ingredients }}</p>
+        <p class="menu-price">{{ dessert.price }} €</p>
+        <form action="{% url 'add_to_bag' dessert.id %}" method="POST">
           {% csrf_token %}
           <input type="hidden" name="redirect_url" value="{{ request.path }}" />
           <button
@@ -96,14 +104,16 @@
         <br />
       </div>
       {% endfor %}
-      <!-- Desserts -->
-      <h4 class="menu-title">Desserts</h4>
-      {% for dessert in desserts %}
-      <div class="desserts">
-        <p class="menu-name">{{ dessert.name }}</p>
-        <p class="menu-ingredients">{{ dessert.ingredients }}</p>
-        <p class="menu-price">{{ dessert.price }} €</p>
-        <form action="{% url 'add_to_bag' dessert.id %}" method="POST">
+      <!-- Drinks -->
+      <hr />
+      <h3 class="menu-title">Drinks</h3>
+      {% for drink in drinks %}
+      <br />
+      <div class="drinks">
+        <p class="menu-name">{{ drink.name }}</p>
+        <p class="menu-ingredients">{{ drink.ingredients }}</p>
+        <p class="menu-price">{{ drink.price }} €</p>
+        <form action="{% url 'add_to_bag' drink.id %}" method="POST">
           {% csrf_token %}
           <input type="hidden" name="redirect_url" value="{{ request.path }}" />
           <button
