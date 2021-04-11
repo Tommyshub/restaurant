@@ -54,7 +54,7 @@ As a resturant owner I want,
 
 - It should be easy to contact the site owner in case of problems with orders.
 
-## Design Choices
+## Design
 
 ### Wireframes
 
@@ -243,4 +243,16 @@ You can [go here](https://the-greenhouse-1.herokuapp.com/) if you are interested
 
 ## Acknowledgments and Credits
 
-I would like to make it clear that I referenced and used a lot of what we learned during the boutique ado project when creating this, especially when it came to connecting to the stripe payments system.
+I would like to make it clear that I referenced and used a lot of what we learned during the Boutique Ado project when creating this, especially when it came to connecting to the stripe payments system.
+
+### Images
+
+I got all the images from and I would like to thank these people for making them available for the public to use. I
+
+- Deryn Macey
+- Taylor Kiser
+- Jordan Nix
+- Irene Kredenets
+- Fabio Alves
+- Luis Gonzalez
+- Adalia Botha
