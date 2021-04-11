@@ -113,11 +113,24 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': dj_database_url.parse('postgres://dkurcsdfbilofh:5cf2119d16c619a6f5cc90d28bdb60ef67142fb9061ddb8dc337bd2d409ca9b3@ec2-34-240-75-196.eu-west-1.compute.amazonaws.com:5432/d6u3a4irlasups')
-}
-
+if 'DB_PASSWORD' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'ddolf0doojbv7o',
+            'USER': 'weewdcvtlutfgq',
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': 'ec2-54-74-14-109.eu-west-1.compute.amazonaws.com',
+            'PORT': 5432,
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
