@@ -4,6 +4,12 @@
 <html>
   <head>
     {% block corejs %}
+    <!-- I put this here to remove the favicon warning -->
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'images/favicon.ico' %}"
+    />
     <!-- jQuery -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"

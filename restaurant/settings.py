@@ -111,13 +111,9 @@ LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'restaurant.wsgi.application'
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
-
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {

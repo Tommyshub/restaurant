@@ -25,8 +25,9 @@ class UserProfile(models.Model):
     default_country = CountryField(
         blank_label='Country', null=True, blank=False)
 
-    def __str__(self):
-        return self.user.username
+
+def __str__(self):
+    return self.user.username
 
 
 @receiver(post_save, sender=User)
