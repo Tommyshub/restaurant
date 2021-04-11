@@ -58,15 +58,11 @@ As a resturant owner I want,
 
 ### Wireframes
 
-I used figma to create my wireframes but sadly my computer broke and I lost the original ones so the ones included today have been created after the project was done. I did try to create them exactly how the original ones where made.
+I used figma to create the wireframes but sadly my computer broke and I lost the original files so the ones included today has been created after the project was done. I did try to create them similar to how I made them from the start but I added things that I knew was there in the finished project, for example the logo.
 
-[Mobile Wireframe]()
+[Mobile Wireframe](https://github.com/Tommyshub/restaurant/blob/main/static/wireframes/thegreenhouse-mobile-wireframe.fig.fig)
 
-[Mobile Wireframe Image]()
-
-[Desktop Wireframe]()
-
-[Desktop Wireframe Image]()
+[Desktop Wireframe](https://github.com/Tommyshub/restaurant/blob/main/static/wireframes/thegreenhouse-desktop-wireframe.fig)
 
 ### Choice of project and design
 
