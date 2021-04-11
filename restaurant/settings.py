@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
-from pathlib import Path
 import dj_database_url
 if os.path.exists("env.py"):
     import env
@@ -117,7 +116,14 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'daonv8j52cn409',
+            'USER': 'nnltsgjcqnskle',
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': 'ec2-54-155-226-153.eu-west-1.compute.amazonaws.com',
+            'PORT': 5432,
+        }
     }
 else:
     DATABASES = {
