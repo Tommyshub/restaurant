@@ -10,7 +10,7 @@ class Product(models.Model):
     ingredients = models.TextField(max_length=225)
     category = models.ManyToManyField("Category", related_name=("item"))
     price = models.DecimalField(
-        max_digits=5, decimal_places=2, null=True, blank=True)
+        max_digits=6, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
         return self.name

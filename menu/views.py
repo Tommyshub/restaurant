@@ -15,7 +15,6 @@ def menu(request, *args, **kwargs):
     drinks = Product.objects.filter(category__name__contains='drinks')
     pizzas = Product.objects.filter(category__name__contains='pizzas')
     desserts = Product.objects.filter(category__name__contains='desserts')
-
     # pass into context
     context = {
         'bowls': bowls,
@@ -24,6 +23,8 @@ def menu(request, *args, **kwargs):
         'drinks': drinks,
         'desserts': desserts,
     }
+    print(bowls)
+    print(burgers)
     # render the template
     return render(request, 'menu/menu.html', context)
 

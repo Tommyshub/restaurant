@@ -116,14 +116,7 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'daonv8j52cn409',
-            'USER': 'nnltsgjcqnskle',
-            'PASSWORD': os.environ.get('DB_PASSWORD'),
-            'HOST': 'ec2-54-155-226-153.eu-west-1.compute.amazonaws.com',
-            'PORT': 5432,
-        }
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
     DATABASES = {
@@ -132,6 +125,7 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
