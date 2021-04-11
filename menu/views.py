@@ -15,6 +15,7 @@ def menu(request, *args, **kwargs):
     drinks = Product.objects.filter(category__name__contains='drinks')
     pizzas = Product.objects.filter(category__name__contains='pizzas')
     desserts = Product.objects.filter(category__name__contains='desserts')
+
     # pass into context
     context = {
         'bowls': bowls,
