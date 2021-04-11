@@ -4,14 +4,11 @@
 
 .index-heading {
   font-size: 1.8rem;
+  margin-bottom: 75px;
   font-weight: 500;
   font-family: "Architects Daughter", cursive;
 }
 
-.index-text {
-  padding-top: 25px;
-  padding-left: 18px;
-  margin: 20px;
-  letter-spacing: 1px;
-  line-height: 1.9;
+.fotorama {
+  max-width: 800px;
 }
