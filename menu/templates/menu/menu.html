@@ -16,8 +16,9 @@
   <div class="container">
     <div class="menu">
       <!-- Veggie Burgers -->
-      <h3 class="menu-title">Veggie Burgers</h3>
       <i class="fas fa-hamburger fa-5x"></i>
+      <br />
+      <small>Veggie burgers</small>
       <br />
       {% for burger in burgers %}
       <br />
@@ -39,8 +40,9 @@
       </div>
       {% endfor %}
       <!-- Pizzas -->
-      <h3 class="menu-title">Pizzas</h3>
       <i class="fas fa-pizza-slice fa-5x"></i>
+      <br />
+      <small>Pizzas</small>
       <br />
       {% for pizza in pizzas %}
       <br />
@@ -62,12 +64,14 @@
       </div>
       {% endfor %}
       <!-- Buddha Bowls -->
-      <h3 class="menu-title">Buddha Bowls</h3>
       <i class="fas fa-vihara fa-5x"></i>
+      <br />
+      <small>Buddha Bowls</small>
+
       <br />
       {% for bowl in bowls %}
       <br />
-      <div class="burgers">
+      <div class="bowls">
         <p class="menu-name">{{ bowl.name }}</p>
         <p class="menu-ingredients">{{ bowl.ingredients }}</p>
         <p class="menu-price">{{ bowl.price }} €</p>
@@ -85,8 +89,9 @@
       </div>
       {% endfor %}
       <!-- Desserts -->
-      <h3 class="menu-title">Desserts</h3>
       <i class="fas fa-ice-cream fa-5x"></i>
+      <br />
+      <small>Desserts</small>
       <br />
       {% for dessert in desserts %}
       <br />
@@ -108,8 +113,9 @@
       </div>
       {% endfor %}
       <!-- Drinks -->
-      <h3 class="menu-title">Drinks</h3>
       <i class="fas fa-glass-martini-alt fa-5x"></i>
+      <br />
+      <small>Drinks</small>
       <br />
       {% for drink in drinks %}
       <br />

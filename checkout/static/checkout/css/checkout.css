@@ -25,3 +25,7 @@ select option {
 .checkout-success {
   margin: 10px;
 }
+
+.checkout-buttons {
+  margin-top: 4px;
+}

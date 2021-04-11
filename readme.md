@@ -126,8 +126,30 @@ I found no other warnings.
 
 ### Responsiveness
 
-- The navbar
+- Navbar
 
 One problem with my navbar is that the popout menu is not perfectly aligned in height on some screen sizes. I solved this by setting media queries for the height and changing the viewport settings in my css.
 
 The navbar also starts to look a bit funky on sizes under 300pixels width but after doing some research I decided that it is not necessary to support screen sizes below 300 pixels in width so I left this as it is.
+
+- Menu
+
+I found no real issues with the responsiveness here but I did not like how the category names looked at smaller screen sizes and it also looked a bit wierd when the categories had icons.
+
+I fixed this by changing the headings to small text and put it under the icons instead.
+
+- Contact
+
+No issues.
+
+- Account
+
+No issue.
+
+- Bag
+
+In the bag I found that the keep shopping and secure checkout buttons where too close on small screen sizes and I fixed this by adding a class with margin-top on both of them. I needed to do that on both so that the height of the buttons matched on large screen sizes.
+
+- Checkout
+
+I had the same issues as in the bag but with the complete order and adjust bag buttons, and I fixed them in the same way.

@@ -94,17 +94,20 @@
             <strong>€ {{ total|floatformat:2 }}</strong></span
           >
         </p>
-        <div class="submit-button text-right">
-          <a href="{% url 'view_bag' %}" class="waves-effect waves-light btn">
+        <div class="checkout-buttons">
+          <a
+            href="{% url 'view_bag' %}"
+            class="checkout-buttons waves-effect waves-light light-green btn"
+          >
             <span class="icon">
               <i class="fas fa-chevron-left light-green"></i>
             </span>
             <span class="font-weight-bold">Adjust Bag</span>
           </a>
-          <button id="submit-button" class="btn">
+          <button id="submit-button " class="btn checkout-buttons light-green">
             <span class="font-weight-bold">Complete Order</span>
             <span class="icon">
-              <i class="fas fa-lock light-green"></i>
+              <i class="fas fa-lock"></i>
             </span>
           </button>
         </div>
