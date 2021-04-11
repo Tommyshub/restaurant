@@ -16,7 +16,7 @@ def profile(request):
             form.save()
             messages.success(request, 'Profile successfully updated')
     # Form for the user profile
-    form = UserProfileForm(request.POST, instance=profile)
+    form = UserProfileForm(instance=profile)
     # Get order history
     orders = profile.orders.all()
     template = 'profile/profile.html'
