@@ -24,8 +24,6 @@ def menu(request, *args, **kwargs):
         'drinks': drinks,
         'desserts': desserts,
     }
-    print(bowls)
-    print(burgers)
     # render the template
     return render(request, 'menu/menu.html', context)
 

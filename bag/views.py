@@ -60,9 +60,10 @@ def give_tips(request):
             # Get the content of the bag and add the tips to the total amount.
             bag = request.session.get('bag', {})
             tips = int(request.POST.get('tips'))
-            for total in list(bag.keys()):
+            for total in bag.keys():
                 bag[total] += tips
                 messages.success(
                     request, f'Thank you for giving {tips} euros to our delivery staff')
+            request.session['bag'] = bag
             return render(request, "index/index.html", {"form": form})
     return render(request, 'bag/bag.html', {'form': form})
