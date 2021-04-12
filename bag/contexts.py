@@ -9,7 +9,6 @@ def bag_contents(request):
     bag_items = []
     total = 0
     product_count = 0
-    tips = 0
     bag = request.session.get('bag', {})
 
     for item_id, item_data in bag.items():
@@ -21,12 +20,12 @@ def bag_contents(request):
                 'item_id': item_id,
                 'quantity': item_data,
                 'product': product,
+                'total': total,
             })
 
     context = {
         'bag_items': bag_items,
         'product_count': product_count,
         'total': total,
-        'tips': tips,
     }
     return context

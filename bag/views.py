@@ -2,7 +2,8 @@ from django.shortcuts import (
     render, redirect, reverse, HttpResponse, get_object_or_404)
 from django.contrib import messages
 from menu.models import Product
-from .forms import TipsForm
+from .models import Coupon
+from .forms import CouponForm
 from bag.contexts import bag_contents
 
 
@@ -48,22 +49,35 @@ def remove_from_bag(request, item_id):
         return HttpResponse(status=500)
 
 
-def give_tips(request):
+def percentage(percent, whole):
+    return (percent * whole) / 100
+
+
+def apply_coupon(request):
     """
-    View to give tips to delivery staff
+    Apply coupon codes to the bag total and give a percentage discount,
+    users can use the code how many times they want until it is deactivated.
     """
-    if request.method == 'POST':
-        # Create a form instance and populate it with data from the request:
-        form = TipsForm(request.POST)
-        # Check if the form is valid
-        if form.is_valid():
-            # Get the content of the bag and add the tips to the total amount.
-            bag = request.session.get('bag', {})
-            tips = int(request.POST.get('tips'))
-            for total in bag.keys():
-                bag[total] += tips
-                messages.success(
-                    request, f'Thank you for giving {tips} euros to our delivery staff')
-            request.session['bag'] = bag
-            return render(request, "index/index.html", {"form": form})
+    form = CouponForm(request.POST)
+    if form.is_valid():
+        # Discount code from the form
+        code = form.cleaned_data['code']
+        # Current bag from the context processor
+        current_bag = bag_contents(request)
+        # Total from the context processor
+        total = current_bag['total']
+        try:
+            # Check if the coupon from the form matches code from the database
+            coupon = Coupon.objects.get(code__iexact=code, active=True)
+            # If the coupons id is not in the current session, add it.
+            request.session['coupon_id'] = coupon.id
+            # Calculate the new total after taking away percentage from the coupon
+            total_discount = percentage(coupon.discount, total)
+            # Subtract the total discount from the total ammount
+            total = total - total_discount
+            # Replace the bag in session with the new bag
+            messages.success(
+                request, f'A discount of  €{total_discount} was applied to you bag and your new total is  €{total}')
+        except Coupon.DoesNotExist:
+            request.session['coupon_id'] = None
     return render(request, 'bag/bag.html', {'form': form})

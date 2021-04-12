@@ -1,8 +1,5 @@
-from django import forms 
-from .models import Tips
+from django import forms
 
 
-class TipsForm(forms.ModelForm):
-    class Meta:
-        model = Tips
-        fields = ['tips',]
+class CouponForm(forms.Form):
+    code = forms.CharField()
