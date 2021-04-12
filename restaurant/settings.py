@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
-
 import dj_database_url
 if os.path.exists("env.py"):
     import env
@@ -188,3 +187,6 @@ EMAIL_HOST = 'mailcluster.loopia.se'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
 DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
