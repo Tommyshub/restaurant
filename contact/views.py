@@ -16,14 +16,18 @@ def contact(request):
                 'message': form.cleaned_data['message'],
             }
             message = "\n".join(body.values())
-
             try:
                 send_mail(subject, message, 'contact@tommybratt.se',
                           ['contact@tommybratt.se'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
+            try:
+                form.save()
+            except Exception as e:
+                print(e)
+                messages.error(
+                    request, "Couldn't save the contact info in the database")
             messages.success(request, 'Message successfully sent')
             return redirect("index")
-
     form = ContactForm()
     return render(request, "contact/contact.html", {'form': form})
