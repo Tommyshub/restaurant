@@ -117,8 +117,8 @@ if 'DB_PASSWORD' in os.environ:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'dno5arl4fse8p',
-            'USER': 'zauxhkspvndniv',
+            'NAME': 'd7p5ql9mc1i7ee',
+            'USER': 'rwlmevztylrjzu',
             'PASSWORD': os.environ.get('DB_PASSWORD'),
             'HOST': 'ec2-34-254-69-72.eu-west-1.compute.amazonaws.com',
             'PORT': 5432,
