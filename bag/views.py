@@ -48,7 +48,7 @@ def remove_from_bag(request, item_id):
         return HttpResponse(status=500)
 
 
-def tips(request):
+def give_tips(request):
     """
     View to give tips to delivery staff
     """
@@ -57,15 +57,10 @@ def tips(request):
         form = TipsForm(request.POST)
         # Check if the form is valid
         if form.is_valid():
-            """
-            Get the content of the bag and add the 
-            tips to the total amount. 
-            """
+            # Get the content of the bag and add the tips to the total amount.
             current_bag = bag_contents(request)
-            total = current_bag['total']
             tips = int(request.POST.get('tips'))
-            total += tips
-            print(total)
+            current_bag['total'] += tips
             messages.success(
                 request, f'Thank you for giving {tips} euros to our delivery staff')
             return render(request, "index/index.html", {"form": form})
