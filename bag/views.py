@@ -58,10 +58,11 @@ def give_tips(request):
         # Check if the form is valid
         if form.is_valid():
             # Get the content of the bag and add the tips to the total amount.
-            current_bag = bag_contents(request)
+            bag = request.session.get('bag', {})
             tips = int(request.POST.get('tips'))
-            current_bag['total'] += tips
-            messages.success(
-                request, f'Thank you for giving {tips} euros to our delivery staff')
+            for total in list(bag.keys()):
+                bag[total] += tips
+                messages.success(
+                    request, f'Thank you for giving {tips} euros to our delivery staff')
             return render(request, "index/index.html", {"form": form})
     return render(request, 'bag/bag.html', {'form': form})
