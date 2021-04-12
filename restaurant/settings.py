@@ -97,6 +97,19 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+# Social provider settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': os.environ.get('SOCIAL_CLIENT_ID'),
+            'secret': os.environ.get('SOCIAL_SECRET_KEY'),
+            'key': os.environ.get('SOCIAL_KEY'),
+        }
+    }
+}
+
 SITE_ID = 1
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
