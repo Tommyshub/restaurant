@@ -54,7 +54,12 @@
 
 .navbar-links a:hover {
   background-color: #eaeaea;
-  color: gray;
+  color: #8ec250;
+}
+
+.navbar-links a:active {
+  background-color: #eaeaea;
+  color: #8ec250;
 }
 
 .bag {
