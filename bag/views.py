@@ -74,8 +74,10 @@ def apply_coupon(request):
             # Calculate the new total after taking away percentage from the coupon
             total_discount = percentage(coupon.discount, total)
             # Subtract the total discount from the total ammount
-            total = total - total_discount
+            new_bag = total - total_discount
             # Replace the bag in session with the new bag
+            # This says 'Decimal' object has no attribute 'items' and I do not know how to fix it.
+            request.session['bag'] = new_bag
             messages.success(
                 request, f'A discount of  €{total_discount} was applied to you bag and your new total is  €{total}')
         except Coupon.DoesNotExist:
