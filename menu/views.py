@@ -10,11 +10,11 @@ from .models import Product, Category
 def menu(request, *args, **kwargs):
     """ View for displaying the menu page """
     # get every item from each category
-    bowls = Product.objects.filter(category__name__contains='bowls')
-    burgers = Product.objects.filter(category__name__contains='burgers')
-    drinks = Product.objects.filter(category__name__contains='drinks')
-    pizzas = Product.objects.filter(category__name__contains='pizzas')
-    desserts = Product.objects.filter(category__name__contains='desserts')
+    bowls = Product.objects.filter(category__name__contains='Bowls')
+    burgers = Product.objects.filter(category__name__contains='Burgers')
+    drinks = Product.objects.filter(category__name__contains='Drinks')
+    pizzas = Product.objects.filter(category__name__contains='Pizzas')
+    desserts = Product.objects.filter(category__name__contains='Desserts')
 
     # pass into context
     context = {
@@ -43,5 +43,4 @@ def add_to_bag(request, item_id):
         bag[item_id] = add
         messages.success(request, f'Added {product.name} to your bag')
     request.session['bag'] = bag
-    print(request.session['bag'])
     return redirect(redirect_url)
