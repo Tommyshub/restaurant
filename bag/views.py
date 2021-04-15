@@ -1,10 +1,12 @@
 from django.shortcuts import (
     render, redirect, reverse, HttpResponse, get_object_or_404)
 from django.contrib import messages
-from menu.models import Product
+from menu.models import Product, Category
+from decimal import Decimal
 from .models import Coupon
 from .forms import CouponForm
 from bag.contexts import bag_contents
+import json
 
 
 # Shopping Bag
@@ -57,6 +59,7 @@ def apply_coupon(request):
     """
     Apply coupon codes to the bag total and give a percentage discount,
     users can use the code how many times they want until it is deactivated.
+    But only once per order.
     """
     form = CouponForm(request.POST)
     if form.is_valid():
@@ -67,17 +70,16 @@ def apply_coupon(request):
         # Total from the context processor
         total = current_bag['total']
         try:
-            # Check if the coupon from the form matches code from the database
+            # Check if the coupon from the form matches code from the database and is active
             coupon = Coupon.objects.get(code__iexact=code, active=True)
             # If the coupons id is not in the current session, add it.
             request.session['coupon_id'] = coupon.id
             # Calculate the new total after taking away percentage from the coupon
             total_discount = percentage(coupon.discount, total)
             # Subtract the total discount from the total ammount
-            new_bag = total - total_discount
-            # Replace the bag in session with the new bag
-            # This says 'Decimal' object has no attribute 'items' and I do not know how to fix it.
-            request.session['bag'] = new_bag
+            total = total - total_discount
+            # The total discount prints the right numbers but it is not persistent
+            current_bag[total] = total
             messages.success(
                 request, f'A discount of  €{total_discount} was applied to you bag and your new total is  €{total}')
         except Coupon.DoesNotExist:

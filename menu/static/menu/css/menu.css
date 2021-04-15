@@ -22,3 +22,7 @@
 .menu-ingredients {
   margin: 15px;
 }
+
+.menu > small {
+  color: #8bc34a;
+}
