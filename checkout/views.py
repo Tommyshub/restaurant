@@ -10,12 +10,11 @@ from .models import Order, OrderLineItem
 from bag.contexts import bag_contents
 import stripe
 import json
-import os
 
 
 def checkout(request):
-    stripe_public_key = os.environ.get(STRIPE_PUBLIC_KEY)
-    stripe_secret_key = os.environ.get(STRIPE_SECRET_KEY)
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
@@ -156,7 +155,7 @@ def checkout_success(request, order_number):
 def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = os.environ.get("STRIPE_SECRET_KEY")
+        stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify('pid', metadata={
             'username': request.user,
             'save_info': request.POST.get('save_info'),
