@@ -23,7 +23,6 @@ var style = {
   },
 };
 var card = elements.create("card", { style: style });
-card.mount("#card-element");
 
 // Handle realtime validation errors on the card element
 card.addEventListener("change", function (event) {
@@ -57,7 +56,7 @@ var style = {
     iconColor: "#dc3545",
   },
 };
-var card = elements.create("card", { style: style });
+
 card.mount("#card-element");
 
 // Handle validation errors on the card element
