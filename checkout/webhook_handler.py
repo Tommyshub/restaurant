@@ -24,6 +24,7 @@ class StripeWH_Handler:
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+
         send_mail(
             subject,
             body,
@@ -47,16 +48,17 @@ class StripeWH_Handler:
         pid = intent.id
         bag = intent.metadata.bag
         save_info = intent.metadata.save_info
-        billing_details = intent.charges.data[0].billing_details
-        shipping_details = intent.shipping.data[0].shipping_details
-        total = round(intent.charges.data[0].amount / 100, 2)
 
-        for field, value in billing_details.address.items():
-            if value == '':
+        billing_details = intent.charges.data[0].billing_details
+        shipping_details = intent.shipping
+        grand_total = round(intent.charges.data[0].amount / 100, 2)
+
+        # Clean data in the shipping details
+        for field, value in shipping_details.address.items():
+            if value == "":
                 shipping_details.address[field] = None
 
-        # Update the users profile information if the save_info box was checked.
-
+        # Update profile information if save_info was checked
         profile = None
         username = intent.metadata.username
         if username != 'AnonymousUser':
@@ -78,14 +80,14 @@ class StripeWH_Handler:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
                     email__iexact=billing_details.email,
-                    phone_number__iexact=shipping_details.phone_number,
-                    county__iexact=shipping_details.address.county,
+                    phone_number__iexact=shipping_details.phone,
                     country__iexact=shipping_details.address.country,
-                    postcode__iexact=shipping_details.address.postcode,
-                    town_or_city__iexact=shipping_details.address.town_or_city,
-                    street_address1__iexact=shipping_details.address.street_address1,
-                    street_address2__iexact=shipping_details.address.street_address2,
-                    total=total,
+                    postcode__iexact=shipping_details.address.postal_code,
+                    town_or_city__iexact=shipping_details.address.city,
+                    street_address1__iexact=shipping_details.address.line1,
+                    street_address2__iexact=shipping_details.address.line2,
+                    county__iexact=shipping_details.address.state,
+                    total=grand_total,
                     original_bag=bag,
                     stripe_pid=pid,
                 )
@@ -106,13 +108,13 @@ class StripeWH_Handler:
                     full_name=shipping_details.name,
                     user_profile=profile,
                     email=billing_details.email,
-                    phone_number=shipping_details.phone_number,
-                    county=shipping_details.address.county,
+                    phone_number=shipping_details.phone,
                     country=shipping_details.address.country,
-                    postcode=shipping_details.address.postcode,
-                    town_or_city=shipping_details.address.town_or_city,
-                    street_address1=shipping_details.address.street_address1,
-                    street_address2=shipping_details.address.street_address2,
+                    postcode=shipping_details.address.postal_code,
+                    town_or_city=shipping_details.address.city,
+                    street_address1=shipping_details.address.line1,
+                    street_address2=shipping_details.address.line2,
+                    county=shipping_details.address.state,
                     original_bag=bag,
                     stripe_pid=pid,
                 )
