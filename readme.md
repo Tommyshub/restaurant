@@ -193,6 +193,10 @@ In the bag I found that the keep shopping and secure checkout buttons where too 
 
 I had the same issues as in the bag but with the complete order and adjust bag buttons, and I fixed them in the same way.
 
+## Visualization of my database
+
+[database diagram](https://github.com/Tommyshub/restaurant/blob/main/static/images/database_diagram.png)
+
 ## Deployment
 
 I performed the following steps in deploying my site:
