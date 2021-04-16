@@ -109,6 +109,14 @@ I tested some of my code with the built-in django testing framework. I focused o
 
 - I tested so that the urls resolves as expected.
 
+### Migrating to PostgreSQL from Sqlite3
+
+This part was a real headache for me and I spent more than a week trying to figure out what was wrong, even asking people for help without avail.
+
+I tried everyting I could think of and at the end it was something really simple that I feel I should have figured out sooner.
+
+PostgreSQL did not understand my query when I wrote in lowercase letters and Sqlite3 did, so all I needed to do to fix this was to change how I query the databse.
+
 ### Forms
 
 - Default delivery information form
