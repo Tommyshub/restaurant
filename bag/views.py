@@ -59,7 +59,6 @@ def apply_coupon(request):
     """
     Apply coupon codes to the bag total and give a percentage discount,
     users can use the code how many times they want until it is deactivated.
-    But only once per order.
     """
     form = CouponForm(request.POST)
     if form.is_valid():
@@ -67,20 +66,20 @@ def apply_coupon(request):
         code = form.cleaned_data['code']
         # Current bag from the context processor
         current_bag = bag_contents(request)
-        # Check if the coupon from the form matches code from the database
-        coupon = Coupon.objects.get(code__iexact=code, active=True)
         # Total from the context processor
         total = current_bag['total']
-        if not code == coupon and coupon not in used:
+        try:
+            # Check if the coupon from the form matches code from the database
+            coupon = Coupon.objects.get(code__iexact=code, active=True)
             # If the coupons id is not in the current session, add it.
             request.session['coupon_id'] = coupon.id
             # Calculate the new total after taking away percentage from the coupon
             total_discount = percentage(coupon.discount, total)
             # Subtract the total discount from the total ammount
-            total = total - total_discount
-            # I need to save the total in the bag session here but I cannot get it to work.
-        else:
-            request.session['coupon_id'] = None
+            new_total = total - total_discount
+            # I am trying to update the bag in the session with the new total but I cannot get it to work.
             messages.success(
-                request, f'You cannot use {code} twice.')
+                request, f'A discount of  €{total_discount} was applied to you bag and your new total is  €{total}')
+        except Coupon.DoesNotExist:
+            request.session['coupon_id'] = None
     return render(request, 'bag/bag.html', {'form': form})

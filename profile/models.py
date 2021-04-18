@@ -24,7 +24,6 @@ class UserProfile(models.Model):
     default_county = models.CharField(max_length=80, null=True, blank=False)
     default_country = CountryField(
         blank_label='Country', null=True, blank=False)
-    used_coupons = models.CharField(max_length=12, null=True, blank=True)
 
 
 def __str__(self):
