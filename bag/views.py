@@ -2,11 +2,11 @@ from django.shortcuts import (
     render, redirect, reverse, HttpResponse, get_object_or_404)
 from django.contrib import messages
 from menu.models import Product, Category
+from profile.models import UserProfile
 from decimal import Decimal
 from .models import Coupon
 from .forms import CouponForm
 from bag.contexts import bag_contents
-import json
 
 
 # Shopping Bag
@@ -67,21 +67,20 @@ def apply_coupon(request):
         code = form.cleaned_data['code']
         # Current bag from the context processor
         current_bag = bag_contents(request)
+        # Check if the coupon from the form matches code from the database
+        coupon = Coupon.objects.get(code__iexact=code, active=True)
         # Total from the context processor
         total = current_bag['total']
-        try:
-            # Check if the coupon from the form matches code from the database and is active
-            coupon = Coupon.objects.get(code__iexact=code, active=True)
+        if not code == coupon and coupon not in used:
             # If the coupons id is not in the current session, add it.
             request.session['coupon_id'] = coupon.id
             # Calculate the new total after taking away percentage from the coupon
             total_discount = percentage(coupon.discount, total)
             # Subtract the total discount from the total ammount
             total = total - total_discount
-            # The total discount prints the right numbers but it is not persistent
-            current_bag[total] = total
-            messages.success(
-                request, f'A discount of  €{total_discount} was applied to you bag and your new total is  €{total}')
-        except Coupon.DoesNotExist:
+            # I need to save the total in the bag session here but I cannot get it to work.
+        else:
             request.session['coupon_id'] = None
+            messages.success(
+                request, f'You cannot use {code} twice.')
     return render(request, 'bag/bag.html', {'form': form})
