@@ -78,6 +78,12 @@ def apply_coupon(request):
             # Subtract the total discount from the total ammount
             new_total = total - total_discount
             # I am trying to update the bag in the session with the new total but I cannot get it to work.
+            current_bag['total'] = new_total
+            # I assume I have a problem with scope here but I do not understand how to properly update the total in the bag_contents
+            bag_contents.total = new_total  # It does not update the total if I try this either
+            # The correct values print for both, I cannot see what I am missing.
+            print(current_bag['total'])
+            print(bag_contents.total)
             messages.success(
                 request, f'A discount of  €{total_discount} was applied to you bag and your new total is  €{total}')
         except Coupon.DoesNotExist:
