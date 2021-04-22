@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Coupon
+from .models import Coupon, UsedCoupon
 
 
 class CouponAdmin(admin.ModelAdmin):
@@ -9,3 +9,5 @@ class CouponAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Coupon, CouponAdmin)
+
+admin.site.register(UsedCoupon)

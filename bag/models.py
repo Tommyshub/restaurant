@@ -20,4 +20,4 @@ class UsedCoupon(models.Model):
     timestamp = models.DateTimeField(default=now)
 
     def __str__(self):
-        return self.user.username + " used " + self.coupon.name
+        return self.user.username
