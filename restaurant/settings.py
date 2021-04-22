@@ -126,16 +126,9 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-if 'DB_PASSWORD' in os.environ:
+if 'DATABASE_URL' in os.environ:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'dfmgrhk274jpqa',
-            'USER': 'chtgkeaobjmobu',
-            'PASSWORD': os.environ.get('DB_PASSWORD'),
-            'HOST': 'ec2-54-228-174-49.eu-west-1.compute.amazonaws.com',
-            'PORT': 5432,
-        }
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
     DATABASES = {
