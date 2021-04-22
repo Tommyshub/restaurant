@@ -32,5 +32,3 @@ def bag_contents(request):
         'total': total,
     }
     return context
-
-    return context
