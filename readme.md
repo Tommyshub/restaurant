@@ -270,3 +270,12 @@ I got all the images from and I would like to thank these people for making them
 - Fabio Alves
 - Luis Gonzalez
 - Adalia Botha
+
+## Coupon Codes for Testing
+
+I considered adding the coupon codes to the confirmation email but I decided not to because I felt that it was less of a risk
+that they would be missed if I added them here instead.
+
+Here are two codes that can be used for testing:
+
+Code20 and Institute21
