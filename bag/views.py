@@ -58,8 +58,7 @@ def percentage(percent, whole):
 
 def apply_coupon(request):
     """
-    Apply coupon codes to the bag total and give a percentage discount,
-    users can use the code how many times they want until it is deactivated.
+    Apply coupon codes to the bag total and give a percentage discount
     """
     form = CouponForm(request.POST)
     if form.is_valid():
@@ -84,7 +83,7 @@ def apply_coupon(request):
             total_discount = percentage(coupon.discount, total)
             # set total discount in setting
             settings.DISCOUNT = total_discount
-            # Subtract the total discount from the total ammount
+            # Calculate new total to show it in message
             new_total = total - total_discount
             # Keep track and save used coupons
             used_coupon = UsedCoupon()
