@@ -155,6 +155,10 @@ It is possible to register on the website with a google social account and this 
 
 I tried to reset my password and I got a link sent to my email adress where I could reset my password.
 
+### Coupon codes
+
+I checked so that it's not possible to enter invalid codes and I checked so that it's not possible to enter the same code twice.
+
 ### Buttons and links
 
 I manually looked at every button and link on the page and I could not find any the did not work as expected.
@@ -252,6 +256,8 @@ You can [go here](https://the-greenhouse-1.herokuapp.com/) if you are interested
 ## Acknowledgments and Credits
 
 I would like to make it clear that I referenced and used a lot of what we learned during the Boutique Ado project when creating this, especially when it came to connecting to the stripe payments system.
+
+I got a little bit help from the tutor support and an acquaintance when creating the coupon codes. I had problems figuring out how to subtract the discount from the total in the context processor, so I got advised to add the discount to the settings.py file and I also got adviced how to best check for used coupons.
 
 ### Images
 
