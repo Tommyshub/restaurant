@@ -9,8 +9,10 @@ class UserProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        Set autofocus on the full name field to true so that field will be selected as default. 
-        Add star to required field and adding css class and removing field labels.
+        Set autofocus on the full name field to
+        true so that field will be selected as default.
+        Add star to required field and adding css
+        class and removing field labels.
         """
         super().__init__(*args, **kwargs)
 

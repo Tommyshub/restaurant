@@ -58,7 +58,8 @@ def percentage(percent, whole):
 
 def apply_coupon(request):
     """
-    Apply coupon codes to the bag total and give a percentage discount
+    Apply coupon codes to the bag total and give a percentage discount,
+
     """
     form = CouponForm(request.POST)
     if form.is_valid():
@@ -79,7 +80,7 @@ def apply_coupon(request):
                 messages.error(
                     request, f'Coupon Already Used.')
                 return render(request, 'bag/bag.html', {'form': form})
-            # Calculate the new total after taking away percentage from the coupon
+            # Calculate the new total after taking away percentage from coupon
             total_discount = percentage(coupon.discount, total)
             # set total discount in setting
             settings.DISCOUNT = total_discount
@@ -92,7 +93,8 @@ def apply_coupon(request):
             used_coupon.save()
 
             messages.success(
-                request, f'A discount of  €{total_discount} was applied to you bag and your new total is  €{new_total}')
+                request, f'''A discount of  €{total_discount} was applied to
+                you bag and your new total is  €{new_total}''')
         except Coupon.DoesNotExist:
             request.session['coupon_id'] = None
     return render(request, 'bag/bag.html', {'form': form})

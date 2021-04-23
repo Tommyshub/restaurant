@@ -7,8 +7,8 @@ from django_countries.fields import CountryField
 
 class UserProfile(models.Model):
     """
-    A user profile where the users can handle their 
-    order information and change delivery 
+    A user profile where the users can handle their
+    order information and change delivery
     information if needed.
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
