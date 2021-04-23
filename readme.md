@@ -279,7 +279,7 @@ I got a little bit help from the tutor support and an acquaintance when creating
 
 ### Images
 
-I got all the images from and I would like to thank these people for making them available for the public to use. I
+I got all the images from and I would like to thank these people for making them available for the public to use.
 
 - Deryn Macey
 - Taylor Kiser
