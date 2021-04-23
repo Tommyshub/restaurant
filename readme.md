@@ -205,6 +205,24 @@ In the bag I found that the keep shopping and secure checkout buttons where too 
 
 I had the same issues as in the bag but with the complete order and adjust bag buttons, and I fixed them in the same way.
 
+## Formatting and Validation
+
+### Prettier
+
+I used the prettier extension for vscode to format the html, this worked great but one issue I had was that it did not format the jinja code. I googled how to best solve this and I could chose between either adding a comment saying prettier ignore to make the formatter ignore the jinja code, or just add normal comments. I did a mix between both but I mainly used normal comments.
+
+### Pep8
+
+For python I used the cornflakes-linter which is a wrapper for flake8. This also worked really good and it did most of the formatting for me, but I did notice a few issues when I checked my python files online. It seems that the cornflakes-linter missed a few lines that were too long and it also missed whitespace in some places.
+
+[This tool](http://pep8online.com/) is what I used to double check if I had missed any pep8 issues and I fixed all that I could find.
+
+### HTML
+
+Validating the html was a bit problematic because the tool warned alot about the jinja code and it was a bit hard to see the real issues but this should be right now as far as I can tell.
+
+One example of this problem is that it warned me about a stray doctype declaration in the base template, but as far as I can tell this is just because the jinja code is on the line before.
+
 ## Visualization of my database
 
 [database diagram](https://github.com/Tommyshub/restaurant/blob/main/static/images/database_diagram.png)
