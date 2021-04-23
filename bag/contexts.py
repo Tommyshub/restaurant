@@ -9,6 +9,7 @@ def bag_contents(request):
     bag_items = []
     total = 0
     product_count = 0
+    # Get the discount from settings
     discount = settings.DISCOUNT
     bag = request.session.get('bag', {})
 
