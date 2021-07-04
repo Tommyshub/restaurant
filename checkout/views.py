@@ -159,8 +159,7 @@ def checkout_success(request, order_number):
     context = {
         'order': order,
     }
-
-    return render(request, template, context)
+    return redirect(reverse('order_history', args=[order_number]))
 
 
 @require_POST
