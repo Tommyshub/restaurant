@@ -30,10 +30,6 @@ def profile(request):
 
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
-    messages.info(request, (
-        f'This is a past order confirmation for order {order_number} '
-        f'A confirmation email was sent to {order.email} on {order.date}'
-    ))
 
     template = 'checkout/checkout_success.html'
     context = {
