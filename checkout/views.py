@@ -9,6 +9,7 @@ from .forms import OrderForm
 from menu.models import Product
 from .models import Order, OrderLineItem
 from bag.contexts import bag_contents
+from bag.models import Coupon
 import stripe
 import json
 
@@ -19,6 +20,7 @@ def checkout(request):
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
+        current_bag = bag_contents(request)
 
         form_data = {
             'full_name': request.POST['full_name'],
@@ -71,6 +73,7 @@ def checkout(request):
 
         current_bag = bag_contents(request)
         total = current_bag['total']
+        discount = current_bag['discount']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
@@ -103,11 +106,11 @@ def checkout(request):
 
     template = 'checkout/checkout.html'
     context = {
+        'discount': discount,
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
-
     return render(request, template, context)
 
 
@@ -117,13 +120,18 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-
+    current_bag = bag_contents(request)
+    # Get the discount for the invoice
+    discount = current_bag['discount']
+    # Get the total for the invoice
+    total = current_bag['total']
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        # Attach the user profile to the order
+        # Save the order information
         order.user_profile = profile
+        order.discount = discount
+        order.total = total
         order.save()
-
         # Save user information
         if save_info:
             profile_data = {
@@ -137,13 +145,15 @@ def checkout_success(request, order_number):
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
-
+    # Message on successfull checkout
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
-
+    # Empty the bag
     if 'bag' in request.session:
         del request.session['bag']
+    # Set discount back to zero
+    settings.DISCOUNT = 0
 
     template = 'checkout/checkout_success.html'
     context = {
