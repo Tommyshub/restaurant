@@ -297,3 +297,16 @@ that they would be missed if I added them here instead.
 Here are two codes that can be used for testing:
 
 Code20 and Institute21
+
+## Changes made after the 14th of July 2016
+
+### Coupon codes
+
+Here I had a problem with the users not being given the right feedback after applying coupon codes, to fix this I added the discount to the
+checkout model and made sure the discount and new total will be displayed correctly everywhere. I also made sure to set the discount back to zero after it was applied so that the users can't use the coupon code twice before the session is emptied.
+
+When testing the new changes I encountered a problem, both the discount and the total could be set to zero if the user tried to refresh the checkout success page so to fix this I am now redirecting the users to the order history page instead.
+
+This made the message that the users are viewing a past order when clicking on the order history link a bit awkward so I decided to remove that message. I figured that it should be clear to the user that it is a past order either way, because of the date in the order information but also because of the navigation actions.
+
+To test so that this works as expected I made several orders with different items and I appplied the discount codes to check that it worked correctly. I also made a few orders without discount directly after to insure that the discount was gone from the session.
