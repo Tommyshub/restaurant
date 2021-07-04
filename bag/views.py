@@ -19,7 +19,6 @@ def view_bag(request):
 # Adjust shopping bag
 def adjust_bag(request, item_id):
     """ Adjust the quantity of the specified product to the specified amount"""
-
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     bag = request.session.get('bag', {})
@@ -53,6 +52,7 @@ def remove_from_bag(request, item_id):
 
 
 def percentage(percent, whole):
+    """ Function for calculating percentage """
     return (percent * whole) / 100
 
 
@@ -72,7 +72,7 @@ def apply_coupon(request):
         try:
             # Check if the coupon from the form matches code from the database
             coupon = Coupon.objects.get(code__iexact=code, active=True)
-
+            # Get the used coupons
             is_used = UsedCoupon.objects.filter(
                 user=request.user, coupon=coupon).exists()
             # Redirect back to the bag if the coupon is already used
@@ -80,21 +80,28 @@ def apply_coupon(request):
                 messages.error(
                     request, f'Coupon Already Used.')
                 return render(request, 'bag/bag.html', {'form': form})
-            # Calculate the new total after taking away percentage from coupon
+            # Calculate the total discount
             total_discount = percentage(coupon.discount, total)
-            # set total discount in setting
+            # Set total discount in setting
             settings.DISCOUNT = total_discount
             # Calculate new total to show it in message
             new_total = total - total_discount
             # Keep track and save used coupons
             used_coupon = UsedCoupon()
+            # Attach current user to the used coupon
             used_coupon.user = request.user
+            # Set which coupon is used
             used_coupon.coupon = coupon
+            # Save the used coupon
             used_coupon.save()
-
+            # Message the user about the applied discount
             messages.success(
-                request, f'''A discount of  €{total_discount} was applied to
+                request, f'''A discount of {coupon.discount}% and total 
+                discount of  €{total_discount} was applied to
                 you bag and your new total is  €{new_total}''')
         except Coupon.DoesNotExist:
+            # Message user about invalid coupon and set coupon id to none
             request.session['coupon_id'] = None
+            messages.error(
+                request, f'Not a valid coupon code.')
     return render(request, 'bag/bag.html', {'form': form})
