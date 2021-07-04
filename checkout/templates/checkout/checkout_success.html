@@ -49,7 +49,9 @@
         <p>Phone Number: {{ order.phone_number }}</p>
       </div>
       <div class="checkout-success billing-info">
-        <small>Total Charged:</small>
+        <small>Discount:</small>
+        <p>€ {{ order.discount }}</p>
+        <small>Total Amount:</small>
         <p>€ {{ order.total }}</p>
       </div>
     </div>
