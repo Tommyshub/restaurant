@@ -123,6 +123,8 @@
           <th>Quantity</th>
           <th>Price</th>
           <th class="right-align">Subtotal</th>
+          <th>Discount</th>
+          <th>Total</th>
         </thead>
         <tbody>
           {% for item in bag_items %}
@@ -139,13 +141,17 @@
             <td class="right-align">
               <p>€ {{ item.product.price | calc_subtotal:item.quantity }}</p>
             </td>
+            <td>
+              <p>€ {{ discount }}</p>
+            </td>
+            <td>
+              <p>€ {{ total }}</p>
+            </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
-      <div class="right-align">
-        <p>Total: € {{ total }}</p>
-      </div>
+      <div class="right-align"></div>
     </div>
   </div>
 </div>
