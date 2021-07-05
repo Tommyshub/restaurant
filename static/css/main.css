@@ -44,6 +44,10 @@
   margin: 0 auto;
 }
 
+.navbar-links {
+  margin-left: 320px;
+}
+
 .navbar-links a {
   font-size: 1.4rem;
   text-transform: uppercase;
@@ -78,15 +82,51 @@
 
 /* Media queries for width */
 
+@media screen and (max-width: 1900px) {
+  .navbar-links {
+    margin-left: 260px;
+  }
+}
+
+@media screen and (max-width: 1800px) {
+  .navbar-links {
+    margin-left: 220px;
+  }
+}
+
 @media screen and (max-width: 1700px) {
+    .navbar-links {
+      margin-left: 180px;
+  }
   .nav-links a {
     font-size: 1.4rem;
   }
 }
 
+@media screen and (max-width: 1600px) {
+  .navbar-links {
+    margin-left: 140px;
+  }
+}
+
 @media screen and (max-width: 1500px) {
+  .navbar-links {
+    margin-left: 100px;
+  }
   .nav-links a {
     font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .navbar-links {
+    margin-left: 60px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .navbar-links {
+    margin-left: 20px;
   }
 }
 
