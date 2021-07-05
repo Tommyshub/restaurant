@@ -88,7 +88,6 @@
         <ul class="nav-ul navbar-links">
           <li class="nav-links"><a href="{% url 'index' %}">HOME</a></li>
           <li class="nav-links"><a href="{% url 'menu' %}">MENU/ORDER</a></li>
-          <li class="nav-links"><a href="{% url 'contact' %}">CONTACT</a></li>
           <!-- If the user is logged in -->
           {% if request.user.is_authenticated %}
           <li class="nav-links"><a href="{% url 'profile' %}">ACCOUNT</a></li>
