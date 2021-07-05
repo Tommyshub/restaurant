@@ -2,7 +2,8 @@ function sendMail(contactForm) {
   emailjs
     .send("gmail", "greenhouse", {
       from_name: contactForm.name.value,
-      from_email: contactForm.emailaddress.value,
+      subject: contactForm.subject.value,
+      from_email: contactForm.email.value,
       message: contactForm.message.value,
     })
     .then(
@@ -13,5 +14,4 @@ function sendMail(contactForm) {
         console.log("FAILED", error);
       }
     );
-  return false; // Block from loading a new page
 }

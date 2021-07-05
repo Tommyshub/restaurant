@@ -23,31 +23,15 @@
   </div>
   <div class="row">
     <div class="col xl6 l8 m10 s12 push-xl3 push-l1 push-m1">
-      <form onsubmit="return sendMail(this);">
-        <input
-          type="text"
-          name="name"
-          class="form-control"
-          id="fullname"
-          placeholder="Name"
-          required
-        />
-        <input
-          type="text"
-          name="emailaddress"
-          class="form-control"
-          id="emailaddress"
-          placeholder="Email"
-          required
-        />
-        <textarea
-          rows="5"
-          name="message"
-          class="form-control"
-          id="message"
-          placeholder="message"
-          required
-        ></textarea>
+      <form
+        class="contact-form"
+        action="{% url 'contact' %}"
+        method="POST"
+        onsubmit="return sendMail(this);"
+      >
+        <!-- prettier-ignore -->
+        {% csrf_token %}
+        {{ form.as_p }}
         <button
           type="submit"
           class="
