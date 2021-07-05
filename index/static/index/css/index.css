@@ -3,10 +3,28 @@
 }
 
 .index-heading {
-  font-size: 1.8rem;
+  font-size: 2.8rem;
   margin-bottom: 75px;
   font-weight: 500;
   font-family: "Architects Daughter", cursive;
+}
+
+.contact-text {
+  font-size: 1.3rem;
+  font-family: "Architects Daughter", cursive;
+}
+
+.contact-frame {
+  margin: 20px;
+}
+
+.contact-link {
+  font-size: 1.9rem;
+  color: black;
+}
+
+.contact-link:hover {
+  color: #8ec250;
 }
 
 .fotorama {

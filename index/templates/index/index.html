@@ -21,8 +21,8 @@
 </div>
 <div class="container index-container">
   <div class="row">
-    <div class="col xl12 l12 m12 s12">
-      <p class="index-heading center-align">Welcome to the greenhouse</p>
+    <div class="col xl12 l12 m12 s12 center-align">
+      <p class="index-heading">Welcome to the greenhouse</p>
     </div>
     <div class="col xl12 l12 m10 s10 push-xl2 push-l1 push-m1 push-s1">
       <div class="fotorama" data-fit="contain">
@@ -37,5 +37,11 @@
       </div>
     </div>
   </div>
-  {% endblock %}
+  <div class="contact-frame center-align">
+    <p class="contact-text">Do you need to get in touch with us?</p>
+    <a class="contact-link" href="{% url 'contact' %}"
+      ><i class="fas fa-envelope"></i
+    ></a>
+  </div>
 </div>
+{% endblock %}
