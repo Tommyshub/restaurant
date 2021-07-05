@@ -20,9 +20,17 @@
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
     ></script>
+    <!-- EmailJS -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("user_jupzGrAs0kDDQkcsK1TQl");
+      })();
+    </script>
     {% endblock %}
-    <!-- Extra Javascript -->
-    {% block extra_js %}{% endblock %}
     <!-- CSS -->
     {% block corecss %}
     <!-- Main css template -->
@@ -46,16 +54,13 @@
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
-    <!-- Extra CSS -->
-    {% block extra_css %} {% endblock %}
     <!-- Meta -->
     {% block meta %}
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% endblock %}
-    <!-- Extra Meta -->
-    {% block extra_meta %} {% endblock %}
+
     <title>the greenhouse {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
@@ -92,7 +97,22 @@
         </ul>
         <div class="bag">
           <a
-            class="fas fa-shopping-bag {% if total %} light-green-text {% else %} black-text {% endif %}"
+            class="
+              fas
+              fa-shopping-bag
+              {%
+              if
+              total
+              %}
+              light-green-text
+              {%
+              else
+              %}
+              black-text
+              {%
+              endif
+              %}
+            "
             href="{% url 'view_bag' %}"
           ></a>
           <p>

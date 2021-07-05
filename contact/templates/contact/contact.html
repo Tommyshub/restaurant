@@ -23,12 +23,44 @@
   </div>
   <div class="row">
     <div class="col xl6 l8 m10 s12 push-xl3 push-l1 push-m1">
-      <form class="contact-form" action="{% url 'contact' %}" method="POST">
-        <!-- prettier-ignore -->
-        {% csrf_token %}
-        {{ form.as_p }}
+      <form onsubmit="return sendMail(this);">
+        <input
+          type="text"
+          name="name"
+          class="form-control"
+          id="fullname"
+          placeholder="Name"
+          required
+        />
+        <input
+          type="text"
+          name="emailaddress"
+          class="form-control"
+          id="emailaddress"
+          placeholder="Email"
+          required
+        />
+        <textarea
+          rows="5"
+          name="message"
+          class="form-control"
+          id="message"
+          placeholder="message"
+          required
+        ></textarea>
         <button
-          class="col xl2 l2 m4 s4 push-xl5 push-l5 push-m4 push-s4 waves-effect waves-light btn light-green"
+          type="submit"
+          class="
+            col
+            xl2
+            l2
+            m4
+            s4
+            push-xl5 push-l5 push-m4 push-s4
+            waves-effect waves-light
+            btn
+            light-green
+          "
         >
           SEND
         </button>
@@ -37,6 +69,8 @@
   </div>
 </div>
 <!-- prettier-ignore -->
-{% endblock %} 
-{% block extra_js %} 
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
+<script src="{% static 'contact/js/sendEmail.js' %}"></script>
 {% endblock %}
