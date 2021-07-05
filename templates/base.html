@@ -3,6 +3,8 @@
 <html>
   <head>
     {% block corejs %}
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
     <!-- I put this here to remove the favicon warning -->
     <link
       rel="shortcut icon"
@@ -31,6 +33,14 @@
       })();
     </script>
     {% endblock %}
+    <!-- Extra Javascript -->
+    {% block extra_js %}
+    <!-- . -->
+    {% endblock %}
+    <!-- Extra CSS -->
+    {% block extra_css %}
+    <!-- . -->
+    {% endblock %}
     <!-- CSS -->
     {% block corecss %}
     <!-- Main css template -->
@@ -51,8 +61,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
-    <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
     <!-- Meta -->
     {% block meta %}
@@ -60,7 +68,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% endblock %}
-
+    <!-- Extra Meta -->
+    {% block extra_meta %}
+    <!-- . -->
+    {% endblock %}
     <title>the greenhouse {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
@@ -95,24 +106,10 @@
           </li>
           {% endif %}
         </ul>
+        <!-- prettier-ignore -->
         <div class="bag">
           <a
-            class="
-              fas
-              fa-shopping-bag
-              {%
-              if
-              total
-              %}
-              light-green-text
-              {%
-              else
-              %}
-              black-text
-              {%
-              endif
-              %}
-            "
+            class="fas fa-shopping-bag {% if total %} light-green-text {% else %} black-text {% endif %}"
             href="{% url 'view_bag' %}"
           ></a>
           <p>
