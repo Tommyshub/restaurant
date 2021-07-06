@@ -1,0 +1,12 @@
+<!-- Extend the base template -->
+{% extends "base.html" %}
+<!-- Load the static files -->
+{% load static %}
+<!-- Load extra css -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'blog/css/blog.css' %}" />
+{% endblock %}
+<!-- Block for main content -->
+{% block content %}
+<h1>Test</h1>
+{% endblock %}

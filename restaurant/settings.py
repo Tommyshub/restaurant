@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'contact',
     'bag',
     'checkout',
+    'blog',
     'django_extensions',
 ]
 
