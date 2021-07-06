@@ -1,5 +1,4 @@
 from django.db import models
-from profile.models import UserProfile
 
 
 class BlogPost(models.Model):
