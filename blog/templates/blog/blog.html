@@ -10,11 +10,18 @@
 {% block content %}
 <!-- Get all blog posts -->
 {% for post in posts %}
-<div class="blog-frame">
-  <h2 class="blog-title">{{post.title}}</h2>
-  <img class="blog-image" src="../../../{{post.image}}" />
-  <p class="blog-body">{{post.body}}</p>
-  <small class="posted-by">Posted on: {{post.publish_date}}</small>
+<div class="container">
+  <div class="row empty"></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="blog-frame col xl12 push-xl4 center-align">
+      <p class="blog-title">{{post.title}}</p>
+      <img class="blog-image" src="../../../{{post.image}}" />
+      <p class="blog-body">{{post.body}}</p>
+      <small class="posted-on">Posted on: {{post.publish_date}}</small>
+    </div>
+  </div>
 </div>
 {% endfor %}
 <!-- . -->
