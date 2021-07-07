@@ -65,6 +65,24 @@
       <img class="blog-image" src="../../../{{post.image}}" />
       <p class="blog-body">{{post.body}}</p>
       <small class="posted-on">Posted on: {{post.publish_date}}</small>
+      <!-- If the user is logged in -->
+      {% if user.is_authenticated %}
+      <!-- If the user is a superuser -->
+      {% if user.is_superuser %}
+      <br />
+      <form action="{% url 'remove_blog_post' post.id %}" method="post">
+        {% csrf_token %}
+        <button
+          class="waves-effect waves-light btn light-green"
+          type="submit"
+          value="Delete Post"
+        >
+          DELETE POST
+        </button>
+      </form>
+      {% endif %}
+      <!-- . -->
+      {% endif %}
     </div>
   </div>
 </div>

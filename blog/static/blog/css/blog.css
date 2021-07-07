@@ -37,3 +37,7 @@
   width: 75%;
   height: 350%;
 }
+
+.delete-button {
+  margin: 6px;
+}
