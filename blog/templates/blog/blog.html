@@ -22,33 +22,41 @@
       {% if user.is_authenticated %}
       <!-- If the user is a superuser -->
       {% if user.is_superuser %}
-      <h6 class="blog-heading blog-admin">Post a Blog</h6>
-      <form
-        class="form blog-form"
-        method="POST"
-        action="{% url 'blog' %}"
-        enctype="multipart/form-data"
+      <button
+        class="toggle-admin waves-effect waves-light btn light-green"
+        onclick="toggleBlogAdmin()"
       >
-        {% csrf_token %}
-        <!-- Render blog Form -->
-        {{ form.as_p }}
-        <button
-          type="submit"
-          class="
-            col
-            xl2
-            l2
-            m4
-            s4
-            push-xl5 push-l5 push-m4 push-s4
-            waves-effect waves-light
-            btn
-            light-green
-          "
+        Show/Hide Blog Admin
+      </button>
+      <div id="blogAdmin">
+        <h6 class="blog-heading blog-admin">Post a Blog</h6>
+        <form
+          class="form blog-form"
+          method="POST"
+          action="{% url 'blog' %}"
+          enctype="multipart/form-data"
         >
-          SUBMIT
-        </button>
-      </form>
+          {% csrf_token %}
+          <!-- Render blog Form -->
+          {{ form.as_p }}
+          <button
+            type="submit"
+            class="
+              col
+              xl2
+              l2
+              m4
+              s4
+              push-xl5 push-l5 push-m4 push-s4
+              waves-effect waves-light
+              btn
+              light-green
+            "
+          >
+            SUBMIT
+          </button>
+        </form>
+      </div>
       {% endif %}
       <!-- . -->
       {% endif %}
@@ -86,5 +94,13 @@
   </div>
 </div>
 {% endfor %}
+<!-- . -->
+<!-- Load JS -->
+{% block postloadjs %}
+<!-- . -->
+{{ block.super }}
+<!-- Load Javascript for blog admin -->
+<script src="{% static 'blog/js/toggleBlogAdmin.js' %}"></script>
+{% endblock %}
 <!-- . -->
 {% endblock %}

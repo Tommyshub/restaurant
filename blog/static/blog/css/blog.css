@@ -24,10 +24,6 @@
   font-weight: 600;
 }
 
-.blog-admin {
-  padding-top: 120px;
-}
-
 #id_title {
   width: 75%;
 }
@@ -40,4 +36,8 @@
 
 .delete-button {
   margin: 6px;
+}
+
+.toggle-admin {
+  margin: 20px;
 }
