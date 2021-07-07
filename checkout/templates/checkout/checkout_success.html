@@ -8,6 +8,8 @@
 {% endblock %}
 <!-- Block for main content -->
 {% block content %}
+<!-- If the user is logged in -->
+{% if user.is_authenticated %}
 <div class="container">
   <div class="row empty"></div>
 </div>
@@ -69,4 +71,6 @@
     {% endif %}
   </div>
 </div>
+{% endif %}
+<!-- . -->
 {% endblock %}
