@@ -23,3 +23,17 @@
 .blog-body {
   font-weight: 600;
 }
+
+.blog-admin {
+  padding-top: 120px;
+}
+
+#id_title {
+  width: 75%;
+}
+
+#id_body {
+  margin: 10px;
+  width: 75%;
+  height: 350%;
+}

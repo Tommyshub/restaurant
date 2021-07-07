@@ -24,10 +24,27 @@
       {% if user.is_authenticated %}
       <!-- If the user is a superuser -->
       {% if user.is_superuser %}
+      <h6 class="blog-heading blog-admin">Post a Blog</h6>
       <form class="form blog-form" method="POST" action="{% url 'blog' %}">
         {% csrf_token %}
         <!-- Render blog Form -->
         {{ form.as_p }}
+        <button
+          type="submit"
+          class="
+            col
+            xl2
+            l2
+            m4
+            s4
+            push-xl5 push-l5 push-m4 push-s4
+            waves-effect waves-light
+            btn
+            light-green
+          "
+        >
+          SUBMIT
+        </button>
       </form>
       {% endif %}
       <!-- . -->
