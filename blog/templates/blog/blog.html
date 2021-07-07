@@ -15,7 +15,29 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="blog-frame col xl12 push-xl4 center-align">
+    <div class="col xl12 center-align">
+      <h4 class="blog-heading">Welcome to the greenhouse blog!</h4>
+      <p class="blog-text">
+        Here we post updates on what's going on at the restaurant.
+      </p>
+      <!-- If the user is logged in -->
+      {% if user.is_authenticated %}
+      <!-- If the user is a superuser -->
+      {% if user.is_superuser %}
+      <form class="form blog-form" method="POST" action="{% url 'blog' %}">
+        {% csrf_token %}
+        <!-- Render blog Form -->
+        {{ form.as_p }}
+      </form>
+      {% endif %}
+      <!-- . -->
+      {% endif %}
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="blog-frame col xl12 center-align">
       <p class="blog-title">{{post.title}}</p>
       <img class="blog-image" src="../../../{{post.image}}" />
       <p class="blog-body">{{post.body}}</p>

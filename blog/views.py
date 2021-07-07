@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import BlogPost
+from .forms import BlogForm
 
 # Index
 
@@ -7,5 +8,6 @@ from .models import BlogPost
 def blog(request):
     """ View for displaying the blog page """
     posts = BlogPost.objects.all()
-
-    return render(request, 'blog/blog.html', {'posts': posts})
+    form = BlogForm()
+    context = {'form': form, 'posts': posts}
+    return render(request, "blog/blog.html", context)
