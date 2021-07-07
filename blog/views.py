@@ -39,8 +39,10 @@ def remove_blog_post(request, pk):
         if request.user.is_superuser:
             try:
                 post = get_object_or_404(BlogPost, pk=pk)
+                image = post.image
                 messages.success(
                     request, f'Removed {post.title}')
+                image.delete()
                 post.delete()
                 return HttpResponseRedirect('')
 
