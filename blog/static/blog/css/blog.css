@@ -7,7 +7,7 @@
 }
 
 .blog-frame {
-  margin-top: 120px;
+  margin-top: 20px;
 }
 
 .blog-title {
@@ -40,4 +40,12 @@
 
 .toggle-admin {
   margin: 20px;
+}
+
+.blog-form image {
+  visibility: hidden;
+}
+
+#id_image a {
+  visibility: none;
 }

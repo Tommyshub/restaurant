@@ -1,0 +1,69 @@
+<!-- Extend the base template -->
+{% extends "base.html" %}
+<!-- Load the static files -->
+{% load static %}
+<!-- Load extra css -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'blog/css/blog.css' %}" />
+{% endblock %}
+<!-- Block for main content -->
+{% block content %}
+<div class="container">
+  <div class="row empty"></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col xl12 center-align">
+      <!-- If the user is logged in -->
+      {% if user.is_authenticated %}
+      <!-- If the user is a superuser -->
+      {% if user.is_superuser %}
+      <div id="blogAdmin">
+        <h6 class="blog-heading blog-admin">Edit Blog Post</h6>
+        <form
+          method="POST"
+          action="{% url 'edit_blog_post' post.id %}"
+          class="form blog-form"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+          <!-- . -->
+          {% csrf_token %}
+          <!-- . -->
+          {% for field in form %}
+          <!-- . -->
+          <br />
+          {% if field.name != 'image' %}
+          <!-- . -->
+          {{ field }}
+          <!-- . -->
+          {% else %}
+          <!-- . -->
+          {{ field }}
+          <!-- . -->
+          {% endif %}
+          <!-- . -->
+          {% endfor %}
+          <div>
+            <a
+              class="waves-effect waves-light btn light-green"
+              href="{% url 'blog' %}"
+              >Cancel</a
+            >
+            <button
+              class="waves-effect waves-light btn light-green"
+              type="submit"
+            >
+              Update Post
+            </button>
+          </div>
+        </form>
+      </div>
+      {% endif %}
+      <!-- . -->
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

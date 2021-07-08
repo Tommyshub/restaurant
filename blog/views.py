@@ -1,5 +1,5 @@
 from django.shortcuts import (
-    render, HttpResponse, get_object_or_404)
+    render, redirect, reverse, HttpResponse, get_object_or_404)
 from django.contrib import messages
 from .models import BlogPost
 from .forms import BlogForm
@@ -30,23 +30,44 @@ def blog(request):
     return render(request, "blog/blog.html", context)
 
 
-def remove_blog_post(request, pk):
-    """Remove the item from the shopping bag"""
-    posts = BlogPost.objects.all()
+def remove_blog_post(request, item_id):
+    """ Remove blog post """
     form = BlogForm(request.POST or None)
-    context = {'form': form, 'posts': posts}
-    if request.method == 'POST':
-        if request.user.is_superuser:
-            try:
-                post = get_object_or_404(BlogPost, pk=pk)
-                image = post.image
-                messages.success(
-                    request, f'Removed {post.title}')
-                image.delete()
-                post.delete()
-                return HttpResponseRedirect('')
+    if request.method == 'POST' and request.user.is_superuser:
+        try:
+            post = get_object_or_404(BlogPost, id=item_id)
+            image = post.image
+            messages.success(
+                request, f'Removed {post.title}')
+            image.delete()
+            post.delete()
+            return HttpResponseRedirect('')
+        except Exception as e:
+            messages.error(request, f'Error removing post: {e}')
+            return HttpResponse(status=500)
+    return render(request, 'blog/blog.html', {'form': form})
 
+
+def edit_blog_post(request, item_id):
+    """ Edit blog post """
+    post = get_object_or_404(BlogPost, pk=item_id)
+    form = BlogForm(instance=post)
+    if request.method == 'POST' and request.user.is_superuser:
+        form = BlogForm(request.POST, request.FILES, instance=post)
+        if form.has_changed and form.is_valid():
+            try:
+                post = form.save()
+                messages.success(
+                    request, f'Successfully edited {post.title}')
+                return redirect(reverse('blog'))
             except Exception as e:
-                messages.error(request, f'Error removing post: {e}')
+                messages.error(request, f'Error editing blog post: {e}')
                 return HttpResponse(status=500)
-    return render(request, 'blog/blog.html', context)
+        else:
+            messages.error(request, 'Error editing blog post!')
+    template = 'blog/edit_post.html'
+    context = {
+        'form': form,
+        'post': post,
+    }
+    return render(request, template, context)
