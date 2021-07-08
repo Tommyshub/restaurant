@@ -3,6 +3,7 @@ from django.shortcuts import (
 from django.views.decorators.http import require_POST
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from profile.forms import UserProfileForm
 from profile.models import UserProfile
 from .forms import OrderForm
@@ -14,6 +15,7 @@ import stripe
 import json
 
 
+@login_required
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -114,6 +116,7 @@ def checkout(request):
     return render(request, template, context)
 
 
+@login_required
 def checkout_success(request, order_number):
     """
     Handle checkout success

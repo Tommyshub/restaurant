@@ -1,6 +1,7 @@
 from django.shortcuts import (
     render, redirect, reverse, HttpResponse, get_object_or_404)
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import BlogPost
 from .forms import BlogForm
 from django.http import HttpResponse, HttpResponseRedirect
@@ -30,6 +31,7 @@ def blog(request):
     return render(request, "blog/blog.html", context)
 
 
+@login_required
 def remove_blog_post(request, item_id):
     """ Remove blog post """
     form = BlogForm(request.POST or None)
@@ -48,6 +50,7 @@ def remove_blog_post(request, item_id):
     return render(request, 'blog/blog.html', {'form': form})
 
 
+@login_required
 def edit_blog_post(request, item_id):
     """ Edit blog post """
     post = get_object_or_404(BlogPost, pk=item_id)
