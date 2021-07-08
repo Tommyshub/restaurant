@@ -33,21 +33,24 @@ def blog(request):
 
 @login_required
 def remove_blog_post(request, item_id):
-    """ Remove blog post """
+    """Remove the item from the shopping bag"""
+    posts = BlogPost.objects.all()
     form = BlogForm(request.POST or None)
-    if request.method == 'POST' and request.user.is_superuser:
-        try:
-            post = get_object_or_404(BlogPost, id=item_id)
-            image = post.image
-            messages.success(
-                request, f'Removed {post.title}')
-            image.delete()
-            post.delete()
-            return HttpResponseRedirect('')
-        except Exception as e:
-            messages.error(request, f'Error removing post: {e}')
-            return HttpResponse(status=500)
-    return render(request, 'blog/blog.html', {'form': form})
+    context = {'form': form, 'posts': posts}
+    if request.method == 'POST':
+        if request.user.is_superuser:
+            try:
+                post = get_object_or_404(BlogPost, pk=item_id)
+                image = post.image
+                messages.success(
+                    request, f'Removed {post.title}')
+                image.delete()
+                post.delete()
+                return HttpResponseRedirect('')
+            except Exception as e:
+                messages.error(request, f'Error removing post: {e}')
+                return HttpResponse(status=500)
+    return render(request, 'blog/blog.html', context)
 
 
 @login_required
