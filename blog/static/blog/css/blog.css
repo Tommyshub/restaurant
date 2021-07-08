@@ -45,11 +45,3 @@
 .toggle-admin {
   margin: 20px;
 }
-
-.blog-form image {
-  visibility: hidden;
-}
-
-#id_image a {
-  visibility: none;
-}
