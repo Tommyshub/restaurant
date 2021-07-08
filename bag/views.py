@@ -1,6 +1,7 @@
 from django.shortcuts import (
     render, redirect, reverse, HttpResponse, get_object_or_404)
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from menu.models import Product, Category
 from profile.models import UserProfile
 from decimal import Decimal
@@ -10,13 +11,13 @@ from .forms import CouponForm
 from bag.contexts import bag_contents
 
 
-# Shopping Bag
+@login_required
 def view_bag(request):
     """ View for displaying the shopping bag """
     return render(request, 'bag/bag.html')
 
 
-# Adjust shopping bag
+@login_required
 def adjust_bag(request, item_id):
     """ Adjust the quantity of the specified product to the specified amount"""
     product = get_object_or_404(Product, pk=item_id)
@@ -35,6 +36,7 @@ def adjust_bag(request, item_id):
     return redirect(reverse('view_bag'))
 
 
+@login_required
 def remove_from_bag(request, item_id):
     """Remove the item from the shopping bag"""
 
@@ -56,6 +58,7 @@ def percentage(percent, whole):
     return (percent * whole) / 100
 
 
+@login_required
 def apply_coupon(request):
     """
     Apply coupon codes to the bag total and give a percentage discount,
