@@ -87,11 +87,11 @@
       <form action="{% url 'remove_blog_post' post.id %}" method="post">
         {% csrf_token %}
         <button
-          class="waves-effect waves-light btn light-green"
+          class="waves-effect waves-light btn light-green remove-post"
           type="submit"
           value="Delete Post"
         >
-          DELETE POST
+          DELETE
         </button>
       </form>
       {% endif %}

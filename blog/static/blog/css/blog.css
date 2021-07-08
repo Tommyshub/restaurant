@@ -24,6 +24,10 @@
   font-weight: 600;
 }
 
+.remove-post {
+  margin: 10px;
+}
+
 #id_title {
   width: 75%;
 }
