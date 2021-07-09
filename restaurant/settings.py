@@ -82,7 +82,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',  # Required by allauth
+                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'bag.contexts.bag_contents',
@@ -141,19 +141,23 @@ else:
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
+a1 = "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+a2 = "django.contrib.auth.password_validation.MinimumLengthValidator"
+a3 = 'django.contrib.auth.password_validation.CommonPasswordValidator'
+a4 = 'django.contrib.auth.password_validation.NumericPasswordValidator'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': a1,
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': a2,
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': a3,
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': a4,
     },
 ]
 
