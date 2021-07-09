@@ -64,6 +64,10 @@ I used figma to create the wireframes but sadly my computer broke and I lost the
 
 [Desktop Wireframe](https://github.com/Tommyshub/restaurant/blob/main/static/wireframes/thegreenhouse-desktop-wireframe.fig)
 
+[Mobil Wireframe Image](https://github.com/Tommyshub/restaurant/blob/main/static/wireframes/mobile-wireframe.png)
+
+[Desktop Wireframe Image](https://github.com/Tommyshub/restaurant/blob/main/static/wireframes/desktop-wireframe.png)
+
 ### Choice of project and design
 
 I decided to create a project that I thought was a bit easier to create and I took something that was a bit similar to the Boutique Ado project.
