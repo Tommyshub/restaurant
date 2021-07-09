@@ -45,3 +45,27 @@
 .toggle-admin {
   margin: 20px;
 }
+
+@media (max-width: 540px) {
+  .blog-image {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-image {
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 400px) {
+  .blog-image {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 330px) {
+  .blog-image {
+    max-width: 220px;
+  }
+}
