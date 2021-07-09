@@ -23,7 +23,6 @@ def checkout(request):
     if request.method == 'POST':
         bag = request.session.get('bag', {})
         current_bag = bag_contents(request)
-
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
@@ -36,6 +35,10 @@ def checkout(request):
             'county': request.POST['county'],
         }
         order_form = OrderForm(form_data)
+        if not order_form.is_valid():
+            messages.error(
+                request, 'The form is not valid. Please enter valid data.')
+            return redirect(reverse('checkout'))
         if order_form.is_valid():
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
@@ -62,7 +65,8 @@ def checkout(request):
                     return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success',
+                                    args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
@@ -101,7 +105,6 @@ def checkout(request):
                 order_form = OrderForm()
         else:
             order_form = OrderForm()
-
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
             Did you forget to set it in your environment?')
