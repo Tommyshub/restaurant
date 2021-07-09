@@ -15,8 +15,8 @@ def blog(request):
     # Access the blog form
     context = {'form': form, 'posts': posts}
     # Context for rendering template
-    if request.method == 'POST':
-        if request.user.is_superuser:
+    if request.method == 'POST' and request.user.is_superuser:
+        if form.is_valid():
             title = request.POST.get('title')
             image = request.FILES.get('image')
             body = request.POST.get('body')
