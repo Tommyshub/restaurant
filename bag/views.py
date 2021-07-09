@@ -99,7 +99,7 @@ def apply_coupon(request):
             used_coupon.save()
             # Message the user about the applied discount
             messages.success(
-                request, f'''A discount of {coupon.discount}% and total 
+                request, f'''A discount of {coupon.discount}% and total
                 discount of  €{total_discount} was applied to
                 you bag and your new total is  €{new_total}''')
         except Coupon.DoesNotExist:
