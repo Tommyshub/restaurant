@@ -10,7 +10,6 @@ from .forms import OrderForm
 from menu.models import Product
 from .models import Order, OrderLineItem
 from bag.contexts import bag_contents
-from bag.models import Coupon
 import stripe
 import json
 
