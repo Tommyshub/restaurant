@@ -1,5 +1,6 @@
 from django import forms
 from .models import Order
+from django.core.validators import validate_email
 
 
 class OrderForm(forms.ModelForm):
@@ -37,3 +38,9 @@ class OrderForm(forms.ModelForm):
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        if not validate_email(email):
+            raise forms.ValidationError("Invalid email")
+        return email
