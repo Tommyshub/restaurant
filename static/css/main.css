@@ -45,7 +45,7 @@
 }
 
 .navbar-links {
-  margin-left: 320px;
+  margin-left: 240px;
 }
 
 .navbar-links a {
@@ -84,19 +84,19 @@
 
 @media screen and (max-width: 1900px) {
   .navbar-links {
-    margin-left: 260px;
+    margin-left: 200px;
   }
 }
 
 @media screen and (max-width: 1800px) {
   .navbar-links {
-    margin-left: 220px;
+    margin-left: 160px;
   }
 }
 
 @media screen and (max-width: 1700px) {
     .navbar-links {
-      margin-left: 180px;
+      margin-left: 120px;
   }
   .nav-links a {
     font-size: 1.4rem;
@@ -105,13 +105,13 @@
 
 @media screen and (max-width: 1600px) {
   .navbar-links {
-    margin-left: 140px;
+    margin-left: 80px;
   }
 }
 
 @media screen and (max-width: 1500px) {
   .navbar-links {
-    margin-left: 100px;
+    margin-left: 40px;
   }
   .nav-links a {
     font-size: 1.2rem;
@@ -120,7 +120,7 @@
 
 @media screen and (max-width: 1400px) {
   .navbar-links {
-    margin-left: 60px;
+    margin-left: 30px;
   }
 }
 
