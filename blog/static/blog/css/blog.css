@@ -24,6 +24,10 @@
   font-weight: 600;
 }
 
+.edit-post {
+  margin-top: 10px;
+}
+
 .remove-post {
   margin: 10px;
 }
