@@ -1,10 +1,21 @@
-function sendMail(contactForm) {
+//Getting the name and email from the DOM
+let subject = document.getElementById("subject").value;
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let message = document.getElementById("message").value;
+//Getting the button from the DOM
+let submitButton = document.getElementById("submit");
+
+submitButton.addEventListener("click", function (event) {
+  //prevent the reload of the page.
+  event.preventDefault();
+  //Sending the email with the name and email
   emailjs
-    .send("gmail", "rosie", {
-      subject: contactForm.id_subject.value,
-      from_name: contactForm.id_name.value,
-      from_email: contactForm.id_email.value,
-      message: contactForm.id_message.value,
+    .send("gmail", "greenhouse", {
+      subject: subject,
+      from_name: name,
+      from_email: email,
+      message: message,
     })
     .then(
       function (response) {
@@ -14,5 +25,4 @@ function sendMail(contactForm) {
         console.log("FAILED", error);
       }
     );
-  return false;
-}
+});
