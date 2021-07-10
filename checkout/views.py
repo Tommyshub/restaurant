@@ -18,10 +18,12 @@ import json
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-
+    # Get public and secret keys for stripe
     if request.method == 'POST':
         bag = request.session.get('bag', {})
+        # Get the bag from the session
         current_bag = bag_contents(request)
+        # Get the current bag from the context processor
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
@@ -33,20 +35,28 @@ def checkout(request):
             'street_address2': request.POST['street_address2'],
             'county': request.POST['county'],
         }
+        # Get data from the checkout form
         order_form = OrderForm(form_data)
+        # Attach the form data to the order form
         if not order_form.is_valid():
+            # Display error message if the form is not valid
             messages.error(
                 request, 'The form is not valid. Please enter valid data.')
             return redirect(reverse('checkout'))
         if order_form.is_valid():
             order = order_form.save(commit=False)
+            # Save the order form without commiting if the form is valid
             pid = request.POST.get('client_secret').split('_secret')[0]
+            # Get the payment intent id for stripe
             order.stripe_pid = pid
+            # Set the payment intent id for stripe
             order.original_bag = json.dumps(bag)
+            # Attach the bag from the session to the order
             order.save()
             for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
+                    # Get the product connected to the item id
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             order=order,
@@ -54,6 +64,7 @@ def checkout(request):
                             quantity=item_data,
                         )
                         order_line_item.save()
+                        # Update the order line item and save it
                 except Product.DoesNotExist:
                     # Empty the bag if there's a problem
                     if 'bag' in request.session:
@@ -64,9 +75,14 @@ def checkout(request):
                         "Please call us for assistance!""")
                     )
                     order.delete()
+                    """
+                    Update the bag and delete the order if one of the products
+                    added does not exist in the database
+                    """
                     return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
+            # Save the information from the form in the session
             return redirect(reverse('checkout_success',
                                     args=[order.order_number]))
         else:
@@ -78,17 +94,21 @@ def checkout(request):
             messages.error(
                 request, "There's nothing in your bag at the moment")
             return redirect(reverse('menu'))
-
         current_bag = bag_contents(request)
+        # Get the current bag from the context processor
         total = current_bag['total']
+        # Get the total from the current bag
         discount = current_bag['discount']
+        # Get the discount from the current bag
         stripe_total = round(total * 100)
+        # Calculate the total for stripe
         stripe.api_key = stripe_secret_key
+        # Set stripe api key
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-
+        # Create payment intent
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -103,6 +123,7 @@ def checkout(request):
                     'street_address2': profile.default_street_address2,
                     'county': profile.default_county,
                 })
+                # Attach the order form to the profile if the user is logged in
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
         else:
