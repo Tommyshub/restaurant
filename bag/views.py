@@ -21,17 +21,21 @@ def view_bag(request):
 def adjust_bag(request, item_id):
     """ Adjust the quantity of the specified product to the specified amount"""
     product = get_object_or_404(Product, pk=item_id)
+    # Get the product connected to the item id
     quantity = int(request.POST.get('quantity'))
+    # Get the quantity from the session
     bag = request.session.get('bag', {})
-
+    # Get the bag from the session
     if quantity > 0:
         bag[item_id] = quantity
+        # Add the quantity to the bag item if items are greater than 0
         messages.success(
             request, f'Updated{product.name} quantity to {quantity}')
     else:
+        # Otherwise remove the item completely
         bag.pop(item_id)
         messages.success(request, f'Removed {product.name} from your bag')
-
+    # Set the bag in the session to the updated bag
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
 
@@ -42,12 +46,14 @@ def remove_from_bag(request, item_id):
 
     try:
         product = get_object_or_404(Product, pk=item_id)
+        # Get the product connected to the item id
         bag = request.session.get('bag', {})
+        # Get the bag from the session
         bag.pop(item_id)
+        # Pop the item_id (product) from the bag
         messages.success(request, f'Removed {product.name} from your bag')
         request.session['bag'] = bag
         return HttpResponse(status=200)
-
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
