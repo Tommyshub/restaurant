@@ -127,20 +127,26 @@ def checkout_success(request, order_number):
     Handle checkout success
     """
     save_info = request.session.get('save_info')
+    # Get information to save from the session
     order = get_object_or_404(Order, order_number=order_number)
+    # Get the order connected to the order number
     current_bag = bag_contents(request)
-    # Get the discount for the invoice
+    # Get the current bag from the context processor
     discount = current_bag['discount']
-    # Get the total for the invoice
+    # Get the discount from the current bag
     total = current_bag['total']
+    # Get the total from the current bag
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        # Save the order information
+        # Get the userprofile to connect the order to
         order.user_profile = profile
+        # Attach the profile
         order.discount = discount
+        # Add the discount
         order.total = total
+        # Add the total
         order.save()
-        # Save user information
+        # Save the order
         if save_info:
             profile_data = {
                 'default_phone_number': order.phone_number,
@@ -153,16 +159,16 @@ def checkout_success(request, order_number):
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
-    # Message on successfull checkout
+                # Save the order to the userprofile if save info exists
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
-    # Empty the bag
+
     if 'bag' in request.session:
         del request.session['bag']
-    # Set discount back to zero
+    # Empty the bag
     settings.DISCOUNT = 0
-
+    # Set discount back to zero
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
@@ -174,12 +180,15 @@ def checkout_success(request, order_number):
 def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
+        # Get the payment intent id
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify('pid', metadata={
+        # Access the stripe api key
+        stripe.PaymentIntent.modify(pid, metadata={
             'username': request.user,
             'save_info': request.POST.get('save_info'),
             'bag': json.dumps(request.session.get('bag', {}))
         })
+        # Stripe payment intent data
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, 'Sorry, your payment cannot be processed.')
