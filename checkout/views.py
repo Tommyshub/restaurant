@@ -55,6 +55,9 @@ def checkout(request):
                         )
                         order_line_item.save()
                 except Product.DoesNotExist:
+                    # Empty the bag if there's a problem
+                    if 'bag' in request.session:
+                        del request.session['bag']
                     messages.error(request, (
                         """One of the products in your
                         bag wasn't found in our database. "
