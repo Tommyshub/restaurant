@@ -1,8 +1,8 @@
 function sendMail(contactForm) {
   emailjs
-    .send("gmail", "greenhouse", {
-      from_name: contactForm.id_name.value,
+    .send("gmail", "rosie", {
       subject: contactForm.id_subject.value,
+      from_name: contactForm.id_name.value,
       from_email: contactForm.id_email.value,
       message: contactForm.id_message.value,
     })
@@ -14,4 +14,5 @@ function sendMail(contactForm) {
         console.log("FAILED", error);
       }
     );
+  return false;
 }
