@@ -169,10 +169,6 @@ def checkout_success(request, order_number):
     # Empty the bag
     settings.DISCOUNT = 0
     # Set discount back to zero
-    template = 'checkout/checkout_success.html'
-    context = {
-        'order': order,
-    }
     return redirect(reverse('order_history', args=[order_number]))
 
 
