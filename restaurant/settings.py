@@ -141,8 +141,8 @@ else:
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
-a1 = "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
-a2 = "django.contrib.auth.password_validation.MinimumLengthValidator"
+a1 = 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'
+a2 = 'django.contrib.auth.password_validation.MinimumLengthValidator'
 a3 = 'django.contrib.auth.password_validation.CommonPasswordValidator'
 a4 = 'django.contrib.auth.password_validation.NumericPasswordValidator'
 
@@ -195,7 +195,7 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST = 'mailcluster.loopia.se'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
 DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
