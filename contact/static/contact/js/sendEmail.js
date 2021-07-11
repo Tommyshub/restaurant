@@ -8,6 +8,7 @@ function sendMail(contactForm) {
     })
     .then(
       function (response) {
+        // Clear form values
         id_subject.value = "";
         id_name.value = "";
         id_email.value = "";
@@ -25,6 +26,12 @@ function sendMail(contactForm) {
         // Add the new element to the parent div
         const parentDiv = document.getElementById("parent-container");
         parentDiv.parentNode.insertBefore(newDiv, parentDiv);
+        // Set a timeout of 4 seconds and the remove the newDiv
+        setTimeout(function () {
+          if ($(newDiv).length > 0) {
+            $(newDiv).remove();
+          }
+        }, 4000);
       },
       function (error) {
         console.log("FAILED", error);
@@ -41,6 +48,12 @@ function sendMail(contactForm) {
         // Add the new element to the parent div
         const parentDiv = document.getElementById("parent-container");
         parentDiv.parentNode.insertBefore(newDiv, parentDiv);
+        // Set a timeout of 4 seconds and the remove the newDiv
+        setTimeout(function () {
+          if ($(newDiv).length > 0) {
+            $(newDiv).remove();
+          }
+        }, 4000);
       }
     );
   return false;
