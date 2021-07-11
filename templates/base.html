@@ -3,6 +3,8 @@
 <html lang="en">
   <head>
     {% block corejs %}
+    <!-- Javascript for toast messages -->
+    <script src="{% static 'js/toast.js' %}"></script>
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
     <!-- I put this here to remove the favicon warning -->
@@ -164,13 +166,6 @@
     <!-- Post load Javascript files-->
     {% block postloadjs %}
     <script src="{% static 'js/navbar.js' %}"></script>
-    <script>
-      setTimeout(function () {
-        if ($(".toast").length > 0) {
-          $(".toast").remove();
-        }
-      }, 4000);
-    </script>
     {% endblock %}
   </body>
 </html>
