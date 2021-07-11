@@ -1,28 +1,47 @@
-//Getting the name and email from the DOM
-let subject = document.getElementById("subject").value;
-let name = document.getElementById("name").value;
-let email = document.getElementById("email").value;
-let message = document.getElementById("message").value;
-//Getting the button from the DOM
-let submitButton = document.getElementById("submit");
-
-submitButton.addEventListener("click", function (event) {
-  //prevent the reload of the page.
-  event.preventDefault();
-  //Sending the email with the name and email
+function sendMail(contactForm) {
   emailjs
     .send("gmail", "greenhouse", {
-      subject: subject,
-      from_name: name,
-      from_email: email,
-      message: message,
+      subject: contactForm.id_subject.value,
+      from_name: contactForm.id_name.value,
+      from_email: contactForm.id_email.value,
+      message: contactForm.id_message.value,
     })
     .then(
       function (response) {
+        id_subject.value = "";
+        id_name.value = "";
+        id_email.value = "";
+        id_message.value = "";
         console.log("SUCCESS", response);
+        // Create new div for content to be displayed in
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("toast");
+        newDiv.classList.add("light-green");
+        newDiv.classList.add("black-text");
+        // Success message to attach on the new div
+        const newContent = document.createTextNode("Email successfully sent!");
+        // add the text node to the newly created div
+        newDiv.appendChild(newContent);
+        // Add the new element to the parent div
+        const parentDiv = document.getElementById("parent-container");
+        parentDiv.parentNode.insertBefore(newDiv, parentDiv);
       },
       function (error) {
         console.log("FAILED", error);
+        // Create new div for content to be displayed in
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("toast");
+        newDiv.classList.add("red");
+        newDiv.classList.add("darken-1");
+        newDiv.classList.add("black-text");
+        // Success message to attach on the new div
+        const newContent = document.createTextNode("Email could not be sent!");
+        // add the text node to the newly created div
+        newDiv.appendChild(newContent);
+        // Add the new element to the parent div
+        const parentDiv = document.getElementById("parent-container");
+        parentDiv.parentNode.insertBefore(newDiv, parentDiv);
       }
     );
-});
+  return false;
+}
