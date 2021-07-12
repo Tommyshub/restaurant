@@ -6,6 +6,9 @@ from django_countries.fields import CountryField
 from menu.models import Product
 from profile.models import UserProfile
 from django.core.validators import validate_email
+from profile.validators import (validate_phone_number, validate_postal_code,
+                                validate_county, validate_city,
+                                validate_alpha_numeric, validate_name)
 
 
 class Order(models.Model):
@@ -13,16 +16,26 @@ class Order(models.Model):
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True,
                                      related_name='orders')
-    full_name = models.CharField(max_length=50, null=False, blank=False)
+    full_name = models.CharField(
+        validators=[validate_name], max_length=50, null=False, blank=False)
     email = models.EmailField(
         validators=[validate_email], max_length=254, null=False, blank=False)
-    phone_number = models.CharField(max_length=20, null=False, blank=False)
+    phone_number = models.CharField(validators=[validate_phone_number],
+                                    max_length=20, null=False, blank=False)
     country = CountryField(blank_label="Country *", null=False, blank=False)
-    postcode = models.CharField(max_length=20, null=True, blank=True)
-    town_or_city = models.CharField(max_length=40, null=False, blank=False)
-    street_address1 = models.CharField(max_length=80, null=False, blank=False)
-    street_address2 = models.CharField(max_length=80, null=True, blank=True)
-    county = models.CharField(max_length=80, null=True, blank=True)
+    postcode = models.CharField(
+        validators=[validate_postal_code], max_length=20,
+        null=True, blank=True)
+    town_or_city = models.CharField(
+        validators=[validate_city], max_length=40, null=False, blank=False)
+    street_address1 = models.CharField(
+        validators=[validate_alpha_numeric],
+        max_length=80, null=False, blank=False)
+    street_address2 = models.CharField(
+        validators=[validate_alpha_numeric],
+        max_length=80, null=True, blank=True)
+    county = models.CharField(
+        validators=[validate_county], max_length=80, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     order_total = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
