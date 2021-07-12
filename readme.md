@@ -267,53 +267,37 @@ One example of this problem is that it warned me about a stray doctype declarati
 
 ## Deployment
 
-I performed the following steps in deploying my site:
+Steps to take in order to run this website locally:
 
-### GitHub
+1. Clone or download this repository, unzip it and then open that folder in your favorite editor.
 
-- Pushed my commits from git to github.
+2. Rename the dummy_env file to only env.py, uncomment the import os statement and save it.
 
-- Logged in to my github account.
+3. Add a secret key for the application, this can be any key you want but I recommend that you google for a secret key generator and use a generated key.
 
-- Selected my repositories.
+4. Register for a account on [stripe](https://stripe.com/) and get your public key, secret key and wh secret and add them to the env file.
 
-- Navigated to shopping-list.
+5. Connect your email, in this case gmail in the env settings. You can find more information on how to do this [here](https://dev.to/abderrahmanemustapha/how-to-send-email-with-django-and-gmail-in-production-the-right-way-24ab). You could also use any email provider you want to but then you need to change the configuration for the email provider in the settings.py file.
 
-- Clicked on settings.
+6. Add google OAuth credentials to your env file, you can find more information on how to get OAuth credentials [here](https://developers.google.com/identity/protocols/oauth2) you can also connect other providers and you can find more information about that [here](https://django-allauth.readthedocs.io/en/latest/providers.html)
 
-- Scrolled down to where I can do the github pages settings.
+7. You need to get a PostgreSQL database and connect it to the env file. You could install this on your own system or use a service provider. I would suggest you google for the option the fits you best and add the credentials from what ever you choose in the env file. You also need to migrate the database, you can do this by opening a terminal, navigating to the project folder and type:
 
-- Selected the mastench from the dropdown menu.
+- python manage.py makemigrations
 
-- Clicked on save.
+- python manage.py migrate
 
-### Heroku
+8. Sign-up for an account at [EmailJS](https://www.emailjs.com/) and create a new template. It will have access to the subject, from_name, from_email and message variables and you can style this template how ever you want. You also need to connect to a new email service. You then need to add your service id and template id to the sendEmail.js file. You can find that file in the static js folder in the contact app. Last step here is to replace the existing browser integration settings in the base.html template with the ones you can find [here](https://dashboard.emailjs.com/admin/integration/browser). You can find the base.html file in the templates folder at the root of this application.
 
-- Created a repository for this application
+9. Last step is to navigate to the project folder in your terminal and type "python manage.py runserver" and open the url in your browser.
 
-- Connected GitHub to Heroku under the "deploy" tab
-
-- Clicked on deploy
-
-- Added my config variables in the settings / reveal config vars tab.
-
-- Added a postgres database and changed my settings file to include it.
-
-- Migrated my database using the python manage.py migrate command.
-
-- setup static files hosting.
-
-First I used amazon s3 bucket to host my static files but after just a few days I got an email warning me that the free tier was almost used up, so I decided to change this to use whitenoise so that my static files can be served by the webapp directly.
-
-I realize that this is not ideal when it comes to performance but I think it will be okay for this application.
-
-You can [go here](https://the-greenhouse-1.herokuapp.com/) if you are interested in checking out my website.
+There are many options for you if you wish to deploy the site to your own domain, but I would recommend using Digital Ocean. You can find out more on how to deploy a Django application to Digital Ocean [here](https://www.digitalocean.com/community/tutorials/how-to-deploy-django-to-app-platform).
 
 ## Acknowledgments and Credits
 
 I would like to make it clear that I referenced and used a lot of what we learned during the Boutique Ado project when creating this, especially when it came to connecting to the stripe payments system.
 
-I got a little bit help from the tutor support and an acquaintance when creating the coupon codes. I had problems figuring out how to subtract the discount from the total in the context processor, so I got advised to add the discount to the settings.py file and I also got adviced how to best check for used coupons.
+I got a little bit help from the tutor support and an acquaintance when creating the coupon codes. I had problems figuring out how to subtract the discount from the total in the context processor, so I got advised to add the discount to the settings.py file and I also got advice how to best check for used coupons.
 
 ### Images
 
