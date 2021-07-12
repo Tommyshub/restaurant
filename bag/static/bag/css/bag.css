@@ -13,3 +13,11 @@
 .keep-secure {
   margin-top: 4px;
 }
+
+.increment-qty {
+  visibility: hidden;
+}
+
+.decrement-qty {
+  visibility: hidden;
+}
