@@ -3,7 +3,7 @@ import re
 
 
 def validate_alpha_numeric(value):
-    if not re.compile(r'^[0-9a-zA-ZäåöüÄÅÖÜ]*$').match(value):
+    if not re.compile(r'^[ 0-9a-zA-ZäåöüÄÅÖÜ]*$').match(value):
         raise ValidationError(
             'Sorry, this field must only contain numbers and letters!')
     return value
