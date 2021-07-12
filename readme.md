@@ -189,9 +189,11 @@ PostgreSQL did not understand my query when I wrote in lowercase letters and Sql
 
 I found several issues here with some forms not being validated at all by django because I did not ask if the form is valid in the view, but also that the users were able to use invalid an invalid email address.
 
-Most of these issues have been fixed and the only ones I know of that is still there is that the users are able to input numbers or letters in fields where they shouldn't be able to.
+I fixed some of these issues with the built in validators for email addresses and images, but for other fields like for example the address, name, city fields I created a custom validation file that I put in the profile app. This makes it so that I can validate for each type of field and create a message for the specific input.
 
-This should be easy to fix with the regex validator from django and I intend to fix this as soon as I have decided on which inputs it makes sense to do it on.
+I have noticed a bug in the checkout app in regards to the field specific messages. They do not work because I am unable to render the form without breaking the field for stripe payments, so I have to redirect the users if there's an error for now. The users still gets a message saying that the input is not valid but they will not get the error message for the specific input that is wrong.
+
+Because the validation technically works and it's not possible to submit an invalid form, I have decided to focus on a few issues that is more important for now. I hope that I have time to fix this before the deadline.
 
 - Navigation and Security:
 
