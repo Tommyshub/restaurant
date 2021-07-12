@@ -175,91 +175,55 @@ Yes, this is built-in to the allauth authentication system and I have tested it 
 
 I used this automated tool to check if there were any security issues in my code. It scanned 1491 lines of code and found no security issues.
 
-### Django Testing
-
-I tested some of my code with the built-in django testing framework. I focused on the checkout app when I wrote my tests but I intend to add more in the future.
-
-- I tested the forms by making sure that the form cannot be submitted without the required fields.
-
-- I tested so that the urls resolves as expected.
-
 ### Migrating to PostgreSQL from Sqlite3
 
 This part was a real headache for me and I spent more than a week trying to figure out what was wrong, even asking people for help without avail.
 
-I tried everyting I could think of and at the end it was something really simple that I feel I should have figured out sooner.
+I tried everything I could think of and at the end it was something really simple that I feel I should have figured out sooner.
 
 PostgreSQL did not understand my query when I wrote in lowercase letters and Sqlite3 did, so all I needed to do to fix this was to change how I query the database.
 
-### Forms
+### Bug Testing
 
-- Default delivery information form
+- User inputs:
 
-The first form I tested was the change default delivery information form, and I realized that this form can be submitted when it is empty and therefore set the default delivery information to an empty string.
+I found several issues here with some forms not being validated at all by django because I did not ask if the form is valid in the view, but also that the users were able to use invalid an invalid email address.
 
-I fixed this by setting blank to false on all fields except the street address 2 field.
+Most of these issues have been fixed and the only ones I know of that is still there is that the users are able to input numbers or letters in fields where they shouldn't be able to.
 
-I also checked that everything was updated as expected when submitting a valid form by going to the checkout form and looking at the delivery information.
+This should be easy to fix with the regex validator from django and I intend to fix this as soon as I have decided on which inputs it makes sense to do it on.
 
-I also had an issue with the form not being prefilled and it warned about missing fields without any actions. To fix this I looked at my view and noticed that I was requsting post where I should not so I removed that.
+- Navigation and Security:
 
-- Contact form
+I had a few issues here with the users for example being able to view order information without actually being logged in to their account. I have fixed all of these issues by requiring users to be logged in to view certain pages, or even being a super user to view some.
 
-First thing I checked was to submit a blank form and that does not work.
+I applied those limitations in both the template itself but also in the python code to make sure it is as secure as possible.
 
-I tried to submit the form without a valid email address and this did not work either.
+- Crud:
 
-I also tried to submit a valid form and I checked my email adress to confirm that I the received the email and that it was formatted as expected.
+I had some issues here with for example users being able to upload files in the image field in the form for posting blogs, with emails not being sent and with the coupons codes not being applied correctly.
 
-- Bag forms
+These problems have now been fixed, but I still found one issue during the testing process. The quantity can not be updated in the shopping bag, but it still works to remove the items completely.
 
-The first thing I tested here was to update and remove items and that worked as expected.
+I am sure that this worked before and I have no idea how I broke it, but I intend to fix this before turning in this project.
 
-One problem I noticed is that the input field for the form for giving tips does not show until the button is pressed and it warns that the form needs to be filled out. I have no idea how to fix this and I cannot find any information about it online so that is something I intend to ask my mentor about before submitting this project.
+I found no other bugs during the testing of the crud functions.
 
-- Register and login forms
-
-I manually tested these forms and both of them works as expected and it is not possible to submit forms without the right information.
-
-- Register with social account
-
-It is possible to register on the website with a google social account and this also works as expected.
-
-- Forgot password
-
-I tried to reset my password and I got a link sent to my email adress where I could reset my password.
-
-### Coupon codes
-
-I checked so that it's not possible to enter invalid codes and I checked so that it's not possible to enter the same code twice.
-
-### Buttons and links
-
-I manually looked at every button and link on the page and I could not find any the did not work as expected.
-
-The keep shopping and secure checkout buttons in the shopping bag had the old teal color so I changed these to light green so they match the rest of the page.
-
-### Developer console
-
-While looking in the console I visited every page in my app and I clicked all the buttons.
+- Developer console:
 
 One issue I noticed was a warning about missing favicon, I solved this by making a copy of my vegan logo and using that as a favicon and linking to it in the base template.
-
-It still warnes me about the favicon when I look at past orders and go back to the accounts page and I have no idea why or how to fix this. I assume this is a bug and I think it should be fine as it is.
-
-I found no other warnings.
 
 ### Responsiveness
 
 - Navbar
 
-One problem with my navbar is that the popout menu is not perfectly aligned in height on some screen sizes. I solved this by setting media queries for the height and changing the viewport settings in my css.
+One problem with my navbar is that the pop out menu is not perfectly aligned in height on some screen sizes. I solved this by setting media queries for the height and changing the viewport settings in my css.
 
 The navbar also starts to look a bit funky on sizes under 300pixels width but after doing some research I decided that it is not necessary to support screen sizes below 300 pixels in width so I left this as it is.
 
 - Menu
 
-I found no real issues with the responsiveness here but I did not like how the category names looked at smaller screen sizes and it also looked a bit wierd when the categories had icons.
+I found no real issues with the responsiveness here but I did not like how the category names looked at smaller screen sizes and it also looked a bit weird when the categories had icons.
 
 I fixed this by changing the headings to small text and put it under the icons instead.
 
