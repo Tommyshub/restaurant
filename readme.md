@@ -2,7 +2,7 @@
 
 ### User stories
 
-As a customer of the resturant i want,
+As a customer of the restaurant i want,
 
 - to order food to be delivered to my door.
 
@@ -14,9 +14,9 @@ As a customer of the resturant i want,
 
 - be able to view information about the food.
 
-- be able to contact the resturant to ask about my order.
+- be able to contact the restaurant to ask about my order.
 
-As a resturant owner I want,
+As a restaurant owner I want,
 
 - to have a menu where my customers can view and order food.
 
@@ -28,13 +28,13 @@ As a resturant owner I want,
 
 - my customers to be able to give tips to the delivery people.
 
-- customers to be able to contant us.
+- customers to be able to contact us.
 
 - my customers to be able to view their past order.
 
 - my customers to have a good checkout experience.
 
-- the website to look professional so that my customers feel save ordering from us.
+- the website to look professional so that my customers feel safe ordering from us.
 
 ## Requirements and Expectations
 
@@ -99,6 +99,76 @@ I think that the it worked out prettty well with the gray navbar and a white bac
 
 ## Testing
 
+### Testing User Stories from User Experience (UX) Section
+
+Some of the wants of the restaurant owner is the same as the customers wants so I will not go over them twice here.
+
+Customer wants:
+
+1. Can the customers order food to be delivered to their door?
+
+Yes, the customers are able to order food if they register for an account at the greenhouse. The MENU/ORDER tab in the navigation bar and the shopping cart icon makes it clear for the users that they can order food to be delivered.
+
+2. Can the customers create an account?
+
+Yes, this is made clear by having login and registration links in the navbar, but also by requiring the users to either login or register for an account if they want to do things such as adding menu items to their shopping cart.
+
+The authentication system was created with help of django allauth and I made it easier for the users to signup for an account with google.
+
+3. Can the users store their default delivery information?
+
+Yes, they can do this by checking the box for "save this delivery information to my profile" during the checkout process or they can go to their profile and manually add it before creating an order. They can also change the delivery information on their profile if needed.
+
+4. Can the users view information about the orders they have made?
+
+Yes, the customers will receive a confirmation email when an order is created and they can also view past order on their profile at any time.
+
+5. Can the users contact the restaurant to ask about their order?
+
+Yes, at the bottom of the home / index page there's a question if the users wants to contact the restaurant with a link to the contact page.
+
+Restaurant owners wants:
+
+1. Is there a place for the users to give tips to the delivery people?
+
+No, I decided to change this to be coupon codes instead.
+
+2. Can the users apply coupon codes?
+
+Yes, if the user have access to a coupon code they can use this during the checkout process, it is valid for one time use and used coupon codes will be stored and associated with the person who used it. The restaurant owner can create, modify and delete coupon codes in the admin panel.
+
+3. Will the customers have a good checkout experience?
+
+Yes, the checkout experience should be pretty straightforward for the users and I have found no bugs during the checkout process as of yet.
+
+4. Is the website secure and professional looking?
+
+Yes, the website looks professional and it is secure, there were some issues before with users being able to visit pages they shouldn't be able to without being logged in, but this have been fixed now.
+
+The order information text can use some improvement to make it look more professional and this is something I intend to fix in the future, but what's there is fine for now.
+
+Requirements and Expectations:
+
+1. Is the home view rendered directly when the user enters the website?
+
+Yes.
+
+2. Is the responsiveness of the website good?
+
+Yes, this have been tested both manually and with online tools.
+
+3. Is the navigation easy to understand?
+
+Yes, I think that the layout and naming of links makes it easy for the users to understand how to navigate the website and this is made even clearer with toast messages down in the right corner of the page.
+
+4. Is feedback given to the users?
+
+Yes, most actions done by the users will give them feedback via toast messages or order confirmations.
+
+5. Is it easy for the users to retrieve lost passwords?
+
+Yes, this is built-in to the allauth authentication system and I have tested it so that it works as expected.
+
 ### Bandit -a tool designed to find common security issues in Python code.
 
 [You can find out more about bandit here](https://github.com/PyCQA/bandit)
@@ -119,7 +189,7 @@ This part was a real headache for me and I spent more than a week trying to figu
 
 I tried everyting I could think of and at the end it was something really simple that I feel I should have figured out sooner.
 
-PostgreSQL did not understand my query when I wrote in lowercase letters and Sqlite3 did, so all I needed to do to fix this was to change how I query the databse.
+PostgreSQL did not understand my query when I wrote in lowercase letters and Sqlite3 did, so all I needed to do to fix this was to change how I query the database.
 
 ### Forms
 
