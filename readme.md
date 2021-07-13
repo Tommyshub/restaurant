@@ -364,5 +364,3 @@ The profile form required much more validation so I created a validators.py file
 Checkout Form:
 
 I am doing the same validation for the checkout form as for the profile form and I am importing the custom validator from the profile app to use on the checkout form.
-
-### Bug Fixes
