@@ -11,7 +11,7 @@ def blog(request):
     """ View for displaying the blog page """
     posts = BlogPost.objects.all()
     # Get all posts to show when rendering the template
-    form = BlogForm(request.POST or None)
+    form = BlogForm(request.POST, request.FILES or None)
     # Access the blog form
     context = {'form': form, 'posts': posts}
     # Context for rendering template
