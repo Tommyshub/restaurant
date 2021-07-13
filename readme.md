@@ -203,13 +203,13 @@ I applied those limitations in both the template itself but also in the python c
 
 - Crud:
 
-I had some issues here with for example users being able to upload files in the image field in the form for posting blogs, with emails not being sent and with the coupons codes not being applied correctly.
+I had some issues here with for example users being able to upload files in the image field in the form for posting blogs, with emails not being sent and with the coupons codes not being applied correctly. I also found an issue with the quantity not being updated in the bag, this was due to the fact that I somehow had removed the buttons and only used the ones rendered by default in the form and they did not have the right settings. I fixed this by adding the buttons and setting the visibility to hidden in the css.
 
-These problems have now been fixed, but I still found one issue during the testing process. The quantity can not be updated in the shopping bag, but it still works to remove the items completely.
+I do not find anymore errors when going through the website now and I tried every crud operation every several times in different ways to confirm this.
 
-I am sure that this worked before and I have no idea how I broke it, but I intend to fix this before turning in this project.
+- Admin account:
 
-I found no other bugs during the testing of the crud functions.
+In order to make sure that there are no issues with the admin account that is going to be used for the assessment I tried logging in to it and testing so that it worked as expected. I also asked a friend to login and see so there's no problems.
 
 - Developer console:
 
