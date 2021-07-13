@@ -322,9 +322,9 @@ Here are two codes that can be used for testing:
 
 Code20 and Institute21
 
-## Changes made after the 14th of July 2016
+## Changes made after the 4th of July 2016
 
-### Coupon codes
+### Coupon Codes
 
 Here I had a problem with the users not being given the right feedback after applying coupon codes, to fix this I added the discount to the
 checkout model and made sure the discount and new total will be displayed correctly everywhere. I also made sure to set the discount back to zero after it was applied so that the users can't use the coupon code twice before the session is emptied.
@@ -333,4 +333,36 @@ When testing the new changes I encountered a problem, both the discount and the 
 
 This made the message that the users are viewing a past order when clicking on the order history link a bit awkward so I decided to remove that message. I figured that it should be clear to the user that it is a past order either way, because of the date in the order information but also because of the navigation actions.
 
-To test so that this works as expected I made several orders with different items and I appplied the discount codes to check that it worked correctly. I also made a few orders without discount directly after to insure that the discount was gone from the session.
+To test so that this works as expected I made several orders with different items and I applied the discount codes to check that it worked correctly. I also made a few orders without discount directly after to insure that the discount was gone from the session.
+
+### Contact Page
+
+I moved the contact page to the bottom of the homepage instead. I changed from using the built-in send mail from django to emailjs. This presented a problem with the messaging from the django view not working anymore because I needed the emailjs javascript file function to return false. I tried writing the javascript function asynchronous instead but I never got it to work good, so my solution at the end was to handle the messages for emails directly via the javascript instead.
+
+### Blog Page
+
+I built the blog page so that the restaurant can post news and updates on what is going on there and also so that they can post coupon codes if they have any deals at the moment. This is a page that I envision not only restaurant owners would use, but also the restaurant workers. Therefore I decided to build out an admin panel in the template so that the restaurant workers with the right access can create a blog post from there. I think that it would make sense to have a different type of user other than superusers to get access to that part of the page, since that is the user that have access to the admin panel, but for now and for testing purposes I decided to leave it for the normal superuser class.
+
+### Form Validation
+
+Contact Form:
+
+The only validation I did on the contact form is to validate the email and require fields to be filled in. I did not see any use for any more validation here.
+
+Blog Form:
+
+The only validation I did on the blog form is to require the fields to be filled in and to make sure that no one can upload anything other than a image file. This was done by default on the image field so all I had to do is to ask if the form is valid.
+
+Bag Form:
+
+I did not do much of validation on the bag form other than that the coupon codes needs to be unique and I put a max length of twelve. I think this should be enough since the coupons can only be used once and they need to match what's in the database to work.
+
+Profile Form:
+
+The profile form required much more validation so I created a validators.py file where I validate most of the fields in the contact form. I do this by matching the value of the form towards a regex filter. Much of the filtering is the same but I created one for almost each individual field so that I can attach a error message for that exact field. I also use the built in email validator from django on the email field.
+
+Checkout Form:
+
+I am doing the same validation for the checkout form as for the profile form and I am importing the custom validator from the profile app to use on the checkout form.
+
+### Bug Fixes
