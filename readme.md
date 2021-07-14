@@ -99,7 +99,7 @@ I think that the it worked out prettty well with the gray navbar and a white bac
 
 ## Testing
 
-### Testing User Stories from User Experience (UX) Section
+## Testing User Stories from User Experience (UX) Section
 
 Some of the wants of the restaurant owner is the same as the customers wants so I will not go over them twice here.
 
@@ -169,13 +169,13 @@ Yes, most actions done by the users will give them feedback via toast messages o
 
 Yes, this is built-in to the allauth authentication system and I have tested it so that it works as expected.
 
-### Bandit -a tool designed to find common security issues in Python code.
+## Bandit -a tool designed to find common security issues in Python code.
 
 [You can find out more about bandit here](https://github.com/PyCQA/bandit)
 
 I used this automated tool to check if there were any security issues in my code. It scanned 1491 lines of code and found no security issues.
 
-### Migrating to PostgreSQL from Sqlite3
+## Migrating to PostgreSQL from Sqlite3
 
 This part was a real headache for me and I spent more than a week trying to figure out what was wrong, even asking people for help without avail.
 
@@ -183,7 +183,7 @@ I tried everything I could think of and at the end it was something really simpl
 
 PostgreSQL did not understand my query when I wrote in lowercase letters and Sqlite3 did, so all I needed to do to fix this was to change how I query the database.
 
-### Bug Testing
+## Bug Testing
 
 - User inputs:
 
