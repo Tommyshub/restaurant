@@ -14,13 +14,13 @@
   margin-top: 4px;
 }
 
-#increment-qty_16 {
+.increment-qty {
   position: absolute;
   visibility: hidden;
   display: none;
 }
 
-#decrement-qty_16 {
+.decrement-qty {
   position: absolute;
   visibility: hidden;
   display: none;
