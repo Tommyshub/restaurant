@@ -232,6 +232,26 @@ When scanning my html templates for problem I encountered a problem at the accou
 I found no other errors when scanning my templates. I scanned both with manual input and directly with the rendered html on the paths I could.
 I ignored problems regarding bad values due to the jinja syntax.
 
+## Known Bugs
+
+### Form validation on checkout page
+
+The form validation for the checkout form does not give a field specific error. This is due to the fact that I cannot render the checkout page with the form without breaking the stripe payment part, so I redirect instead. Form is still marked as invalid and the user will get a message saying it's invalid.
+
+### Ending li tag in the login template
+
+There's a end tag for an li element that is being rendered by the allauth package that I am unable to remove at the accounts/login page.
+
+### Images in the blog form
+
+This is not a bug exactly, but I noticed at the last night before submitting the project sadly that it's not possible to upload images to the deployed version of the site. The reason for this is that when I worked at the project and tried using s3 bucket, the free tier went out in less then a week and I had to change to static file hosting with whitenoise. This was perfectly fine for the project as it was back then and I did not consider it at all when creating the blog page.
+
+My temporary solution for this is to upload [this](https://github.com/Tommyshub/restaurant/blob/main/static/images/blog-images.zip) zip file that contains images that I have already uploaded but deleted the blog posts from. All of these images will work to check so that the image form works on the blog page.
+
+I realize that this solution isn't perfect and that it would have been far better to use something like digital ocean or cloudinary to host my images but I did not want to change that and risk not getting it to work properly before the submission.
+
+My hope is that the assessor will have some leniency for this mistake seeing that the function works fine other than the fact that I used static file hosting.
+
 ### Responsiveness
 
 - Navbar
