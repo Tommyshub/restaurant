@@ -252,7 +252,7 @@ I realize that this solution isn't perfect and that it would have been far bette
 
 My hope is that the assessor will have some leniency for this mistake seeing that the function works fine other than the fact that I used static file hosting.
 
-### Responsiveness
+## Responsiveness
 
 - Navbar
 
