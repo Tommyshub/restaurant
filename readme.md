@@ -193,7 +193,7 @@ I fixed some of these issues with the built in validators for email addresses an
 
 I have noticed a bug in the checkout app in regards to the field specific messages. They do not work because I am unable to render the form without breaking the field for stripe payments, so I have to redirect the users if there's an error for now. The users still gets a message saying that the input is not valid but they will not get the error message for the specific input that is wrong.
 
-Because the validation technically works and it's not possible to submit an invalid form, I have decided to focus on a few issues that is more important for now. I hope that I have time to fix this before the deadline.
+I have tried a few things to fix this, for example overriding the default is valid function. But as of now I have not been able to figure out how to fix this.
 
 - Navigation and Security:
 
