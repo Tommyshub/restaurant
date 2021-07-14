@@ -215,6 +215,23 @@ In order to make sure that there are no issues with the admin account that is go
 
 One issue I noticed was a warning about missing favicon, I solved this by making a copy of my vegan logo and using that as a favicon and linking to it in the base template.
 
+- Testing done after setting debug to false:
+
+I started by testing all the forms, trying to change to invalid input to check if the validations work as expected and they do except for the bug I write about above here. Then I tried to submit the forms with valid data, sending emails, posting blog posts and creating orders with coupon codes. I did not find any issues there.
+
+I also tried login in to accounts, resetting passwords, creating new accounts without any issues. I also tried updating and removing bag items without any problems.
+
+I checked all the links and tried to get access to pages that I should not have access to without being logged in or an administrator and all of the protections here was working and I could not get access to anything that I shouldn't.
+
+I logged into stripe to verify that everything works there and I checked that the payment intents had succeeded and that there was no errors with the webhooks.
+
+I scanned all the python files one more time to check if I had any pep8 formatting errors but it was all fine.
+
+When scanning my html templates for problem I encountered a problem at the accounts/login path, the validator says "No li element in scope but a li end tag seen." but this is a problem that comes from the allauth package and it is not in the code in the actual login.html template.
+
+I found no other errors when scanning my templates. I scanned both with manual input and directly with the rendered html on the paths I could.
+I ignored problems regarding bad values due to the jinja syntax.
+
 ### Responsiveness
 
 - Navbar
@@ -322,7 +339,7 @@ Here are two codes that can be used for testing:
 
 Code20 and Institute21
 
-## Changes made after the 4th of July 2016
+## Changes made after the 4th of July 2021
 
 ### Coupon Codes
 
