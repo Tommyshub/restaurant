@@ -232,6 +232,8 @@ When scanning my html templates for problem I encountered a problem at the accou
 I found no other errors when scanning my templates. I scanned both with manual input and directly with the rendered html on the paths I could.
 I ignored problems regarding bad values due to the jinja syntax.
 
+I also scanned all the css files and there I found no errors except for a warning about unknown vendor extensions which is a bug in the wc3 validator.
+
 ## Known Bugs
 
 ### Form validation on checkout page
@@ -246,7 +248,7 @@ There's a end tag for an li element that is being rendered by the allauth packag
 
 This is not a bug exactly, but I noticed at the last night before submitting the project that it's sadly not possible to upload images to the deployed version of the site. The reason for this is that when I worked at the project and tried using s3 bucket, the free tier went out in less then a week and I had to change to static file hosting with whitenoise. This was perfectly fine for the project as it was back then and I did not consider it at all when creating the blog page.
 
-My temporary solution for this is to upload [this](https://github.com/Tommyshub/restaurant/blob/main/static/images/blog-images.zip) zip file that contains images that I have already uploaded but deleted the blog posts from. All of these images will work to check so that the image form works on the blog page.
+My temporary solution for this is to upload [this](https://github.com/Tommyshub/restaurant/blob/main/static/images/blog-images.zip) zip file that contains images that I have already uploaded but deleted the blog posts from, you can also find the individual files [here](https://github.com/Tommyshub/restaurant/tree/main/static/images/blog) in the static folder. All of these images will work to check so that the image form works on the blog page.
 
 I realize that this solution isn't perfect and that it would have been far better to use something like digital ocean or cloudinary to host my images but I did not want to change that and risk not getting it to work properly this close before the submission deadline.
 
