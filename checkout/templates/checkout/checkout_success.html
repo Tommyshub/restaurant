@@ -33,7 +33,7 @@
           {{ item.quantity }} x {{ item.product.name }} for €
           {{item.product.price}} each
           <br />
-          <a href="{% url 'create_review' product_name=item.product.name %}"
+          <a href="{% url 'create_review' item.product.name %}"
             >Review {{ item.product.name }}
           </a>
         </p>
