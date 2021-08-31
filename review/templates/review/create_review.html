@@ -4,18 +4,10 @@
 <div class="container">
   <h2 class="review-title">Create Review</h2>
   <div class="review-form">
-    <form action="{% url 'create_review' %}" method="post">
+    <form action="{% url 'create_review' product_name %}" method="post">
+      <!-- prettier-ignore -->
       {% csrf_token %}
-      <label for="comment">Review</label>
-      <textarea
-        name="comment"
-        id="comment"
-        cols="20"
-        rows="10"
-        class="form-control"
-      ></textarea>
-      <label for="rating">Rating</label>
-      <input type="text" name="rating" class="form-control" />
+      {{ form.as_p }}
     </form>
     <br />
     <input type="submit" class="btn btn-primary" value="Add Review" />
