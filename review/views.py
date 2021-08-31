@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages
+from .forms import ProductReviewForm
 
 
 def review(request):
@@ -10,7 +11,7 @@ def review(request):
 def create_review(request, product_name):
     """ View for displaying the create review page """
     if request.method == 'POST' and user.is_authenticated:
-        form = CreateReviewForm(request.POST or None)
+        form = ProductReviewForm(request.POST or None)
         if form.is_valid():
             review = form.save(commit=False)
             review.product = product_name
@@ -23,4 +24,9 @@ def create_review(request, product_name):
         else:
             messages.error(
                 request, f'Error creating review for {review.product}')
-    return render(request, 'review/create_review.html')
+    form = ProductReviewForm(request.POST or None)
+    context = {
+        'form': form,
+        'product_name': product_name,
+    }
+    return render(request, 'review/create_review.html', context)
