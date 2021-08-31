@@ -29,4 +29,6 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('blog/', include('blog.urls')),
     path('review/', include('review.urls')),
+    url(r'^ratings/', include('star_ratings.urls',
+        namespace='ratings', app_name='ratings')),
 ]
