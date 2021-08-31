@@ -1,0 +1,14 @@
+<!-- Extend the base template -->
+{% extends "base.html" %}
+<!-- Load the static files -->
+{% load static %}
+<!-- Load extra css -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'review/css/review.css' %}" />
+{% endblock %}
+<!-- Add block for content -->
+{% block content %}
+<div class="container">
+  <h1>Review Page</h1>
+</div>
+{% endblock %}

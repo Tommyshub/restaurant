@@ -13,6 +13,7 @@ def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     template = 'profile/profile.html'
     # Get users profile
+    print(request.session)
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
         # Get all order connected to the user
