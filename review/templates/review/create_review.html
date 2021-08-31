@@ -1,4 +1,21 @@
-{% block extra_css %} {% endblock %}
+<!-- Extend the base template -->
+{% extends "base.html" %}
+<!-- Load the static files -->
+{% load static %}
+<!-- Load Javascript -->
+{% block extra_js %}
+<script
+  type="text/javascript"
+  src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"
+></script>
+{% endblock %}
+<!-- Load extra css -->
+{% block extra_css %}
+<link
+  rel="stylesheet"
+  href="{% static 'star-ratings/css/star-ratings.css' %}"
+/>
+{% endblock %}
 <!-- Add block for content -->
 {% block content %}
 <div class="container">
