@@ -17,27 +17,25 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_phone_number = models.CharField(validators=[validate_phone_number],
                                             max_length=20, null=True,
-                                            blank=False)
+                                            blank=True)
     default_street_address1 = models.CharField(
         validators=[validate_alpha_numeric], max_length=80,
-        null=True, blank=False)
+        null=True, blank=True)
     default_street_address2 = models.CharField(
         validators=[validate_alpha_numeric], max_length=80,
         null=True, blank=True)
     default_town_or_city = models.CharField(validators=[validate_city],
                                             max_length=40, null=True,
-                                            blank=False)
+                                            blank=True)
     default_postcode = models.CharField(validators=[validate_postal_code],
                                         max_length=20, null=True,
-                                        blank=False)
-    default_county = models.CharField(
-        validators=[validate_county], max_length=80, null=True, blank=False)
-    default_country = CountryField(
-        blank_label='Country', null=True, blank=False)
+                                        blank=True)
+    default_county = models.CharField(validators=[validate_county],
+                                      max_length=80, null=True, blank=True)
+    default_country = CountryField(default="DE", blank_label='Country')
 
-
-def __str__(self):
-    return self.user.username
+    def __str__(self):
+        return self.user.username
 
 
 @receiver(post_save, sender=User)
