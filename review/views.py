@@ -1,16 +1,21 @@
 from django.shortcuts import render
 from django.contrib import messages
 from .forms import ProductReviewForm
+from .models import ProductReview
+from django.contrib.auth.decorators import login_required
 
 
 def review(request):
     """ View for displaying the review page """
-    return render(request, 'review/review.html')
+    reviews = ProductReview.objects.all()
+    context = {'reviews': reviews}
+    return render(request, 'review/review.html', context)
 
 
+@login_required
 def create_review(request, product_name):
     """ View for displaying the create review page """
-    if request.method == 'POST' and user.is_authenticated:
+    if request.method == 'POST':
         form = ProductReviewForm(request.POST or None)
         if form.is_valid():
             review = form.save(commit=False)
