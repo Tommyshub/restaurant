@@ -1,7 +1,9 @@
 <!-- Extend the base template -->
 {% extends "base.html" %}
 <!-- Load the static files -->
-{% load static %} {% block extra_css %}
+{% load static %}
+<!-- Load the css file -->
+{% block extra_css %}
 <link rel="stylesheet" href="{% static 'review/css/create_review.css' %}" />
 {% endblock %}
 <!-- Add block for content -->
