@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -29,6 +29,4 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('blog/', include('blog.urls')),
     path('review/', include('review.urls')),
-    url(r'^ratings/', include('star_ratings.urls',
-        namespace='ratings', app_name='ratings')),
 ]

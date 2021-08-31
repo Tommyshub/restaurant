@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     'blog',
     'review',
     'django_extensions',
-    'star_ratings',
 ]
 
 MIDDLEWARE = [
@@ -88,7 +87,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'bag.contexts.bag_contents',
-                'django.core.context_processors.request',
             ],
         },
     },
