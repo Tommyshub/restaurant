@@ -1,0 +1,19 @@
+.checked {
+  color: orange;
+}
+
+.review-heading {
+  font-family: "Architects Daughter", cursive;
+}
+
+.review-product {
+  font-family: "Architects Daughter", cursive;
+}
+
+.review-comment {
+  font-size: 18px;
+}
+
+.review-user {
+  font-family: "Architects Daughter", cursive;
+}

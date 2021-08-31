@@ -9,6 +9,55 @@
 <!-- Add block for content -->
 {% block content %}
 <div class="container">
-  <h1>Review Page</h1>
+  <div class="row empty"></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col xl12 center-align">
+      <h2 class="review-heading">Product Reviews</h2>
+      <br />
+      <div class="review">
+        {% for review in reviews %}
+        <h5 class="review-product">{{ review.product }}</h5>
+        <p class="review-comment">{{ review.comment }}</p>
+        <p class="review-rating">
+          {% if review.rating == 1 %}
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          {% endif %} {% if review.rating == 2 %}
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          {% endif %} {% if review.rating == 3 %}
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          {% endif %} {% if review.rating == 4 %}
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          {% endif %} {% if review.rating == 5 %}
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          {% endif %}
+        </p>
+        <small class="review-user">Posted by: {{review.user}}</small>
+        <br />
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
