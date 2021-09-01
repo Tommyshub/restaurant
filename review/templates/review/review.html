@@ -54,7 +54,9 @@
           <span class="fa fa-star checked"></span>
           {% endif %}
         </p>
-        <small class="review-user">Posted by: {{review.user}}</small>
+        <small class="review-user"
+          >Posted by: {{review.user}} at {{review.published_date}}</small
+        >
         <br />
         {% endfor %}
       </div>
