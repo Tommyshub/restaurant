@@ -5,7 +5,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class ProductReview(models.Model):
-    product = models.CharField(max_length=420)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField(blank=True, null=True)
     rating = models.IntegerField(default=0, validators=[MinValueValidator(1),
