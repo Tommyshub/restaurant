@@ -20,6 +20,12 @@
           <!-- prettier-ignore -->
           {% csrf_token %}
           {{ form.as_p }}
+          {% for radio in form.rating %}
+          <label>
+            {{ radio.tag }}
+            <span>{{ radio.choice_label }}</span>
+          </label>
+          {% endfor %}
           <br />
           <input
             type="submit"
