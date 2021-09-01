@@ -9,15 +9,26 @@
 <!-- Add block for content -->
 {% block content %}
 <div class="container">
-  <h2 class="review-title">Create Review</h2>
-  <div class="review-form">
-    <form action="{% url 'create_review' product_name %}" method="post">
-      <!-- prettier-ignore -->
-      {% csrf_token %}
-      {{ form.as_p }}
-      <br />
-      <input type="submit" class="btn btn-primary" value="Add Review" />
-    </form>
+  <div class="row empty"></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col xl12 center-align">
+      <h2 class="review-title col xl12 push-m3">Create Review</h2>
+      <div class="review-form col xl12 push-xl2 push-m3">
+        <form action="{% url 'create_review' product_name %}" method="post">
+          <!-- prettier-ignore -->
+          {% csrf_token %}
+          {{ form.as_p }}
+          <br />
+          <input
+            type="submit"
+            class="light-green btn btn-primary"
+            value="Add Review"
+          />
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}

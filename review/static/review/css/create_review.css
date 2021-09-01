@@ -1,0 +1,16 @@
+.review-title {
+  font-family: "Architects Daughter", cursive;
+  margin-bottom: 45px;
+}
+
+.review-form {
+  max-width: 800px;
+}
+
+.review-form textarea {
+  min-height: 400px;
+}
+
+button {
+  background-color: #8bc34a;
+}
