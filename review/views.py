@@ -51,7 +51,8 @@ def create_review(request, product_name):
 def edit_review(request, product_name):
     """ Edit Review """
     product = get_object_or_404(Product, name=product_name)
-    review = get_object_or_404(ProductReview, product=product)
+    review = get_object_or_404(
+        ProductReview, user=request.user, product=product)
     form = ProductReviewForm(instance=review)
     # Populate the form with the data from the review instance
     if request.method == 'POST' and request.user.is_superuser:
@@ -88,7 +89,8 @@ def remove_review(request, product_name):
     if request.method == 'POST':
         try:
             # Access the review
-            review = get_object_or_404(ProductReview, product=product)
+            review = get_object_or_404(
+                ProductReview, user=request.user, product=product)
             # Delete the review
             review.delete()
             messages.success(
