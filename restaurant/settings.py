@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     'blog',
     'review',
     'django_extensions',
-    'multiselectfield',
 ]
 
 MIDDLEWARE = [
