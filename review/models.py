@@ -20,5 +20,8 @@ class ProductReview(models.Model):
                                              MaxValueValidator(5)])
     published_date = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ["-published_date"]
+
     def __str__(self):
         return self.user.username
