@@ -73,6 +73,22 @@
                 href="{% url 'edit_review' review.product %}"
                 >Edit</a
               >
+              <br />
+              <!-- Delete Review -->
+              <br />
+              <form
+                action="{% url 'remove_review' review.product %}"
+                method="post"
+              >
+                {% csrf_token %}
+                <button
+                  class="waves-effect waves-light btn light-green remove-post"
+                  type="submit"
+                  value="Delete Review"
+                >
+                  DELETE
+                </button>
+              </form>
               {% endif %}
               <!-- . -->
               {% endif %}

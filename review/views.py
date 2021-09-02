@@ -73,6 +73,33 @@ def edit_review(request, product_name):
     context = {
         'form': form,
         'review': review,
-        'product_name': product_name, }
+        'product_name': product_name,
+    }
 
     return render(request, template, context)
+
+
+@login_required
+def remove_review(request, product_name):
+    """Remove Review """
+    product = get_object_or_404(Product, name=product_name)
+    # Access the review form
+    form = ProductReviewForm(request.POST or None)
+    if request.method == 'POST':
+        try:
+            # Access the review
+            review = get_object_or_404(ProductReview, product=product)
+            # Delete the review
+            review.delete()
+            messages.success(
+                request, f'Removed review for {product_name}')
+            return redirect('review')
+        except Exception as e:
+            messages.error(request, f'Error removing review: {e}')
+            return HttpResponse(status=500)
+    context = {
+        'form': form,
+        'product_name': product_name,
+    }
+
+    return render(request, 'review/review.html', context)
