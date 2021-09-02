@@ -58,9 +58,31 @@
           >Posted by: {{review.user}} at {{review.published_date}}</small
         >
         <br />
+        <!-- Get all reviews -->
+        <div class="container">
+          <div class="row">
+            <div class="col xl12 center-align">
+              <!-- If the user is logged in -->
+              {% if user.is_authenticated %}
+              <!-- If the user is a superuser -->
+              {% if request.user == review.user %}
+              <br />
+              <!-- Edit Blog Post -->
+              <a
+                class="waves-effect waves-light btn light-green edit-post"
+                href="{% url 'edit_review' review.product %}"
+                >Edit</a
+              >
+              {% endif %}
+              <!-- . -->
+              {% endif %}
+            </div>
+          </div>
+        </div>
         {% endfor %}
       </div>
     </div>
   </div>
 </div>
+<!-- . -->
 {% endblock %}

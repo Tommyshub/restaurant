@@ -1,0 +1,58 @@
+<!-- Extend the base template -->
+{% extends "base.html" %}
+<!-- Load the static files -->
+{% load static %}
+<!-- Load extra css -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'review/css/create_review.css' %}" />
+{% endblock %}
+<!-- Block for main content -->
+{% block content %}
+<div class="container">
+  <div class="row empty"></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col xl12 center-align">
+      <!-- If the user is logged in -->
+      {% if user.is_authenticated %}
+      <!-- If the review user is the same as the current user -->
+      {% if user.is_superuser %}
+      <div class="edit-review">
+        <div class="container">
+          <div class="row">
+            <div class="col xl12 center-align">
+              <h2 class="review-title col xl12 push-m3">Edit Your Review</h2>
+              <div class="review-form col xl12 push-xl2 push-m3">
+                <form
+                  action="{% url 'edit_review' product_name %}"
+                  method="post"
+                >
+                  <!-- prettier-ignore -->
+                  {% csrf_token %}
+                    {{ form.as_p }}
+                    {% for radio in form.rating %}
+                  <label>
+                    {{ radio.tag }}
+                    <span>{{ radio.choice_label }}</span>
+                  </label>
+                  {% endfor %}
+                  <br />
+                  <input
+                    type="submit"
+                    class="light-green btn btn-primary"
+                    value="Add Review"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      <!-- . -->
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
