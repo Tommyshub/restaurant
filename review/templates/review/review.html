@@ -69,20 +69,18 @@
               <br />
               <!-- Edit Blog Post -->
               <a
-                class="waves-effect waves-light btn light-green edit-post"
+                class="waves-effect waves-light btn light-green edit-review"
                 href="{% url 'edit_review' review.product %}"
                 >Edit</a
               >
-              <br />
               <!-- Delete Review -->
-              <br />
               <form
                 action="{% url 'remove_review' review.product %}"
                 method="post"
               >
                 {% csrf_token %}
                 <button
-                  class="waves-effect waves-light btn light-green remove-post"
+                  class="waves-effect waves-light btn light-green remove-review"
                   type="submit"
                   value="Delete Review"
                 >

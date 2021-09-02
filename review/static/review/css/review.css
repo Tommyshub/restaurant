@@ -18,3 +18,11 @@
 .review-user {
   font-family: "Architects Daughter", cursive;
 }
+
+.edit-review {
+  margin-top: 10px;
+}
+
+.remove-review {
+  margin: 10px;
+}
