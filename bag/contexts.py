@@ -13,7 +13,7 @@ def bag_contents(request):
     total = 0
     product_count = 0
     discount = 0
-    # Get the discount from the session
+    # If the discount exists in the session
     if request.session.get('session_discount'):
         coupon = request.session.get('session_discount')
     bag = request.session.get('bag', {})
