@@ -14,7 +14,8 @@ def bag_contents(request):
     product_count = 0
     discount = 0
     # Get the discount from the session
-    coupon = request.session.get('session_discount')
+    if request.session.get('session_discount'):
+        coupon = request.session.get('session_discount')
     bag = request.session.get('bag', {})
     # Get the products and calculate the total
     for item_id, item_data in bag.items():
