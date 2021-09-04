@@ -85,7 +85,7 @@ def apply_coupon(request):
             # Calculate the total discount for success message
             total_discount = percentage(coupon.discount, total)
             # Set total discount in setting
-            request.session['session_discount'] = coupon.discount
+            request.session['session_coupon'] = coupon.discount
             # Calculate new total for success message
             new_total = total - total_discount
             # Keep track and save used coupons
