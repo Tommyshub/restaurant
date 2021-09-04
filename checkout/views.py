@@ -162,7 +162,7 @@ def checkout_success(request, order_number):
         # Get the userprofile to connect the order to
         order.user_profile = profile
         # Attach the profile
-        order.discount = settings.DISCOUNT
+        order.discount = discount
         # Add the discount
         order.total = total
         # Add the total
