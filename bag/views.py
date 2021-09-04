@@ -2,13 +2,11 @@ from django.shortcuts import (
     render, redirect, reverse, HttpResponse, get_object_or_404)
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from menu.models import Product, Category
-from profile.models import UserProfile
-from decimal import Decimal
-from django.conf import settings
+from menu.models import Product
 from .models import Coupon, UsedCoupon
 from .forms import CouponForm
 from bag.contexts import bag_contents
+from bag.contexts import percentage
 
 
 @login_required
@@ -59,11 +57,6 @@ def remove_from_bag(request, item_id):
         return HttpResponse(status=500)
 
 
-def percentage(percent, whole):
-    """ Function for calculating percentage """
-    return (percent * whole) / 100
-
-
 @login_required
 def apply_coupon(request):
     """
@@ -89,11 +82,11 @@ def apply_coupon(request):
                 messages.error(
                     request, f'Coupon Already Used.')
                 return render(request, 'bag/bag.html', {'form': form})
-            # Calculate the total discount
+            # Calculate the total discount for success message
             total_discount = percentage(coupon.discount, total)
             # Set total discount in setting
-            settings.DISCOUNT = total_discount
-            # Calculate new total to show it in message
+            request.session['session_discount'] = coupon.discount
+            # Calculate new total for success message
             new_total = total - total_discount
             # Keep track and save used coupons
             used_coupon = UsedCoupon()

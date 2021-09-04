@@ -188,7 +188,7 @@ def checkout_success(request, order_number):
     if 'bag' in request.session:
         del request.session['bag']
     # Empty the bag
-    settings.DISCOUNT = 0
+    request.session['discount'] = 0
     # Set discount back to zero
     return redirect(reverse('order_history', args=[order_number]))
 

@@ -207,8 +207,6 @@ else:
 
 # Save every session
 SESSION_SAVE_EVERY_REQUEST = True
-# Discount setting
-DISCOUNT = 0
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
