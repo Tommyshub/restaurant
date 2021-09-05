@@ -33,6 +33,7 @@ ALLOWED_HOSTS = [
     'https://the-greenhouse-1.herokuapp.com/',
     'the-greenhouse-1.herokuapp.com',
     '127.0.0.1',
+    'localhost'
 ]
 
 # Application definition
@@ -114,7 +115,7 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-SITE_ID = 1
+SITE_ID = 3
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
