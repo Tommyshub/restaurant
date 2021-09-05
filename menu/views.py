@@ -1,22 +1,21 @@
 from django.shortcuts import render, redirect
-from django.views import View
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
-from .models import Product, Category
+from .models import Product
 
 
 # Menu
 def menu(request, *args, **kwargs):
     """ View for displaying the menu page """
-    # get every item from each category
+    # Get every item from each category
     bowls = Product.objects.filter(category__name__contains='Bowls')
     burgers = Product.objects.filter(category__name__contains='Burgers')
     drinks = Product.objects.filter(category__name__contains='Drinks')
     pizzas = Product.objects.filter(category__name__contains='Pizzas')
     desserts = Product.objects.filter(category__name__contains='Desserts')
 
-    # pass into context
+    # Pass into context
     context = {
         'bowls': bowls,
         'burgers': burgers,
@@ -24,7 +23,7 @@ def menu(request, *args, **kwargs):
         'drinks': drinks,
         'desserts': desserts,
     }
-    # render the template
+    # Render the template
     return render(request, 'menu/menu.html', context)
 
 
