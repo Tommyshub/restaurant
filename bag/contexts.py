@@ -14,11 +14,11 @@ def bag_contents(request):
     product_count = 0
     discount = 0
     coupon = 0
-    # If the coupon code exists in the session
+    # Set the coupon code discount if it exists in the session
     if request.session.get('session_coupon'):
         coupon = request.session.get('session_coupon')
     bag = request.session.get('bag', {})
-    # Get the products and calculate the total
+    # Get the item data and calculate the total price
     for item_id, item_data in bag.items():
         if isinstance(item_data, int):
             product = get_object_or_404(Product, pk=item_id)
@@ -34,8 +34,9 @@ def bag_contents(request):
             })
     # Calculate the discount percentage
     discount = percentage(coupon, total)
-    # Set new total
+    # Calculate new total after applying the discount
     total = total - discount
+    # Put everying into the context
     context = {
         'bag_items': bag_items,
         'product_count': product_count,
