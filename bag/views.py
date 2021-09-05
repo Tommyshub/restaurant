@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from menu.models import Product
 from .models import Coupon, UsedCoupon
 from .forms import CouponForm
-from bag.contexts import bag_contents
 
 
 @login_required
@@ -66,8 +65,6 @@ def apply_coupon(request):
     if form.is_valid():
         # Discount code from the form
         code = form.cleaned_data['code']
-        # Current bag from the context processor
-        current_bag = bag_contents(request)
         try:
             # Check if the coupon from the form matches code from the database
             coupon = Coupon.objects.get(code__iexact=code, active=True)
