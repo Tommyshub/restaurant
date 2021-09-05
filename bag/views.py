@@ -69,8 +69,6 @@ def apply_coupon(request):
         code = form.cleaned_data['code']
         # Current bag from the context processor
         current_bag = bag_contents(request)
-        # Total from the current bag
-        total = current_bag['total']
         try:
             # Check if the coupon from the form matches code from the database
             coupon = Coupon.objects.get(code__iexact=code, active=True)
@@ -80,14 +78,10 @@ def apply_coupon(request):
             # Redirect back to the bag if the coupon is already used
             if is_used:
                 messages.error(
-                    request, f'Coupon Already Used.')
+                    request, f'The code {coupon.code} was already used.')
                 return render(request, 'bag/bag.html', {'form': form})
-            # Calculate the total discount for success message
-            total_discount = percentage(coupon.discount, total)
-            # Set total discount in setting
+            # Put the coupon code in the session
             request.session['session_coupon'] = coupon.discount
-            # Calculate new total for success message
-            new_total = total - total_discount
             # Keep track and save used coupons
             used_coupon = UsedCoupon()
             # Attach current user to the used coupon
@@ -98,12 +92,11 @@ def apply_coupon(request):
             used_coupon.save()
             # Message the user about the applied discount
             messages.success(
-                request, f'''A discount of {coupon.discount}% and total
-                discount of  €{total_discount} was applied to
-                you bag and your new total is  €{new_total}''')
+                request, f'''A discount of {coupon.discount}% was applied to
+                you bag and your new total is  €{current_bag['total']}''')
         except Coupon.DoesNotExist:
             # Message user about invalid coupon and set coupon id to none
             request.session['coupon_id'] = None
             messages.error(
-                request, f'Not a valid coupon code.')
+                request, f'This is not valid coupon code!')
     return render(request, 'bag/bag.html', {'form': form})
