@@ -99,13 +99,13 @@
       margin-left: 120px;
   }
   .nav-links a {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 }
 
 @media screen and (max-width: 1600px) {
   .navbar-links {
-    margin-left: 80px;
+    margin-left: 40px;
   }
 }
 
@@ -114,7 +114,7 @@
     margin-left: 40px;
   }
   .nav-links a {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 }
 
@@ -132,7 +132,7 @@
 
 @media screen and (max-width: 1275px) {
   .nav-ul {
-    width: 50%;
+    width: 60%;
   }
 }
 
@@ -152,7 +152,7 @@
 
 @media screen and (max-width: 990px) {
   .nav-links > a {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 
