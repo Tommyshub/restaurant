@@ -11,11 +11,13 @@ def blog(request):
     """ View for displaying the blog page """
     posts = BlogPost.objects.all()
     # Get all posts to show when rendering the template
-    form = BlogForm(request.POST, request.FILES or None)
+    form = BlogForm()
     # Access the blog form
     context = {'form': form, 'posts': posts}
     # Context for rendering template
     if request.method == 'POST' and request.user.is_superuser:
+        # Access the form with request and files
+        form = BlogForm(request.POST, request.FILES or None)
         if form.is_valid():
             title = request.POST.get('title')
             image = request.FILES.get('image')
