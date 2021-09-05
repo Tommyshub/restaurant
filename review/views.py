@@ -3,7 +3,6 @@ from django.contrib import messages
 from .forms import ProductReviewForm
 from .models import ProductReview
 from menu.models import Product
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
