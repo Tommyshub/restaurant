@@ -6,7 +6,6 @@ from menu.models import Product
 from .models import Coupon, UsedCoupon
 from .forms import CouponForm
 from bag.contexts import bag_contents
-from bag.contexts import percentage
 
 
 @login_required
@@ -93,7 +92,7 @@ def apply_coupon(request):
             # Message the user about the applied discount
             messages.success(
                 request, f'''A discount of {coupon.discount}% was applied to
-                you bag and your new total is  €{current_bag['total']}''')
+                you bag!''')
         except Coupon.DoesNotExist:
             # Message user about invalid coupon and set coupon id to none
             request.session['coupon_id'] = None
