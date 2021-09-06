@@ -1,0 +1,28 @@
+.checked {
+  color: orange;
+}
+
+.review-heading {
+  font-family: "Architects Daughter", cursive;
+  margin-bottom: 45px;
+}
+
+.review-product {
+  font-family: "Architects Daughter", cursive;
+}
+
+.review-comment {
+  font-size: 18px;
+}
+
+.review-user {
+  font-family: "Architects Daughter", cursive;
+}
+
+.edit-review {
+  margin-top: 10px;
+}
+
+.remove-review {
+  margin: 10px;
+}

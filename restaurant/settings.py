@@ -212,3 +212,6 @@ SESSION_SAVE_EVERY_REQUEST = True
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+# Set default auto field
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

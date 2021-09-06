@@ -1,0 +1,27 @@
+.bag-table {
+  padding-top: 75px;
+}
+
+.remove-item {
+  cursor: pointer;
+}
+
+.update-link {
+  cursor: pointer;
+}
+
+.keep-secure {
+  margin-top: 4px;
+}
+
+.increment-qty {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+
+.decrement-qty {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}

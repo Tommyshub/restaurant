@@ -1,0 +1,373 @@
+/* Reset default styles */
+* {
+  line-height: 1.6;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* Empty div for padding between navbar and content */
+
+.empty {
+  padding-top: 75px;
+}
+
+/* Navbar styles */
+
+.navbar-wrapper {
+  font-family: "Architects Daughter", cursive;
+  font-weight: 600;
+  box-shadow: 0 3px 2px -2px hsla(0, 3%, 80%, 0.161);
+  display: block;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  min-height: 12vh;
+  background-color: #eaeaea;
+  min-height: 102px;
+}
+
+.nav-ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  text-align: center;
+  width 99%;
+  margin: 0 auto;
+}
+
+.navbar-links {
+  margin-left: 240px;
+}
+
+.navbar-links a {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  color: black;
+}
+
+.navbar-links a:hover {
+  background-color: #eaeaea;
+  color: #8ec250;
+}
+
+.navbar-links a:active {
+  background-color: #eaeaea;
+  color: #8ec250;
+}
+
+.bag {
+  margin-right: 5px;
+}
+
+.logo p {
+  line-height: 1.1;
+  font-size: 2rem;
+  letter-spacing: 4px;
+}
+
+.burger-menu {
+  display: none;
+}
+
+/* Media queries for width */
+
+@media screen and (max-width: 1900px) {
+  .navbar-links {
+    margin-left: 200px;
+  }
+}
+
+@media screen and (max-width: 1800px) {
+  .navbar-links {
+    margin-left: 160px;
+  }
+}
+
+@media screen and (max-width: 1700px) {
+    .navbar-links {
+      margin-left: 120px;
+  }
+  .nav-links a {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .navbar-links {
+    margin-left: 40px;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .navbar-links {
+    margin-left: 40px;
+  }
+  .nav-links a {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .navbar-links {
+    margin-left: 30px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .navbar-links {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 1275px) {
+  .nav-ul {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  .nav-links > a {
+    font-size: 16px;
+  }
+
+  .logo > p {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+  }
+  .logo > small {
+    font-size: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .nav-links > a {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  body {
+    overflow-x: hidden;
+  }
+  .nav-ul {
+    background-color: #eaeaea;
+    position: fixed;
+    right: 0px;
+    height: 45vh;
+    top: 12vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+  }
+
+  .nav-links {
+    opacity: 0;
+  }
+
+  .bag {
+    cursor: pointer;
+    display:inline-block;
+    margin-left: 20px;
+  }
+
+  .bag > p {
+    font-size: 12px;
+
+  }
+
+  .burger-menu {
+    display: flex; 
+    cursor: pointer;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-right: 20px;
+  }
+
+  .logo p {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  .logo small {
+    font-size: 70%;
+    letter-spacing: 1px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .burger-menu > i {
+    font-size: 16px;
+  }
+  .bag {
+    margin-left: 0px;
+  }
+
+  .logo p {
+    font-size: 1rem;
+  }
+
+  .logo small {
+    font-size: 0.5rem;
+  }
+}
+@media screen and (max-width: 300px) {
+  .burger-menu > i {
+    font-size: 14px;
+  }
+
+  .bag > p {
+    font-size: 10px;
+  }
+
+}
+
+/* Media Queries for height */
+
+@media screen and (max-height: 1048px) {
+  .nav-ul {
+    top: 10vh;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .nav-ul {
+    top: 14vh;
+  }
+}
+
+@media screen and (max-height: 650px) {
+  .nav-ul {
+    top: 16vh;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .nav-ul {
+    top: 17vh;
+  }
+}
+
+@media screen and (max-height: 550px) {
+  .nav-ul {
+    top: 18vh;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .nav-ul {
+    top: 19vh;
+  }
+}
+
+@media screen and (max-height: 450px) {
+  .nav-ul {
+    top: 20vh;
+  }
+}
+
+@media screen and (max-height: 400px) {
+  .nav-ul {
+    top: 22vh;
+  }
+}
+
+@media screen and (max-height: 350px) {
+  .nav-ul {
+    top: 24vh;
+  }
+}
+
+@media screen and (max-height: 300px) {
+  .nav-ul {
+    top: 26vh;
+  }
+}
+
+.nav-active {
+  transform: translateX(0);
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.toggle .burger-menu {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.bag {
+  font-size: 0.95rem;
+  color: black;
+}
+
+.bag a {
+  padding-left: 9px;
+  font-size: 1.8rem;
+}
+
+.vegan-logo img {
+  width: 99%;
+  height: auto;
+}
+
+/* Allauth Styles */
+
+.allauth-form-inner-content p {
+  margin-top: 1.5rem;
+}
+
+.allauth-form-inner-content label:not([for="id_remember"]) {
+  display: none;
+}
+
+.allauth-form-inner-content button,
+.allauth-form-inner-content input[type="submit"] {
+  /* btn */
+  display: inline-block;
+  font-weight: 400;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+
+  /* standard bootstrap btn transitions */
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.allauth-container h2 {
+  font-family: "Architects Daughter", cursive;
+}
+
+.message-container {
+  position: fixed;
+  bottom: 45px;
+  right: 10px;
+  z-index: 99999999999;
+  opacity: 0.96;
+}

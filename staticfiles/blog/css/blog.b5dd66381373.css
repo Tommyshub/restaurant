@@ -1,0 +1,75 @@
+.blog-heading {
+  font-family: "Architects Daughter", cursive;
+}
+
+.blog-text {
+  font-weight: 600;
+}
+
+.blog-frame {
+  margin-top: 20px;
+}
+
+.blog-title {
+  font-size: 1.6rem;
+  font-family: "Architects Daughter", cursive;
+  margin: 10px;
+}
+
+.blog-image {
+  max-width: 480px;
+}
+
+.blog-body {
+  font-weight: 600;
+}
+
+.edit-post {
+  margin-top: 10px;
+}
+
+.remove-post {
+  margin: 10px;
+}
+
+#id_title {
+  width: 75%;
+}
+
+#id_body {
+  margin: 10px;
+  width: 75%;
+  height: 350%;
+}
+
+.delete-button {
+  margin: 6px;
+}
+
+.toggle-admin {
+  margin: 20px;
+}
+
+@media (max-width: 540px) {
+  .blog-image {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-image {
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 400px) {
+  .blog-image {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 330px) {
+  .blog-image {
+    max-width: 220px;
+  }
+}

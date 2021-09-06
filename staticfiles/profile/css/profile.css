@@ -1,0 +1,18 @@
+/* The dropdown box was set to display none and therefor I needed to change it here */
+
+select,
+select option {
+  display: inline;
+}
+
+.account-haeding {
+  font-family: "Architects Daughter", cursive;
+}
+
+.account-text {
+  margin: 45px;
+}
+
+#profile-update-form button {
+  margin: 10px;
+}
