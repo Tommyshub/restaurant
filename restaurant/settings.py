@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import django_heroku
 import dj_database_url
+import logging
 if os.path.exists("env.py"):
     import env
 
@@ -35,6 +36,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost'
 ]
+
 
 # Application definition
 
@@ -206,6 +208,10 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 # Save every session
 SESSION_SAVE_EVERY_REQUEST = True
