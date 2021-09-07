@@ -2,6 +2,13 @@
 {% extends "base.html" %}
 <!-- Load the static files -->
 {% load static %}
+<!-- Load JS -->
+{% block postloadjs %}
+<!-- . -->
+{{ block.super }}
+<!-- Load Javascript for blog admin -->
+<script src="{% static 'blog/js/toggleBlogAdmin.js' %}"></script>
+{% endblock %}
 <!-- Load extra css -->
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}" />
@@ -101,13 +108,5 @@
   </div>
 </div>
 {% endfor %}
-<!-- . -->
-<!-- Load JS -->
-{% block postloadjs %}
-<!-- . -->
-{{ block.super }}
-<!-- Load Javascript for blog admin -->
-<script src="{% static 'blog/js/toggleBlogAdmin.js' %}"></script>
-{% endblock %}
 <!-- . -->
 {% endblock %}
