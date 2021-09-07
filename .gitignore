@@ -3,3 +3,5 @@
 __pycache__
 env.py
 dumpfile.json
+localhost-key.pem
+localhost.pem
