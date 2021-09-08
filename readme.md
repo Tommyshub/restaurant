@@ -407,3 +407,68 @@ The profile form required much more validation so I created a validators.py file
 Checkout Form:
 
 I am doing the same validation for the checkout form as for the profile form and I am importing the custom validator from the profile app to use on the checkout form.
+
+## Changes made after the 1st of September 2021
+
+### Bug with the allauth registration
+
+I assumed this error had something to do with either the SiteID configuration or with the oath registration but I could not get it to work properly after playing around with those configurations and after some error searching I found out that the error was caused by discount field that I used to have on the profile model that I had deleted but it didn't migrate.
+
+I fixed this bug by adding the field again and making sure that it was migrated properly when I deleted it once more.
+
+### Bug in the order model
+
+I had made some errors when I created the order model that made it impossible for none admin users to update their address and create an order, this was due to some fields having blank set to false and I also somehow deleted the default county that I had set before.
+
+I fixed this by setting the default country do Germany and setting blank to true on the fields that needed it.
+
+I made the choice to have a default country set rather than allowing the users to choose their country because the greenhouse only delivers locally.
+
+### Duplicate cards warning for stripe
+
+I had a warning in the developer console about duplicate stripe cards and this was a very easy fix. I had somehow, most likely when I debugged that code before pasted in the card twice and I just removed the duplicate code to fix this error.
+
+### Coupon code bug
+
+I made the choice to store the discount in a django settings variable when I created the coupon code model, this works good most of the time but I noticed that the discount didn't always get applied to the final amount when the code was running on Heroku.
+
+It is not a good idea to rely on the Heroku filesystem from what I understand so I made the choice to handle this via django sessions instead, which I should have done from the start.
+
+I ran into some problems passing the data I wanted because django serializes session data using json, but I never had a problem with the coupon codes again after I got this to work. I was also able to shorten my code quite a bit by doing this.
+
+### Product Review Page
+
+I created a product review app where the users can review products that they have purchased and give them a 1-5 star rating.
+The users get a link to review each product on their order confirmation and there's a review page where any users can read the reviews. The users who posted reviews can also edit or delete their existing reviews on the review page.
+
+### Field required bug on the blog page
+
+The form fields on the blog admin always said this field is required and this was because I always initialized the blog form with the request post parameters so I just had to first initialize it without request post to fix this.
+
+### Database Schema
+
+I added a database schema to this file to better show how each model interacts with one another.
+
+### Bug with the burger menu
+
+The burger menu stopped working, but only on the blog page. I didn't understand why it only happened at that page and not the others at first, so I had to ask myself what's different between that page and the others.
+
+The answer to this was the blog admin, so I played around with that code a bit and found that putting the import for the javascript file at the top rather than at the bottom fixed the problem.
+
+### Update Django and Allauth
+
+I updated both django and allauth to the latest versions
+
+### Testing
+
+I once again checked all the files for errors in the html, css and python code but I could not find any problems using the official validators.
+
+I also did a lot of manual testing by creating blog posts, reviews and completing orders over and over again to make sure there was no problems with this. I also asked my mother and my girlfriend to create accounts and place order to see if they had any issues which they didn't.
+
+I tried submitting the forms with invalid values and data, for example a file instead of an image in the blog form and I was not able to enter any values or data that I shouldn't.
+
+I tried accessing different pages on my site without being logged in to make sure that anonymous users can't access pages they shouldn't and I did not find any problems there.
+
+I looked over the responsiveness once again and I found a few small issues that I directly fixed.
+
+I also created many new accounts and I placed orders with each of these accounts to make sure that there are no more problems with the stripe payments system, coupon codes or with the allauth registration.
