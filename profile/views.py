@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import UserProfile
@@ -40,11 +40,15 @@ def profile(request):
 
 @login_required
 def order_history(request, order_number):
-    order = get_object_or_404(Order, order_number=order_number)
     # Get the order connected to the order number
-    template = 'checkout/checkout_success.html'
-    context = {
-        'order': order,
-    }
-    # Put that order into context for rendering of the template
+    order = get_object_or_404(Order, order_number=order_number)
+    # Check if the email of the order is the same as the current users email
+    if request.user.email == order.email:
+        template = 'checkout/checkout_success.html'
+        context = {
+            'order': order,
+        }
+    else:
+        messages.error(request, 'You are not allowed to view this order.')
+        return redirect(reverse('profile'))
     return render(request, template, context)
