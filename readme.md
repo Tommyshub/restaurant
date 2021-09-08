@@ -482,3 +482,7 @@ I noticed during this process that a logged in user could view another users ord
 I looked over the responsiveness once again and I found a few small issues that I directly fixed.
 
 I also created many new accounts and I placed orders with each of these accounts to make sure that there are no more problems with the stripe payments system, coupon codes or with the allauth registration.
+
+I checked the stripe dashboard to make sure that all the payments succeeded, which they did.
+
+When I tested the review page I noticed that normal users were not able to edit their reviews, this was due to the fact that I checked if the user is a superuser, both in the template and in the view. I simply removed those checks and now it works as it should.
