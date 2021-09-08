@@ -455,6 +455,12 @@ The burger menu stopped working, but only on the blog page. I didn't understand 
 
 The answer to this was the blog admin, so I played around with that code a bit and found that putting the import for the javascript file at the top rather than at the bottom fixed the problem.
 
+### Order history bug
+
+I found that users could view any order history as long as they were logged in to the site and that they knew the order number of the order they wanted to view. I fixed this bug by adding an if statement to check if the request users email is the same as the order email.
+
+When I tested these changes I realized that the user could change their own email during the checkout process and therefore not be able to view their own order so I made the email field during the checkout process readonly because of this.
+
 ### Update Django and Allauth
 
 I updated both django and allauth to the latest versions
@@ -463,11 +469,13 @@ I updated both django and allauth to the latest versions
 
 I once again checked all the files for errors in the html, css and python code but I could not find any problems using the official validators.
 
-I also did a lot of manual testing by creating blog posts, reviews and completing orders over and over again to make sure there was no problems with this. I also asked my mother and my girlfriend to create accounts and place order to see if they had any issues which they didn't.
+I also did a lot of manual testing by creating blog posts, reviews and completing orders over and over again to make sure there was no problems with this. I also asked my mother and my girlfriend to create accounts and place orders to see if they had any issues which they didn't.
 
 I tried submitting the forms with invalid values and data, for example a file instead of an image in the blog form and I was not able to enter any values or data that I shouldn't.
 
 I tried accessing different pages on my site without being logged in to make sure that anonymous users can't access pages they shouldn't and I did not find any problems there.
+
+I noticed during this process that a logged in user could view another users order history if they knew the order number they wanted to look at. I fixed this by adding an if statement to check if the logged in users email is the same as the order email. I also set the email field during the checkout process to readonly, requiring the user to use the same email as the user registered the account with.
 
 I looked over the responsiveness once again and I found a few small issues that I directly fixed.
 
