@@ -44,11 +44,16 @@ def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     # Check if the email of the order is the same as the current users email
     if request.user.email == order.email:
-        template = 'checkout/checkout_success.html'
+        context = {
+            'order': order,
+        }
+    # Check if the user is a super user
+    elif request.user.is_superuser:
         context = {
             'order': order,
         }
     else:
         messages.error(request, 'You are not allowed to view this order.')
         return redirect(reverse('profile'))
+    template = 'checkout/checkout_success.html'
     return render(request, template, context)
