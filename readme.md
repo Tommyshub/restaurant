@@ -461,6 +461,8 @@ I found that users could view any order history as long as they were logged in t
 
 When I tested these changes I realized that the user could change their own email during the checkout process and therefore not be able to view their own order so I made the email field during the checkout process readonly because of this.
 
+I also check if the users is a super user and if that's the case the user can view any order.
+
 ### Update Django and Allauth
 
 I updated both django and allauth to the latest versions
@@ -475,7 +477,7 @@ I tried submitting the forms with invalid values and data, for example a file in
 
 I tried accessing different pages on my site without being logged in to make sure that anonymous users can't access pages they shouldn't and I did not find any problems there.
 
-I noticed during this process that a logged in user could view another users order history if they knew the order number they wanted to look at. I fixed this by adding an if statement to check if the logged in users email is the same as the order email. I also set the email field during the checkout process to readonly, requiring the user to use the same email as the user registered the account with.
+I noticed during this process that a logged in user could view another users order history if they knew the order number they wanted to look at. I fixed this by adding an if statement to check if the logged in users email is the same as the order email. I also set the email field during the checkout process to readonly, requiring the user to use the same email as the user registered the account with. Super users will also be able to view any order.
 
 I looked over the responsiveness once again and I found a few small issues that I directly fixed.
 
