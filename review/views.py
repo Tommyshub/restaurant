@@ -54,7 +54,7 @@ def edit_review(request, product_name):
         ProductReview, user=request.user, product=product)
     form = ProductReviewForm(instance=review)
     # Populate the form with the data from the review instance
-    if request.method == 'POST' and request.user.is_superuser:
+    if request.method == 'POST':
         form = ProductReviewForm(request.POST, instance=review)
         # Get the new form data
         if form.has_changed and form.is_valid():
@@ -75,7 +75,6 @@ def edit_review(request, product_name):
         'review': review,
         'product_name': product_name,
     }
-
     return render(request, template, context)
 
 
