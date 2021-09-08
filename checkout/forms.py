@@ -26,11 +26,9 @@ class OrderForm(forms.ModelForm):
             'street_address2': 'Street Address 2',
             'county': 'County, State or Locality',
         }
-
+        self.fields['email'].widget.attrs['readonly'] = True
         self.fields['full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            if field == 'email':
-                self.fields['email'].disabled = True
             if field != 'country':
                 if self.fields[field].required:
                     placeholder = f'{placeholders[field]} *'
