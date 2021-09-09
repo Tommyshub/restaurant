@@ -75,13 +75,13 @@ I used figma to create the wireframes but sadly my computer broke and I lost the
 ### Choice of project and design
 
 I decided to create a project that I thought was a bit easier to create and I took something that was a bit similar to the Boutique Ado project.
-I did this because I knew I would not have too much time to create this and I wanted to make sure I had time enought to finish what I started.
+I did this because I knew I would not have too much time to create this and I wanted to make sure I had time enough to finish what I started.
 
 I did not like how the navbar from the materialize css framework looks or functions so I decided to create one from scratch, I think it worked out pretty well but it did take longer then I originally expected.
 
 I also decided to keep the rest of the design fairly simple because I often question my taste and spend a lot of time obsessing over small things.
 
-I think that the it worked out prettty well with the gray navbar and a white background but with a little bit of color added in terms of the logo and buttons.
+I think that the it worked out pretty well with the gray navbar and a white background but with a little bit of color added in terms of the logo and buttons.
 
 ## Languages
 
