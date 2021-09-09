@@ -68,6 +68,10 @@ I used figma to create the wireframes but sadly my computer broke and I lost the
 
 [Desktop Wireframe Image](https://github.com/Tommyshub/restaurant/blob/main/static/wireframes/desktop-wireframe.png)
 
+## Visualization of the Database
+
+[database diagram](https://github.com/Tommyshub/restaurant/blob/main/static/images/database_diagram.png)
+
 ### Choice of project and design
 
 I decided to create a project that I thought was a bit easier to create and I took something that was a bit similar to the Boutique Ado project.
@@ -302,10 +306,6 @@ For python I used the cornflakes-linter which is a wrapper for flake8. This also
 Validating the html was a bit problematic because the tool warned alot about the jinja code and it was a bit hard to see the real issues but this should be right now as far as I can tell.
 
 One example of this problem is that it warned me about a stray doctype declaration in the base template, but as far as I can tell this is just because the jinja code is on the line before.
-
-## Visualization of my database
-
-[database diagram](https://github.com/Tommyshub/restaurant/blob/main/static/images/database_diagram.png)
 
 ## Deployment
 
