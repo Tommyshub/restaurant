@@ -189,60 +189,61 @@ PostgreSQL did not understand my query when I wrote in lowercase letters and Sql
 
 ## Bug Testing
 
-- User inputs:
+### Contact
 
-I found several issues here with some forms not being validated at all by django because I did not ask if the form is valid in the view, but also that the users were able to use invalid an invalid email address.
+I tested the contact app by sending a few emails and trying to do it with invalid data and everything seems to be working fine.
 
-I fixed some of these issues with the built in validators for email addresses and images, but for other fields like for example the address, name, city fields I created a custom validation file that I put in the profile app. This makes it so that I can validate for each type of field and create a message for the specific input.
+### Home
 
-I have noticed a bug in the checkout app in regards to the field specific messages. They do not work because I am unable to render the form without breaking the field for stripe payments, so I have to redirect the users if there's an error for now. The users still gets a message saying that the input is not valid but they will not get the error message for the specific input that is wrong.
+The only thing I can test on this page is the responsiveness and that is working good.
 
-I have tried a few things to fix this, for example overriding the default is valid function. But as of now I have not been able to figure out how to fix this.
+### Blog
 
-- Navigation and Security:
+I tested posting a blog with invalid data and I tried posting a file instead of an image in the image field. The validation worked as expected and I got an error message. Posting blog works fine but there is a known bug with the image field that I write about below.
 
-I had a few issues here with the users for example being able to view order information without actually being logged in to their account. I have fixed all of these issues by requiring users to be logged in to view certain pages, or even being a super user to view some.
+### Menu / Order
 
-I applied those limitations in both the template itself but also in the python code to make sure it is as secure as possible.
+Here I tried buying every single product on the page and I tried doing this using discount codes and using different accounts to make sure there's no bugs. I did not find any problems with this page.
 
-- Crud:
+### Review
 
-I had some issues here with for example users being able to upload files in the image field in the form for posting blogs, with emails not being sent and with the coupons codes not being applied correctly. I also found an issue with the quantity not being updated in the bag, this was due to the fact that I somehow had removed the buttons and only used the ones rendered by default in the form and they did not have the right settings. I fixed this by adding the buttons and setting the visibility to hidden in the css.
+During the testing of the review page I noticed that normal users was not able to edit their own reviews. This was due to the fact that I had put in a check to only allow superusers to edit reviews, this was always meant to be changed into a if statement that checks if the request user is the same as the review user, but I forgot about completing that.
 
-I do not find anymore errors when going through the website now and I tried every crud operation every several times in different ways to confirm this.
+But all I had to do in order to fix this was to remove those checks completely. I could do it this because I am filtering every review with request user, so the logged in user can only see buttons for their own reviews.
 
-- Admin account:
+### Account
 
-In order to make sure that there are no issues with the admin account that is going to be used for the assessment I tried logging in to it and testing so that it worked as expected. I also asked a friend to login and see so there's no problems.
+I started out testing the account page by trying to use invalid inputs in the form fields. This was blocked on every field that it is supposed to because of my custom form validation.
 
-- Developer console:
+I did find a problem here with the order history. Any user were able to view the order history of another user, providing that they have the specific order number.
 
-One issue I noticed was a warning about missing favicon, I solved this by making a copy of my vegan logo and using that as a favicon and linking to it in the base template.
+To fix this I only allow the users to view their orders if the request email is the same as the order email, or if the request user is a superuser. If that's not the case they will get an error message saying that they are not allowed to view that order.
 
-- Testing done after setting debug to false:
+### Bag
 
-I started by testing all the forms, trying to change to invalid input to check if the validations work as expected and they do except for the bug I write about above here. Then I tried to submit the forms with valid data, sending emails, posting blog posts and creating orders with coupon codes. I did not find any issues there.
+Here I tried placing orders and entering invalid data in the form fields, this does not work due to my custom validation and placing orders with valid data works as expected.
 
-I also tried login in to accounts, resetting passwords, creating new accounts without any issues. I also tried updating and removing bag items without any problems.
+### Coupon Codes
 
-I checked all the links and tried to get access to pages that I should not have access to without being logged in or an administrator and all of the protections here was working and I could not get access to anything that I shouldn't.
+During the testing of the coupon codes I noticed that the discount would sometimes not be applied during the final checkout process. This only happened on the deployed version of my site and after doing some research I found out that this was because of my decision to use a django settings variable to store the discount. This is not a good idea because of how the Heroku filesystem works.
 
-I logged into stripe to verify that everything works there and I checked that the payment intents had succeeded and that there was no errors with the webhooks.
+Using Django sessions ended up being a much better choice and it works very good after I changed this.
 
-I scanned all the python files one more time to check if I had any pep8 formatting errors but it was all fine.
+I also tried using invalid coupon codes but this did not work. The user can apply multiple coupon codes on the same order but they will only get the discount of the last code applied.
 
-When scanning my html templates for problem I encountered a problem at the accounts/login path, the validator says "No li element in scope but a li end tag seen." but this is a problem that comes from the allauth package and it is not in the code in the actual login.html template.
+### Checkout and Checkout Success
 
-I found no other errors when scanning my templates. I scanned both with manual input and directly with the rendered html on the paths I could.
-I ignored problems regarding bad values due to the jinja syntax.
+There's not a lot to check on these pages but I did verify that they work as they should by completing many orders using different accounts, including none admin users.
 
-I also scanned all the css files and there I found no errors except for a warning about unknown vendor extensions which is a bug in the wc3 validator.
+### Authentication
+
+I had made some errors when I created the order model that made it impossible for none admin users to update their address and create an order, this was due to some fields having blank set to false and I also somehow deleted the default county that I had set before.
+
+I fixed this by setting the default country do Germany and setting blank to true on the fields that needed it.
+
+I created several accounts after fixing that problem without any issues and now the allauth system works again.
 
 ## Known Bugs
-
-### Form validation on checkout page
-
-The form validation for the checkout form does not give a field specific error. This is due to the fact that I cannot render the checkout page with the form without breaking the stripe payment part, so I redirect instead. Form is still marked as invalid and the user will get a message saying it's invalid.
 
 ### Ending li tag in the login template
 
