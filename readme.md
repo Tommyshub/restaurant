@@ -303,7 +303,7 @@ For python I used the cornflakes-linter which is a wrapper for flake8. This also
 
 ### HTML
 
-Validating the html was a bit problematic because the tool warned alot about the jinja code and it was a bit hard to see the real issues but this should be right now as far as I can tell.
+Validating the html was a bit problematic because the tool warned a lot about the jinja code and it was a bit hard to see the real issues but this should be right now as far as I can tell.
 
 One example of this problem is that it warned me about a stray doctype declaration in the base template, but as far as I can tell this is just because the jinja code is on the line before.
 
