@@ -13,6 +13,8 @@ Our delivery person will contact you at {{ order.phone_number }} if needed.
 
 If you have any questions, feel free to contact us at {{ contact_email }}.
 
+You can review the products in your order under order history on your account page.
+
 Thank you for your order!
 
 Sincerely,
