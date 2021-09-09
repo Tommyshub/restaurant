@@ -68,10 +68,6 @@ I used figma to create the wireframes but sadly my computer broke and I lost the
 
 [Desktop Wireframe Image](https://github.com/Tommyshub/restaurant/blob/main/static/wireframes/desktop-wireframe.png)
 
-### Database Schema
-
-[Database Schema](https://github.com/Tommyshub/restaurant/blob/main/static/database-schema/database_schema.png)
-
 ### Choice of project and design
 
 I decided to create a project that I thought was a bit easier to create and I took something that was a bit similar to the Boutique Ado project.
