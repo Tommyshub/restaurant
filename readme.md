@@ -463,3 +463,7 @@ I also check if the users is a super user and if that's the case the user can vi
 ### Update Django and Allauth
 
 I updated both django and allauth to the latest versions
+
+### Testing
+
+I tested the responsiveness and I tested every page for form validation errors and other bugs. I updated the bug testing part of the readme file to document this.
