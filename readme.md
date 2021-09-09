@@ -70,7 +70,7 @@ I used figma to create the wireframes but sadly my computer broke and I lost the
 
 ## Visualization of the Database
 
-[database diagram](https://github.com/Tommyshub/restaurant/blob/main/static/images/database_diagram.png)
+[Database Schema](https://github.com/Tommyshub/restaurant/blob/main/static/images/database_diagram.png)
 
 ### Choice of project and design
 
